@@ -227,7 +227,7 @@
                     </div>
                 </div>
 
-                <!-- Правая колонка: Постер-композиция в стиле афиши современного шоу -->
+                <!-- Правая колонка: Постер-композиция с реальным фото 1000018948.jpg (С микрофоном на сцене) -->
                 <div class="lg:col-span-5 relative flex justify-center">
                     <!-- Фоновая декоративная рамка -->
                     <div class="absolute -inset-2 bg-gradient-to-tr from-electricLime/30 via-transparent to-warmGold/30 rounded-[2rem] blur-xl opacity-70"></div>
@@ -241,19 +241,19 @@
                             <span class="text-warmGold">LIVE ENERGY</span>
                         </div>
 
-                        <!-- Главное изображение с артистичной подачей -->
+                        <!-- Главное изображение: 1000018948.jpg (идеально вписано в рамку 4:5) -->
                         <div class="relative rounded-2xl overflow-hidden aspect-[4/5] bg-slate-900 group">
                             <img 
-                                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=900&q=85" 
+                                src="1000018948.jpg" 
                                 onerror="this.src='https://placehold.co/720x900/1E293B/D9F99D?text=Екатерина+Вовк'"
-                                alt="Екатерина Вовк — Ведущая и Актриса" 
-                                class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                                alt="Екатерина Вовк — Ведущая с микрофоном на сцене" 
+                                class="w-full h-full object-cover object-[center_15%] group-hover:scale-105 transition-transform duration-700"
                             >
                             <!-- Градиентное затемнение снизу -->
-                            <div class="absolute inset-0 bg-gradient-to-t from-indigoNight via-indigoNight/20 to-transparent"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-indigoNight via-indigoNight/15 to-transparent"></div>
 
                             <!-- Подпись прямо на постере -->
-                            <div class="absolute bottom-4 left-4 right-4 p-4 rounded-xl bg-indigoNight/80 backdrop-blur-md border border-white/10">
+                            <div class="absolute bottom-4 left-4 right-4 p-4 rounded-xl bg-indigoNight/85 backdrop-blur-md border border-white/10">
                                 <div class="flex items-center justify-between">
                                     <div>
                                         <p class="text-xs uppercase tracking-wider text-electricLime font-semibold">Амплуа</p>
@@ -317,7 +317,7 @@
         </div>
     </section>
 
-    <!-- 3. ИНТЕРАКТИВНЫЙ БЛОК «ПЕРЕКЛЮЧАТЕЛЬ ЭНЕРГИИ» (Фишка сайта) -->
+    <!-- 3. ИНТЕРАКТИВНЫЙ БЛОК «ПЕРЕКЛЮЧАТЕЛЬ ЭНЕРГИИ» -->
     <section id="energy-modes" class="py-16 sm:py-24 relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
@@ -338,7 +338,7 @@
             <div class="flex flex-wrap justify-center gap-3 sm:gap-4 mb-10">
                 <button onclick="switchEnergyMode('drive')" id="tab-drive" class="energy-tab active-tab flex items-center gap-2.5 px-5 py-3.5 rounded-2xl font-display font-semibold text-xs sm:text-sm transition-all duration-300 bg-electricLime text-indigoNight lime-glow">
                     <i data-lucide="zap" class="w-4 h-4"></i>
-                    <span>1. Чистый драйв и Комедия</span>
+                    <span>1. Чистый драйв и Перформанс</span>
                 </button>
                 <button onclick="switchEnergyMode('elegance')" id="tab-elegance" class="energy-tab flex items-center gap-2.5 px-5 py-3.5 rounded-2xl font-display font-semibold text-xs sm:text-sm transition-all duration-300 glass-card text-slate-300 hover:text-white">
                     <i data-lucide="award" class="w-4 h-4"></i>
@@ -356,10 +356,10 @@
                 <div id="mode-inner-glow" class="absolute -right-20 -bottom-20 w-80 h-80 rounded-full bg-electricLime/15 blur-3xl pointer-events-none transition-colors duration-500"></div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
-                    <!-- Визуал режима -->
+                    <!-- Визуал режима (подстраивается под пропорции фото) -->
                     <div class="lg:col-span-5">
-                        <div class="relative rounded-2xl overflow-hidden aspect-[16/11] sm:aspect-[4/3] border border-white/10">
-                            <img id="mode-image" src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=900&q=80" onerror="this.src='https://placehold.co/800x600/1E293B/A3E635?text=Драйв+и+Комедия'" alt="Режим энергии" class="w-full h-full object-cover transition-all duration-500">
+                        <div class="relative rounded-2xl overflow-hidden aspect-[4/3] bg-slate-900 border border-white/10">
+                            <img id="mode-image" src="1000018947.jpg" onerror="this.src='https://placehold.co/800x600/1E293B/A3E635?text=Драйв+и+Комедия'" alt="Режим энергии" class="w-full h-full object-cover object-[center_20%] transition-all duration-500">
                             <div class="absolute inset-0 bg-gradient-to-t from-indigoNight/90 via-transparent to-transparent"></div>
                             <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
                                 <span id="mode-badge" class="px-3 py-1 rounded-lg bg-electricLime text-indigoNight font-display font-bold text-xs">
@@ -372,20 +372,20 @@
                     <!-- Описание режима -->
                     <div class="lg:col-span-7 space-y-5">
                         <div class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-electricLime" id="mode-subtitle">
-                            Идеально для фестивалей, масштабных корпоративов и ярких вечеринок
+                            Идеально для фестивалей, тематических вечеринок и ярких корпоративов
                         </div>
                         <h3 id="mode-title" class="font-display font-bold text-2xl sm:text-3xl text-white">
-                            «Чистый драйв, стендап-импровизация и взрывная энергия»
+                            «Чистый драйв, перевоплощение и взрывная энергия»
                         </h3>
                         <p id="mode-desc" class="text-slate-300 text-sm sm:text-base leading-relaxed">
-                            Когда нужно раскачать многотысячную площадь на фестивале или объединить 200 сотрудников компании за 15 минут. Живой юмор на грани стендапа, мгновенная реакция на реплики из зала, танцевальный драйв и полное отсутствие скучных заготовок.
+                            Когда нужно раскачать площадь на фестивале, вовлечь 200 сотрудников за 15 минут или провести яркую концептуальную вечеринку в актерском образе. Живой юмор, мгновенная реакция на реплики из зала и полное отсутствие скучных заготовок.
                         </p>
 
                         <!-- Теги характеристик режима -->
                         <div id="mode-tags" class="flex flex-wrap gap-2 pt-2">
                             <span class="px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 text-xs text-slate-200">🔥 Работа с огромной толпой</span>
-                            <span class="px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 text-xs text-slate-200">😂 Комедийная импровизация</span>
-                            <span class="px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 text-xs text-slate-200">💃 Танцы и интерактив без принуждения</span>
+                            <span class="px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 text-xs text-slate-200">🎭 Яркие актерские образы</span>
+                            <span class="px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 text-xs text-slate-200">💃 Интерактив без принуждения</span>
                         </div>
 
                         <!-- Шкала баланса настроения -->
@@ -425,7 +425,7 @@
         </div>
     </section>
 
-    <!-- 4. БЛОК «ОБО МНЕ / МАНИФЕСТ ВЕДУЩЕЙ» -->
+    <!-- 4. БЛОК «ОБО МНЕ / МАНИФЕСТ ВЕДУЩЕЙ» (Фото 1000018951.jpg — крупный портрет) -->
     <section id="about" class="py-16 sm:py-24 relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="glass-card rounded-[2.5rem] p-6 sm:p-12 lg:p-16 border border-white/10 relative overflow-hidden">
@@ -434,16 +434,16 @@
 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
                     
-                    <!-- Колонка с фото-коллажем и цитатой -->
+                    <!-- Колонка с портретом 1000018951.jpg (в рамке 4:5 для вертикального портрета) -->
                     <div class="lg:col-span-5 space-y-6">
-                        <div class="relative rounded-2xl overflow-hidden aspect-[4/4] border border-white/15">
+                        <div class="relative rounded-2xl overflow-hidden aspect-[4/5] bg-slate-900 border border-white/15 shadow-xl">
                             <img 
-                                src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80" 
-                                onerror="this.src='https://placehold.co/700x700/1E293B/FBBF24?text=Екатерина+Вовк'"
+                                src="1000018951.jpg" 
+                                onerror="this.src='https://placehold.co/700x875/1E293B/FBBF24?text=Екатерина+Вовк'"
                                 alt="Екатерина Вовк портрет" 
-                                class="w-full h-full object-cover"
+                                class="w-full h-full object-cover object-[center_15%]"
                             >
-                            <div class="absolute inset-0 bg-gradient-to-t from-indigoNight via-transparent to-transparent"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-indigoNight via-indigoNight/20 to-transparent"></div>
                             <div class="absolute bottom-5 left-5 right-5">
                                 <span class="px-3 py-1 rounded-full bg-warmGold text-indigoNight font-display font-bold text-xs uppercase">
                                     Манифест ведущей
@@ -746,11 +746,11 @@
         </div>
     </section>
 
-    <!-- 7. БЛОК «ШОУРИЛ И ГАЛЕРЕЯ ОБРАЗОВ» -->
+    <!-- 7. БЛОК «ШОУРИЛ И ГАЛЕРЕЯ РЕАЛЬНЫХ ОБРАЗОВ» -->
     <section id="showreel" class="py-16 sm:py-24 relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
             
-            <!-- Подблок 7.1: Интерактивный Шоурил с таймкодами -->
+            <!-- Подблок 7.1: Интерактивный Шоурил с реальными кадрами в эпизодах -->
             <div>
                 <div class="text-center max-w-3xl mx-auto mb-10 space-y-3">
                     <div class="inline-flex items-center gap-2 text-warmGold text-xs font-display uppercase tracking-wider">
@@ -760,21 +760,21 @@
                         Посмотрите, как я работаю с залом
                     </h2>
                     <p class="text-slate-400 text-sm sm:text-base">
-                        Переключайте таймкоды под плеером, чтобы увидеть разные форматы подачи: от фестивального драйва до торжественных церемоний.
+                        Переключайте таймкоды под плеером, чтобы увидеть разные форматы подачи: от фестивального масштаба до вечерних событий.
                     </p>
                 </div>
 
                 <div class="glass-card rounded-3xl p-4 sm:p-6 border border-white/15 max-w-5xl mx-auto shadow-2xl">
-                    <!-- Окно видеоплеера (интерактивное превью) -->
+                    <!-- Окно видеоплеера -->
                     <div class="relative rounded-2xl overflow-hidden aspect-video bg-slate-950 group">
-                        <img id="showreel-bg" src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=85" onerror="this.src='https://placehold.co/1200x675/0F172A/A3E635?text=Шоурил+Екатерины+Вовк'" alt="Шоурил превью" class="w-full h-full object-cover opacity-75 transition-all duration-500">
+                        <img id="showreel-bg" src="1000018948.jpg" onerror="this.src='https://placehold.co/1200x675/0F172A/A3E635?text=Шоурил+Екатерины+Вовк'" alt="Шоурил превью" class="w-full h-full object-cover object-[center_20%] opacity-75 transition-all duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-indigoNight via-indigoNight/30 to-transparent"></div>
 
                         <!-- Верхний бар плеера -->
                         <div class="absolute top-4 left-4 right-4 flex items-center justify-between">
                             <span id="showreel-chapter-badge" class="px-3.5 py-1.5 rounded-full bg-electricLime text-indigoNight font-display font-bold text-xs flex items-center gap-1.5">
                                 <span class="w-2 h-2 rounded-full bg-indigoNight animate-ping"></span>
-                                00:15 — Масштабный фестиваль
+                                00:15 — На большой сцене
                             </span>
                             <span class="px-3 py-1 rounded-lg bg-indigoNight/80 backdrop-blur-md text-xs text-slate-300 border border-white/10">
                                 HD 1080p • СПб
@@ -787,7 +787,7 @@
                                 <i id="play-icon" data-lucide="play" class="w-8 h-8 fill-current ml-1"></i>
                             </button>
                             <h3 id="showreel-scene-title" class="mt-4 font-display font-bold text-lg sm:text-2xl text-white max-w-xl">
-                                Открытие летнего фестиваля на 1500 человек: разогрев толпы с первых секунд
+                                Работа на большой сцене и фестивалях: живая энергетика и контакт с залом
                             </h3>
                             <p id="showreel-scene-status" class="mt-1 text-xs sm:text-sm text-softLime">
                                 Нажмите Play или выберите эпизод по таймкоду ниже
@@ -806,30 +806,30 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-4">
                         <button onclick="setShowreelChapter(0)" class="timecode-btn p-3.5 rounded-xl bg-electricLime/15 border border-electricLime text-left transition-all">
                             <div class="font-display font-bold text-xs text-electricLime">00:15 • Эпизод 1</div>
-                            <div class="text-sm font-medium text-white mt-0.5">Масштабный фестиваль</div>
+                            <div class="text-sm font-medium text-white mt-0.5">Большая сцена & Live</div>
                         </button>
                         <button onclick="setShowreelChapter(1)" class="timecode-btn p-3.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-left transition-all">
                             <div class="font-display font-bold text-xs text-warmGold">00:45 • Эпизод 2</div>
-                            <div class="text-sm font-medium text-white mt-0.5">Живая импровизация с залом</div>
+                            <div class="text-sm font-medium text-white mt-0.5">Масштабное награждение</div>
                         </button>
                         <button onclick="setShowreelChapter(2)" class="timecode-btn p-3.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-left transition-all">
                             <div class="font-display font-bold text-xs text-electricLime">01:20 • Эпизод 3</div>
-                            <div class="text-sm font-medium text-white mt-0.5">Торжественная церемония</div>
+                            <div class="text-sm font-medium text-white mt-0.5">Вечерний Гала-формат</div>
                         </button>
                         <button onclick="setShowreelChapter(3)" class="timecode-btn p-3.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-left transition-all">
                             <div class="font-display font-bold text-xs text-warmGold">01:50 • Эпизод 4</div>
-                            <div class="text-sm font-medium text-white mt-0.5">Душевный финал до мурашек</div>
+                            <div class="text-sm font-medium text-white mt-0.5">Театральный перформанс</div>
                         </button>
                     </div>
                 </div>
             </div>
 
-            <!-- Подблок 7.2: Галерея образов (Lookbook) с фильтрами -->
+            <!-- Подблок 7.2: Галерея реальных фотографий (все 6 кадров подогнаны под рамки) -->
             <div>
                 <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-6">
                     <div>
                         <div class="inline-flex items-center gap-2 text-electricLime text-xs font-display uppercase tracking-wider mb-2">
-                            <i data-lucide="camera" class="w-4 h-4"></i> Lookbook & Эмоции
+                            <i data-lucide="camera" class="w-4 h-4"></i> Lookbook & Реальные кадры
                         </div>
                         <h3 class="font-display font-bold text-2xl sm:text-3xl text-white">
                             Галерея сценических и актерских образов
@@ -839,102 +839,108 @@
                     <!-- Фильтры галереи -->
                     <div class="flex flex-wrap gap-2">
                         <button onclick="filterGallery('all')" data-filter="all" class="gallery-filter-btn px-4 py-2 rounded-xl text-xs font-display font-semibold bg-electricLime text-indigoNight transition-all">
-                            Все образы
+                            Все образы (6)
                         </button>
                         <button onclick="filterGallery('stage')" data-filter="stage" class="gallery-filter-btn px-4 py-2 rounded-xl text-xs font-display font-semibold glass-card text-slate-300 hover:text-white transition-all">
                             На большой сцене
                         </button>
                         <button onclick="filterGallery('comedy')" data-filter="comedy" class="gallery-filter-btn px-4 py-2 rounded-xl text-xs font-display font-semibold glass-card text-slate-300 hover:text-white transition-all">
-                            Комедия и драйв
+                            Комедия и перевоплощение
                         </button>
                         <button onclick="filterGallery('elegant')" data-filter="elegant" class="gallery-filter-btn px-4 py-2 rounded-xl text-xs font-display font-semibold glass-card text-slate-300 hover:text-white transition-all">
-                            Элегантный стиль
+                            Элегантный стиль & Портрет
                         </button>
                     </div>
                 </div>
 
-                <!-- Сетка фото -->
-                <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                <!-- Сетка из 6 реальных фотографий (пропорция 4:5 идеально раскрывает вертикальные кадры) -->
+                <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     
-                    <div data-category="stage" onclick="openLightbox('https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1000&q=85', 'Open-Air Фестиваль в Санкт-Петербурге • Работа с многотысячной аудиторией')" class="gallery-item cursor-pointer group relative rounded-2xl overflow-hidden aspect-[4/3] border border-white/10">
-                        <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=700&q=80" onerror="this.src='https://placehold.co/700x525/1E293B/A3E635?text=Фестиваль'" alt="На большой сцене" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-indigoNight/90 via-transparent to-transparent opacity-90"></div>
+                    <!-- Карточка 1: 1000018948.jpg (С микрофоном и папкой на сцене) -->
+                    <div data-category="stage" onclick="openLightbox('1000018948.jpg', 'Работа на большой сцене • Живое ведение и контакт с залом')" class="gallery-item cursor-pointer group relative rounded-2xl overflow-hidden aspect-[4/5] bg-slate-900 border border-white/10 shadow-lg">
+                        <img src="1000018948.jpg" onerror="this.src='https://placehold.co/700x875/1E293B/A3E635?text=Сцена+Live'" alt="Екатерина Вовк с микрофоном на сцене" class="w-full h-full object-cover object-[center_15%] group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-indigoNight/95 via-indigoNight/20 to-transparent opacity-95"></div>
                         <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between">
                             <div>
                                 <span class="text-[11px] text-electricLime font-semibold uppercase">На большой сцене</span>
-                                <h4 class="font-display font-bold text-sm text-white">Городской фестиваль • СПб</h4>
+                                <h4 class="font-display font-bold text-sm sm:text-base text-white">Ведение масштабного события</h4>
                             </div>
-                            <span class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-white group-hover:bg-electricLime group-hover:text-indigoNight transition-colors">
+                            <span class="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center text-white group-hover:bg-electricLime group-hover:text-indigoNight transition-colors shrink-0">
                                 <i data-lucide="maximize-2" class="w-4 h-4"></i>
                             </span>
                         </div>
                     </div>
 
-                    <div data-category="elegant" onclick="openLightbox('https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1000&q=85', 'Вечерний элегантный образ для торжественных церемоний и премий')" class="gallery-item cursor-pointer group relative rounded-2xl overflow-hidden aspect-[4/3] border border-white/10">
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=700&q=80" onerror="this.src='https://placehold.co/700x525/1E293B/FBBF24?text=Элегантный+образ'" alt="Элегантный стиль" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-indigoNight/90 via-transparent to-transparent opacity-90"></div>
+                    <!-- Карточка 2: 1000018946.jpg (Вместе к новым вершинам — черный вечерний образ) -->
+                    <div data-category="elegant" onclick="openLightbox('1000018946.jpg', 'Корпоративный гала-вечер «Вместе к новым вершинам» • Элегантный вечерний образ')" class="gallery-item cursor-pointer group relative rounded-2xl overflow-hidden aspect-[4/5] bg-slate-900 border border-white/10 shadow-lg">
+                        <img src="1000018946.jpg" onerror="this.src='https://placehold.co/700x875/1E293B/FBBF24?text=Элегантный+образ'" alt="Вместе к новым вершинам вечерний образ" class="w-full h-full object-cover object-[center_20%] group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-indigoNight/95 via-indigoNight/20 to-transparent opacity-95"></div>
                         <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between">
                             <div>
                                 <span class="text-[11px] text-brightGold font-semibold uppercase">Элегантный стиль</span>
-                                <h4 class="font-display font-bold text-sm text-white">Гала-ужин и вручение премии</h4>
+                                <h4 class="font-display font-bold text-sm sm:text-base text-white">Вечернее шоу «К новым вершинам»</h4>
                             </div>
-                            <span class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-white group-hover:bg-electricLime group-hover:text-indigoNight transition-colors">
+                            <span class="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center text-white group-hover:bg-electricLime group-hover:text-indigoNight transition-colors shrink-0">
                                 <i data-lucide="maximize-2" class="w-4 h-4"></i>
                             </span>
                         </div>
                     </div>
 
-                    <div data-category="comedy" onclick="openLightbox('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1000&q=85', 'Живая комедийная импровизация и стендап-диалог с гостями')" class="gallery-item cursor-pointer group relative rounded-2xl overflow-hidden aspect-[4/3] border border-white/10">
-                        <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=700&q=80" onerror="this.src='https://placehold.co/700x525/1E293B/A3E635?text=Импровизация'" alt="Комедия и драйв" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-indigoNight/90 via-transparent to-transparent opacity-90"></div>
+                    <!-- Карточка 3: 1000018947.jpg (Театральный Хэллоуин/перформанс образ с котелком) -->
+                    <div data-category="comedy" onclick="openLightbox('1000018947.jpg', 'Актерское перевоплощение для тематических вечеринок и иммерсивных шоу')" class="gallery-item cursor-pointer group relative rounded-2xl overflow-hidden aspect-[4/5] bg-slate-900 border border-white/10 shadow-lg">
+                        <img src="1000018947.jpg" onerror="this.src='https://placehold.co/700x875/1E293B/A3E635?text=Перформанс'" alt="Театральный образ и перевоплощение" class="w-full h-full object-cover object-[70%_center] group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-indigoNight/95 via-indigoNight/20 to-transparent opacity-95"></div>
                         <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between">
                             <div>
-                                <span class="text-[11px] text-electricLime font-semibold uppercase">Комедия и драйв</span>
-                                <h4 class="font-display font-bold text-sm text-white">Стендап-импровизация с гостями</h4>
+                                <span class="text-[11px] text-electricLime font-semibold uppercase">Комедия и перевоплощение</span>
+                                <h4 class="font-display font-bold text-sm sm:text-base text-white">Тематический актерский образ</h4>
                             </div>
-                            <span class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-white group-hover:bg-electricLime group-hover:text-indigoNight transition-colors">
+                            <span class="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center text-white group-hover:bg-electricLime group-hover:text-indigoNight transition-colors shrink-0">
                                 <i data-lucide="maximize-2" class="w-4 h-4"></i>
                             </span>
                         </div>
                     </div>
 
-                    <div data-category="stage" onclick="openLightbox('https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=1000&q=85', 'Энергетика вечернего корпоративного шоу')" class="gallery-item cursor-pointer group relative rounded-2xl overflow-hidden aspect-[4/3] border border-white/10">
-                        <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=700&q=80" onerror="this.src='https://placehold.co/700x525/1E293B/FBBF24?text=Корпоративное+шоу'" alt="Корпоративное шоу" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-indigoNight/90 via-transparent to-transparent opacity-90"></div>
+                    <!-- Карточка 4: 1000018949.jpg (Open-Air сцена «Это сто тысяч героев» — автообрезка черных полей через scale-[1.35]) -->
+                    <div data-category="stage" onclick="openLightbox('1000018949.jpg', 'Open-Air фестиваль и церемония награждения «Это сто тысяч героев» на главной сцене')" class="gallery-item cursor-pointer group relative rounded-2xl overflow-hidden aspect-[4/5] bg-slate-900 border border-white/10 shadow-lg">
+                        <img src="1000018949.jpg" onerror="this.src='https://placehold.co/700x875/1E293B/FBBF24?text=Open-Air+Сцена'" alt="Фестиваль Это сто тысяч героев" class="w-full h-full object-cover object-center scale-[1.35] group-hover:scale-[1.42] transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-indigoNight/95 via-indigoNight/20 to-transparent opacity-95"></div>
                         <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between">
                             <div>
                                 <span class="text-[11px] text-electricLime font-semibold uppercase">На большой сцене</span>
-                                <h4 class="font-display font-bold text-sm text-white">Масштабное корпоративное шоу</h4>
+                                <h4 class="font-display font-bold text-sm sm:text-base text-white">Open-Air «Сто тысяч героев»</h4>
                             </div>
-                            <span class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-white group-hover:bg-electricLime group-hover:text-indigoNight transition-colors">
+                            <span class="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center text-white group-hover:bg-electricLime group-hover:text-indigoNight transition-colors shrink-0">
                                 <i data-lucide="maximize-2" class="w-4 h-4"></i>
                             </span>
                         </div>
                     </div>
 
-                    <div data-category="elegant" onclick="openLightbox('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1000&q=85', 'Модерация деловых форумов и статусных презентаций')" class="gallery-item cursor-pointer group relative rounded-2xl overflow-hidden aspect-[4/3] border border-white/10">
-                        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=700&q=80" onerror="this.src='https://placehold.co/700x525/1E293B/A3E635?text=Деловой+стиль'" alt="Деловой форум" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-indigoNight/90 via-transparent to-transparent opacity-90"></div>
-                        <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between">
-                            <div>
-                                <span class="text-[11px] text-brightGold font-semibold uppercase">Элегантный стиль</span>
-                                <h4 class="font-display font-bold text-sm text-white">Деловой форум и презентация</h4>
-                            </div>
-                            <span class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-white group-hover:bg-electricLime group-hover:text-indigoNight transition-colors">
-                                <i data-lucide="maximize-2" class="w-4 h-4"></i>
-                            </span>
-                        </div>
-                    </div>
-
-                    <div data-category="comedy" onclick="openLightbox('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=85', 'Душевная атмосфера и искренние эмоции на камерных вечеринках и свадьбах')" class="gallery-item cursor-pointer group relative rounded-2xl overflow-hidden aspect-[4/3] border border-white/10">
-                        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=700&q=80" onerror="this.src='https://placehold.co/700x525/1E293B/FBBF24?text=Камерная+вечеринка'" alt="Живые эмоции" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-indigoNight/90 via-transparent to-transparent opacity-90"></div>
+                    <!-- Карточка 5: 1000018950.jpg (Командный финал на сцене — автообрезка черных полос через scale-[1.85]) -->
+                    <div data-category="comedy" onclick="openLightbox('1000018950.jpg', 'Живые эмоции с командой и участниками после завершения масштабного фестиваля')" class="gallery-item cursor-pointer group relative rounded-2xl overflow-hidden aspect-[4/5] bg-slate-900 border border-white/10 shadow-lg">
+                        <img src="1000018950.jpg" onerror="this.src='https://placehold.co/700x875/1E293B/A3E635?text=Эмоции+на+сцене'" alt="Команда на сцене фестиваля" class="w-full h-full object-cover object-center scale-[1.85] group-hover:scale-[1.92] transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-indigoNight/95 via-indigoNight/20 to-transparent opacity-95"></div>
                         <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between">
                             <div>
                                 <span class="text-[11px] text-electricLime font-semibold uppercase">Комедия и драйв</span>
-                                <h4 class="font-display font-bold text-sm text-white">Теплая камерная вечеринка</h4>
+                                <h4 class="font-display font-bold text-sm sm:text-base text-white">Драйв с командой на большой сцене</h4>
                             </div>
-                            <span class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-white group-hover:bg-electricLime group-hover:text-indigoNight transition-colors">
+                            <span class="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center text-white group-hover:bg-electricLime group-hover:text-indigoNight transition-colors shrink-0">
+                                <i data-lucide="maximize-2" class="w-4 h-4"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Карточка 6: 1000018951.jpg (Крупный естественный портрет) -->
+                    <div data-category="elegant" onclick="openLightbox('1000018951.jpg', 'Екатерина Вовк • Актерское портфолио и душевные камерные события')" class="gallery-item cursor-pointer group relative rounded-2xl overflow-hidden aspect-[4/5] bg-slate-900 border border-white/10 shadow-lg">
+                        <img src="1000018951.jpg" onerror="this.src='https://placehold.co/700x875/1E293B/FBBF24?text=Портрет'" alt="Екатерина Вовк портрет" class="w-full h-full object-cover object-[center_15%] group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-indigoNight/95 via-indigoNight/20 to-transparent opacity-95"></div>
+                        <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between">
+                            <div>
+                                <span class="text-[11px] text-brightGold font-semibold uppercase">Элегантный стиль & Портрет</span>
+                                <h4 class="font-display font-bold text-sm sm:text-base text-white">Камерный и душевный формат</h4>
+                            </div>
+                            <span class="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center text-white group-hover:bg-electricLime group-hover:text-indigoNight transition-colors shrink-0">
                                 <i data-lucide="maximize-2" class="w-4 h-4"></i>
                             </span>
                         </div>
@@ -1114,13 +1120,13 @@
                 <!-- Быстрые кнопки мессенджеров (управляются через CONTACT_CONFIG) -->
                 <div class="flex flex-wrap gap-3">
                     <a id="footer-tg" href="https://t.me/obezskaya" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl glass-card hover:border-electricLime/50 text-xs font-display font-semibold text-white flex items-center gap-2 transition-all">
-                        <i data-lucide="send" class="w-4 h-4 text-electricLime"></i> Telegram
+                        <i data-lucide="send" class="w-4 h-4 text-electricLime"></i> Telegram (@obezskaya)
                     </a>
                     <a id="footer-wa" href="https://wa.me/79210913336" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl glass-card hover:border-warmGold/50 text-xs font-display font-semibold text-white flex items-center gap-2 transition-all">
                         <i data-lucide="message-circle" class="w-4 h-4 text-brightGold"></i> WhatsApp
                     </a>
                     <a id="footer-phone" href="tel:+79210913336" class="px-4 py-2.5 rounded-xl glass-card hover:border-white/40 text-xs font-display font-semibold text-white flex items-center gap-2 transition-all">
-                        <i data-lucide="phone-call" class="w-4 h-4 text-sky-400"></i> Позвонить
+                        <i data-lucide="phone-call" class="w-4 h-4 text-sky-400"></i> +7 (921) 091-33-36
                     </a>
                 </div>
             </div>
@@ -1135,12 +1141,12 @@
     </footer>
 
     <!-- МОДАЛЬНОЕ ОКНО LIGHTBOX ДЛЯ ФОТОГРАФИЙ -->
-    <div id="lightbox-modal" class="fixed inset-0 z-50 hidden bg-indigoNight/95 backdrop-blur-xl flex items-center justify-center p-4">
+    <div id="lightbox-modal" onclick="closeLightbox()" class="fixed inset-0 z-50 hidden bg-indigoNight/95 backdrop-blur-xl flex items-center justify-center p-4">
         <button onclick="closeLightbox()" class="absolute top-6 right-6 w-12 h-12 rounded-2xl glass-card text-white hover:text-electricLime flex items-center justify-center" aria-label="Закрыть">
             <i data-lucide="x" class="w-6 h-6"></i>
         </button>
-        <div class="max-w-4xl w-full space-y-4 text-center">
-            <img id="lightbox-img" src="" alt="Просмотр образа" class="max-h-[78vh] mx-auto rounded-2xl border border-white/15 shadow-2xl object-contain">
+        <div class="max-w-4xl w-full space-y-4 text-center" onclick="event.stopPropagation()">
+            <img id="lightbox-img" src="" alt="Просмотр образа" class="max-h-[80vh] mx-auto rounded-2xl border border-white/15 shadow-2xl object-contain">
             <p id="lightbox-caption" class="font-display font-semibold text-sm sm:text-base text-white"></p>
         </div>
     </div>
@@ -1160,17 +1166,17 @@
             link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
         });
 
-        // 2. Данные и логика для «Переключателя режимов энергии»
+        // 2. Данные и логика для «Переключателя режимов энергии» (с реальными фото)
         const energyModesData = {
             drive: {
-                subtitle: 'Идеально для фестивалей, масштабных корпоративов и ярких вечеринок',
-                title: '«Чистый драйв, стендап-импровизация и взрывная энергия»',
-                desc: 'Когда нужно раскачать многотысячную площадь на фестивале или объединить 200 сотрудников компании за 15 минут. Живой юмор на грани стендапа, мгновенная реакция на реплики из зала, танцевальный драйв и полное отсутствие скучных заготовок.',
+                subtitle: 'Идеально для фестивалей, тематических вечеринок и ярких корпоративов',
+                title: '«Чистый драйв, перевоплощение и взрывная энергия»',
+                desc: 'Когда нужно раскачать площадь на фестивале, вовлечь 200 сотрудников за 15 минут или провести яркую концептуальную вечеринку в актерском образе. Живой юмор, мгновенная реакция на реплики из зала и полное отсутствие скучных заготовок.',
                 badge: 'Уровень энергии: 1000 Вольт ⚡',
-                image: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=900&q=80',
-                tags: ['🔥 Работа с огромной толпой', '😂 Комедийная импровизация', '💃 Танцы и интерактив без принуждения'],
+                image: '1000018947.jpg',
+                imgPos: 'object-[center_20%]',
+                tags: ['🔥 Работа с огромной толпой', '🎭 Яркие актерские образы', '💃 Интерактив без принуждения'],
                 bars: [100, 95, 20],
-                borderColor: 'border-electricLime/40',
                 badgeClass: 'bg-electricLime text-indigoNight'
             },
             elegance: {
@@ -1178,10 +1184,10 @@
                 title: '«Элегантность, высокий статус и безупречное чувство такта»',
                 desc: 'Когда мероприятие требует выдержки, презентабельности и уважения к протоколу. Поставленный актерский голос, интеллигентный шарм, точное соблюдение тайминга по секундам и умение достойно представить первых лиц компании.',
                 badge: 'Режим: Black Tie & Премиум ✨',
-                image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=900&q=80',
+                image: '1000018946.jpg',
+                imgPos: 'object-[center_22%]',
                 tags: ['👑 Безупречная сценическая речь', '⏱️ Тайминг по секундам', '🥂 Интеллигентная модерация'],
                 bars: [70, 55, 100],
-                borderColor: 'border-warmGold/50',
                 badgeClass: 'bg-warmGold text-indigoNight'
             },
             soul: {
@@ -1189,10 +1195,10 @@
                 title: '«Душевность, искреннее тепло и эмоции до мурашек»',
                 desc: 'Когда собираются самые близкие люди и важна атмосфера уюта. Я запоминаю имена и истории ваших гостей, создаю трогательные моменты, которые вызывают искренние слезы радости и теплый смех — как будто мы знакомы уже много лет.',
                 badge: 'Режим: Искренность и Уют 💛',
-                image: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80',
+                image: '1000018951.jpg',
+                imgPos: 'object-[center_18%]',
                 tags: ['💛 Внимание к каждому гостю', '✨ Трогательные моменты до мурашек', '🏡 Уют без шаблонных конкурсов'],
                 bars: [80, 85, 45],
-                borderColor: 'border-pink-400/40',
                 badgeClass: 'bg-brightGold text-indigoNight'
             }
         };
@@ -1211,11 +1217,13 @@
                 }
             });
 
-            // Обновляем контент карточки
+            // Обновляем контент карточки и позиционирование фото
             document.getElementById('mode-subtitle').textContent = data.subtitle;
             document.getElementById('mode-title').textContent = data.title;
             document.getElementById('mode-desc').textContent = data.desc;
-            document.getElementById('mode-image').src = data.image;
+            const modeImg = document.getElementById('mode-image');
+            modeImg.src = data.image;
+            modeImg.className = `w-full h-full object-cover ${data.imgPos} transition-all duration-500`;
 
             const badge = document.getElementById('mode-badge');
             badge.textContent = data.badge;
@@ -1234,30 +1242,34 @@
             document.getElementById('bar-3-val').textContent = data.bars[2] + '%';
         }
 
-        // 3. Интерактивный Шоурил с таймкодами
+        // 3. Интерактивный Шоурил с реальными фото в эпизодах
         const showreelChapters = [
             {
-                badge: '00:15 — Масштабный фестиваль',
-                title: 'Открытие летнего фестиваля на 1500 человек: разогрев толпы с первых секунд',
-                bg: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=85',
-                progress: '20%'
+                badge: '00:15 — Большая сцена & Live',
+                title: 'Работа на большой сцене и фестивалях: живая энергетика и контакт с залом',
+                bg: '1000018948.jpg',
+                imgClass: 'w-full h-full object-cover object-[center_20%] opacity-75 transition-all duration-500',
+                progress: '25%'
             },
             {
-                badge: '00:45 — Живая импровизация с гостями',
-                title: 'Интерактив с залом на IT-корпоративе: стендап-диалог и взрывной смех',
-                bg: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1200&q=85',
+                badge: '00:45 — Масштабное награждение',
+                title: 'Ведение церемонии «Это сто тысяч героев» на открытой сцене',
+                bg: '1000018949.jpg',
+                imgClass: 'w-full h-full object-cover object-center scale-[1.45] opacity-75 transition-all duration-500',
                 progress: '50%'
             },
             {
-                badge: '01:20 — Торжественная церемония',
-                title: 'Ежегодная бизнес-премия в Санкт-Петербурге: элегантная подача и объявление победителей',
-                bg: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=85',
+                badge: '01:20 — Вечерний Гала-формат',
+                title: 'Корпоративное событие «Вместе к новым вершинам»: стиль, статус и эмоции',
+                bg: '1000018946.jpg',
+                imgClass: 'w-full h-full object-cover object-[center_22%] opacity-75 transition-all duration-500',
                 progress: '75%'
             },
             {
-                badge: '01:50 — Душевный финал',
-                title: 'Финальный перформанс на камерном торжестве: трогательные эмоции и объятья гостей',
-                bg: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=85',
+                badge: '01:50 — Театральный перформанс',
+                title: 'Полное актерское перевоплощение для тематических и иммерсивных шоу',
+                bg: '1000018947.jpg',
+                imgClass: 'w-full h-full object-cover object-[center_20%] opacity-75 transition-all duration-500',
                 progress: '95%'
             }
         ];
@@ -1268,9 +1280,11 @@
             const chapter = showreelChapters[index];
             document.getElementById('showreel-chapter-badge').innerHTML = `<span class="w-2 h-2 rounded-full bg-indigoNight animate-ping"></span> ${chapter.badge}`;
             document.getElementById('showreel-scene-title').textContent = chapter.title;
-            document.getElementById('showreel-bg').src = chapter.bg;
+            const bgEl = document.getElementById('showreel-bg');
+            bgEl.src = chapter.bg;
+            bgEl.className = chapter.imgClass;
             document.getElementById('showreel-progress').style.width = chapter.progress;
-            document.getElementById('showreel-scene-status').textContent = '▶ Просмотр выбранного эпизода (Демо-режим шоурила)';
+            document.getElementById('showreel-scene-status').textContent = '▶ Просмотр выбранного эпизода';
 
             // Подсветка активной кнопки таймкода
             const buttons = document.querySelectorAll('.timecode-btn');
@@ -1287,7 +1301,7 @@
             isPlayingShowreel = !isPlayingShowreel;
             const statusText = document.getElementById('showreel-scene-status');
             if (isPlayingShowreel) {
-                statusText.textContent = '⚡ Воспроизведение промо-ролика Екатерины Вовк... Переключайте эпизоды ниже!';
+                statusText.textContent = '⚡ Демонстрация портфолио Екатерины Вовк... Переключайте эпизоды ниже!';
                 statusText.classList.add('text-electricLime');
             } else {
                 statusText.textContent = 'На паузе. Нажмите Play для продолжения';
@@ -1296,7 +1310,6 @@
 
         // 4. Фильтрация галереи и Lightbox
         function filterGallery(category) {
-            // Обновляем кнопки фильтра
             document.querySelectorAll('.gallery-filter-btn').forEach(btn => {
                 if (btn.getAttribute('data-filter') === category) {
                     btn.className = 'gallery-filter-btn px-4 py-2 rounded-xl text-xs font-display font-semibold bg-electricLime text-indigoNight transition-all';
@@ -1305,7 +1318,6 @@
                 }
             });
 
-            // Показываем/скрываем карточки
             document.querySelectorAll('.gallery-item').forEach(item => {
                 if (category === 'all' || item.getAttribute('data-category') === category) {
                     item.classList.remove('hidden');
@@ -1446,4 +1458,4 @@
         }
     </script>
 </body>
-    </html>
+                                                                                      </html>
