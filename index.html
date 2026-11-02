@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="ru" class="scroll-smooth">
 <head>
@@ -650,10 +649,10 @@
                             Нужна ведущая в образе для иммерсивного ужина, киновечеринки или нестандартного шоу? Мой актерский арсенал позволяет создать уникальный персонаж под ваш концепт.
                         </p>
                     </div>
-                    <a href="#booking" class="w-full py-3 px-4 rounded-xl bg-electricLime text-indigoNight font-display font-bold text-xs flex items-center justify-center gap-2 lime-glow hover:bg-softLime transition-all">
+                    <button type="button" onclick="selectCalculatorFormat('Фестиваль / Open-Air')" class="w-full py-3 px-4 rounded-xl bg-electricLime text-indigoNight font-display font-bold text-xs flex items-center justify-center gap-2 lime-glow hover:bg-softLime transition-all">
                         <span>Обсудить нестандартную идею</span>
                         <i data-lucide="sparkles" class="w-4 h-4"></i>
-                    </a>
+                    </button>
                 </div>
 
             </div>
@@ -969,25 +968,25 @@
 
                 <form id="event-calculator-form" onsubmit="handleBookingSubmit(event)" class="space-y-8 relative z-10">
                     
-                    <!-- Шаг 1: Выбор формата -->
+                    <!-- Шаг 1: Выбор формата (с data-format для синхронизации) -->
                     <div class="space-y-3">
                         <label class="block font-display font-semibold text-sm text-white">
                             1. Какой формат события планируется?
                         </label>
                         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5" id="calc-format-group">
-                            <button type="button" onclick="setCalcValue('format', 'Корпоративное событие', this)" class="calc-format-btn p-3 rounded-xl border border-electricLime bg-electricLime/20 text-white text-xs font-medium text-center transition-all">
+                            <button type="button" data-format="Корпоративное событие" onclick="setCalcValue('format', 'Корпоративное событие', this)" class="calc-format-btn p-3 rounded-xl border border-electricLime bg-electricLime/20 text-white text-xs font-medium text-center transition-all">
                                 🎉 Корпоратив
                             </button>
-                            <button type="button" onclick="setCalcValue('format', 'Фестиваль / Open-Air', this)" class="calc-format-btn p-3 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 text-slate-300 text-xs font-medium text-center transition-all">
+                            <button type="button" data-format="Фестиваль / Open-Air" onclick="setCalcValue('format', 'Фестиваль / Open-Air', this)" class="calc-format-btn p-3 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 text-slate-300 text-xs font-medium text-center transition-all">
                                 🎪 Фестиваль / Шоу
                             </button>
-                            <button type="button" onclick="setCalcValue('format', 'Свадьба / Частное событие', this)" class="calc-format-btn p-3 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 text-slate-300 text-xs font-medium text-center transition-all">
+                            <button type="button" data-format="Свадьба / Частное событие" onclick="setCalcValue('format', 'Свадьба / Частное событие', this)" class="calc-format-btn p-3 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 text-slate-300 text-xs font-medium text-center transition-all">
                                 🥂 Свадьба / ДР
                             </button>
-                            <button type="button" onclick="setCalcValue('format', 'Деловое событие / Форум', this)" class="calc-format-btn p-3 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 text-slate-300 text-xs font-medium text-center transition-all">
+                            <button type="button" data-format="Деловое событие / Форум" onclick="setCalcValue('format', 'Деловое событие / Форум', this)" class="calc-format-btn p-3 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 text-slate-300 text-xs font-medium text-center transition-all">
                                 💼 Деловой форум
                             </button>
-                            <button type="button" onclick="setCalcValue('format', 'Торжественная церемония', this)" class="calc-format-btn p-3 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 text-slate-300 text-xs font-medium text-center transition-all col-span-2 sm:col-span-1">
+                            <button type="button" data-format="Торжественная церемония" onclick="setCalcValue('format', 'Торжественная церемония', this)" class="calc-format-btn p-3 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 text-slate-300 text-xs font-medium text-center transition-all col-span-2 sm:col-span-1">
                                 🏆 Церемония
                             </button>
                         </div>
@@ -1071,15 +1070,26 @@
                             </div>
                             <div>
                                 <h4 class="font-display font-bold text-white text-base sm:text-lg">Заявка сформирована!</h4>
-                                <p class="text-xs sm:text-sm text-softLime">Екатерина Вовк свяжется с вами в ближайшее время.</p>
+                                <p id="booking-status-note" class="text-xs sm:text-sm text-softLime">Выберите удобный мессенджер для мгновенной отправки или скопируйте текст:</p>
                             </div>
                         </div>
                     </div>
+
                     <div id="booking-summary-text" class="p-4 rounded-xl bg-indigoNight/80 border border-white/10 text-xs sm:text-sm text-slate-200 font-mono leading-relaxed"></div>
+
+                    <!-- Кнопки прямой отправки с готовым текстом -->
                     <div class="flex flex-wrap items-center gap-3 pt-1">
-                        <button type="button" onclick="copySummaryToClipboard()" class="px-4 py-2.5 rounded-xl bg-electricLime text-indigoNight font-display font-bold text-xs flex items-center gap-2 hover:bg-softLime transition-colors">
-                            <i data-lucide="copy" class="w-4 h-4"></i>
-                            <span id="copy-btn-text">Скопировать текст заявки для Telegram / WhatsApp</span>
+                        <a id="tg-direct-link" href="#" target="_blank" rel="noopener noreferrer" class="px-5 py-3 rounded-xl bg-electricLime text-indigoNight font-display font-bold text-xs flex items-center gap-2 hover:bg-softLime lime-glow transition-all">
+                            <i data-lucide="send" class="w-4 h-4"></i>
+                            <span>Открыть Telegram с готовым текстом</span>
+                        </a>
+                        <a id="wa-direct-link" href="#" target="_blank" rel="noopener noreferrer" class="px-5 py-3 rounded-xl bg-warmGold text-indigoNight font-display font-bold text-xs flex items-center gap-2 hover:bg-brightGold transition-all">
+                            <i data-lucide="message-circle" class="w-4 h-4"></i>
+                            <span>Отправить в WhatsApp</span>
+                        </a>
+                        <button type="button" onclick="copySummaryToClipboard()" class="px-4 py-3 rounded-xl glass-card border border-white/15 text-slate-200 hover:text-white font-display font-semibold text-xs flex items-center gap-2 transition-colors">
+                            <i data-lucide="copy" class="w-4 h-4 text-electricLime"></i>
+                            <span id="copy-btn-text">Скопировать текст</span>
                         </button>
                     </div>
                 </div>
@@ -1101,15 +1111,15 @@
                     </p>
                 </div>
 
-                <!-- Быстрые кнопки мессенджеров -->
+                <!-- Быстрые кнопки мессенджеров (управляются через CONTACT_CONFIG) -->
                 <div class="flex flex-wrap gap-3">
-                    <a href="#booking" class="px-4 py-2.5 rounded-xl glass-card hover:border-electricLime/50 text-xs font-display font-semibold text-white flex items-center gap-2 transition-all">
+                    <a id="footer-tg" href="https://t.me/ekaterina_vovk" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl glass-card hover:border-electricLime/50 text-xs font-display font-semibold text-white flex items-center gap-2 transition-all">
                         <i data-lucide="send" class="w-4 h-4 text-electricLime"></i> Telegram
                     </a>
-                    <a href="#booking" class="px-4 py-2.5 rounded-xl glass-card hover:border-warmGold/50 text-xs font-display font-semibold text-white flex items-center gap-2 transition-all">
+                    <a id="footer-wa" href="https://wa.me/79990000000" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl glass-card hover:border-warmGold/50 text-xs font-display font-semibold text-white flex items-center gap-2 transition-all">
                         <i data-lucide="message-circle" class="w-4 h-4 text-brightGold"></i> WhatsApp
                     </a>
-                    <a href="#booking" class="px-4 py-2.5 rounded-xl glass-card hover:border-white/40 text-xs font-display font-semibold text-white flex items-center gap-2 transition-all">
+                    <a id="footer-phone" href="tel:+79990000000" class="px-4 py-2.5 rounded-xl glass-card hover:border-white/40 text-xs font-display font-semibold text-white flex items-center gap-2 transition-all">
                         <i data-lucide="phone-call" class="w-4 h-4 text-sky-400"></i> Позвонить
                     </a>
                 </div>
@@ -1315,7 +1325,21 @@
             document.getElementById('lightbox-modal').classList.add('hidden');
         }
 
-        // 5. Логика Калькулятора / Конструктора события
+        // 5. Конфигурация контактов и логика Калькулятора / Отправки заявок
+        const CONTACT_CONFIG = {
+            telegramUsername: 'ekaterina_vovk', // Ник в Telegram без @
+            whatsappPhone: '79990000000',       // Номер для WhatsApp (только цифры, начиная с 7)
+            phoneCall: '+79990000000',          // Номер для звонка
+            // Опционально: для тихой автоматической отправки сразу в Telegram-бот
+            telegramBotToken: '',               // Например: '123456789:AAH...'
+            telegramChatId: ''                  // Например: '987654321'
+        };
+
+        // Автоматическая подстановка контактов в футер при загрузке
+        document.getElementById('footer-tg').href = `https://t.me/${CONTACT_CONFIG.telegramUsername}`;
+        document.getElementById('footer-wa').href = `https://wa.me/${CONTACT_CONFIG.whatsappPhone}`;
+        document.getElementById('footer-phone').href = `tel:${CONTACT_CONFIG.phoneCall}`;
+
         const calculatorState = {
             format: 'Корпоративное событие',
             guests: '30–100 гостей',
@@ -1329,49 +1353,97 @@
                 guests: '.calc-guests-btn',
                 vibe: '.calc-vibe-btn'
             };
+
             document.querySelectorAll(groupMap[field]).forEach(btn => {
-                btn.className = `${groupMap[field].slice(1)} p-3 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 text-slate-300 text-xs font-medium text-center transition-all`;
+                const isLastColSpan = btn.classList.contains('col-span-2');
+                btn.className = `${groupMap[field].slice(1)} p-3 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 text-slate-300 text-xs font-medium text-center transition-all ${isLastColSpan ? 'col-span-2 sm:col-span-1' : ''}`;
             });
-            btnElement.className = `${groupMap[field].slice(1)} p-3 rounded-xl border border-electricLime bg-electricLime/20 text-white text-xs font-medium text-center transition-all`;
+
+            if (btnElement) {
+                const isLastColSpan = btnElement.classList.contains('col-span-2');
+                btnElement.className = `${groupMap[field].slice(1)} p-3 rounded-xl border border-electricLime bg-electricLime/20 text-white text-xs font-medium text-center transition-all ${isLastColSpan ? 'col-span-2 sm:col-span-1' : ''}`;
+            }
         }
 
+        // Синхронизация при клике на карточку в секции «Форматы»
         function selectCalculatorFormat(formatName) {
-            calculatorState.format = formatName;
-            document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+            const targetBtn = document.querySelector(`.calc-format-btn[data-format="${formatName}"]`);
+            setCalcValue('format', formatName, targetBtn);
+
+            const bookingSection = document.getElementById('booking');
+            bookingSection.scrollIntoView({ behavior: 'smooth' });
+
+            // Легкий визуальный акцент на группе кнопок после скролла
+            const formatGroup = document.getElementById('calc-format-group');
+            formatGroup.classList.add('ring-2', 'ring-electricLime', 'rounded-2xl', 'p-1', 'transition-all');
+            setTimeout(() => {
+                formatGroup.classList.remove('ring-2', 'ring-electricLime', 'rounded-2xl', 'p-1');
+            }, 1400);
         }
 
         let lastGeneratedSummary = '';
 
-        function handleBookingSubmit(e) {
+        async function handleBookingSubmit(e) {
             e.preventDefault();
             const name = document.getElementById('client-name').value.trim();
             const contact = document.getElementById('client-contact').value.trim();
-            const date = document.getElementById('client-date').value || 'Дата уточняется';
+            const rawDate = document.getElementById('client-date').value;
+            const date = rawDate ? new Date(rawDate).toLocaleDateString('ru-RU') : 'Дата уточняется';
 
-            lastGeneratedSummary = `Привет, Екатерина! Заявка с сайта-портфолио:\n• Имя: ${name}\n• Контакт: ${contact}\n• Дата: ${date}\n• Формат: ${calculatorState.format}\n• Гостей: ${calculatorState.guests}\n• Настроение: ${calculatorState.vibe}`;
+            lastGeneratedSummary = `Привет, Екатерина! Заявка с сайта:\n• Имя: ${name}\n• Контакт: ${contact}\n• Дата: ${date}\n• Формат: ${calculatorState.format}\n• Гостей: ${calculatorState.guests}\n• Атмосфера: ${calculatorState.vibe}`;
 
+            // Выводим текст заявки
             const summaryBox = document.getElementById('booking-summary-text');
             summaryBox.innerHTML = lastGeneratedSummary.replace(/\n/g, '<br>');
+
+            // Генерируем прямые ссылки с уже закодированным текстом сообщения
+            const encodedText = encodeURIComponent(lastGeneratedSummary);
+            document.getElementById('tg-direct-link').href = `https://t.me/${CONTACT_CONFIG.telegramUsername}?text=${encodedText}`;
+            document.getElementById('wa-direct-link').href = `https://wa.me/${CONTACT_CONFIG.whatsappPhone}?text=${encodedText}`;
+
+            // Если заполнен токен Telegram-бота — отправляем заявку автоматически в фоновом режиме
+            const statusNote = document.getElementById('booking-status-note');
+            if (CONTACT_CONFIG.telegramBotToken && CONTACT_CONFIG.telegramChatId) {
+                try {
+                    statusNote.textContent = 'Отправляем заявку Екатерине...';
+                    const res = await fetch(`https://api.telegram.org/bot${CONTACT_CONFIG.telegramBotToken}/sendMessage`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            chat_id: CONTACT_CONFIG.telegramChatId,
+                            text: `⚡️ Новая заявка с сайта!\n\n${lastGeneratedSummary}`
+                        })
+                    });
+                    if (res.ok) {
+                        statusNote.textContent = '✅ Заявка автоматически доставлена Екатерине в Telegram! Также вы можете сразу написать ей лично:';
+                    }
+                } catch (err) {
+                    statusNote.textContent = 'Выберите удобный мессенджер для мгновенной отправки заявки:';
+                }
+            }
 
             document.getElementById('booking-success').classList.remove('hidden');
             document.getElementById('booking-success').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
 
-        function copySummaryToClipboard() {
-            const tempInput = document.createElement('textarea');
-            tempInput.value = lastGeneratedSummary;
-            document.body.appendChild(tempInput);
-            tempInput.select();
-            document.execCommand('copy');
-            document.body.removeChild(tempInput);
-
+        async function copySummaryToClipboard() {
             const copyText = document.getElementById('copy-btn-text');
-            copyText.textContent = '✓ Скопировано в буфер обмена!';
+            try {
+                await navigator.clipboard.writeText(lastGeneratedSummary);
+            } catch {
+                const tempInput = document.createElement('textarea');
+                tempInput.value = lastGeneratedSummary;
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                document.execCommand('copy');
+                document.body.removeChild(tempInput);
+            }
+
+            copyText.textContent = '✓ Скопировано!';
             setTimeout(() => {
-                copyText.textContent = 'Скопировать текст заявки для Telegram / WhatsApp';
+                copyText.textContent = 'Скопировать текст';
             }, 3000);
         }
     </script>
 </body>
 </html>
-
