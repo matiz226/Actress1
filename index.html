@@ -28,7 +28,7 @@
                         burgundyDark: '#4C0519',   // Глубокий винный
                         burgundy: '#881337',       // Классический бордовый
                         burgundyBright: '#BE123C', // Насыщенный бордовый для плашек
-                        burgundyAccent: '#E11D48', // 2. Бордовый акцент для текста (отлично читается на черном)
+                        burgundyAccent: '#E11D48', // 2. Бордовый акцент для текста
                     }
                 }
             }
@@ -66,7 +66,7 @@
         .burgundy-btn-glow:hover {
             box-shadow: 0 0 28px rgba(225, 29, 72, 0.5);
         }
-        /* Текстура деликатного шума как на референсе */
+        /* Текстура деликатного шума */
         .bg-noise {
             background-image: radial-gradient(rgba(225, 29, 72, 0.06) 1px, transparent 0);
             background-size: 28px 28px;
@@ -75,16 +75,16 @@
 </head>
 <body class="antialiased selection:bg-burgundyBright selection:text-white bg-noise">
 
-    <!-- 1. ВЕРХНЯЯ НАВИГАЦИЯ (Точь-в-точь по референсу: ссылки слева, иконки справа) -->
+    <!-- 1. ВЕРХНЯЯ НАВИГАЦИЯ -->
     <header class="fixed top-0 left-0 right-0 z-50 bg-noir/95 backdrop-blur-md border-b border-white/10">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
             <!-- Меню слева -->
-            <nav class="hidden md:flex items-center gap-7 text-[11px] uppercase tracking-[0.18em] font-semibold text-white/75">
+            <nav class="hidden md:flex items-center gap-6 text-[11px] uppercase tracking-[0.18em] font-semibold text-white/75">
                 <a href="#about" class="hover:text-burgundyAccent transition-colors">Обо мне</a>
                 <a href="#energy-modes" class="hover:text-burgundyAccent transition-colors">Промо & Режимы</a>
                 <a href="#formats" class="hover:text-burgundyAccent transition-colors">Форматы</a>
-                <a href="#benefits" class="hover:text-burgundyAccent transition-colors">Преимущества</a>
                 <a href="#gallery" class="hover:text-burgundyAccent transition-colors">Галерея</a>
+                <a href="#reviews" class="hover:text-burgundyAccent transition-colors">Отзывы</a>
                 <a href="#booking" class="hover:text-burgundyAccent transition-colors">Контакты</a>
             </nav>
 
@@ -93,7 +93,7 @@
                 ЕКАТЕРИНА <span class="text-burgundyAccent">ВОВК</span>
             </a>
 
-            <!-- Иконки быстрых контактов справа (как в правом верхнем углу референса) -->
+            <!-- Иконки быстрых контактов справа -->
             <div class="flex items-center gap-3">
                 <a id="header-phone" href="tel:+79210913336" class="w-8 h-8 rounded-full border border-burgundyAccent/60 flex items-center justify-center text-burgundyAccent hover:bg-burgundyBright hover:text-white transition-all" title="Позвонить: +7 (921) 091-33-36">
                     <i data-lucide="phone" class="w-3.5 h-3.5"></i>
@@ -117,8 +117,8 @@
                 <a href="#about" class="mobile-link p-2 rounded hover:bg-burgundy/20">Обо мне и факты</a>
                 <a href="#energy-modes" class="mobile-link p-2 rounded hover:bg-burgundy/20">Режимы энергии</a>
                 <a href="#formats" class="mobile-link p-2 rounded hover:bg-burgundy/20">Форматы событий</a>
-                <a href="#benefits" class="mobile-link p-2 rounded hover:bg-burgundy/20">Преимущества</a>
                 <a href="#gallery" class="mobile-link p-2 rounded hover:bg-burgundy/20">Галерея образов</a>
+                <a href="#reviews" class="mobile-link p-2 rounded hover:bg-burgundy/20">Отзывы клиентов</a>
                 <a href="#booking" class="mobile-link p-2 rounded hover:bg-burgundy/20">Калькулятор</a>
             </div>
             <div class="flex gap-2 pt-2">
@@ -128,7 +128,7 @@
         </div>
     </header>
 
-    <!-- 2. ГЛАВНЫЙ ЭКРАН (Точная композиция референса: Фото слева + 3 яруса огромных букв справа + строка ролей + широкая плашка-кнопка) -->
+    <!-- 2. ГЛАВНЫЙ ЭКРАН (Точная композиция референса) -->
     <section class="pt-24 pb-14 sm:pt-28 sm:pb-20 border-b border-white/10">
         <div class="max-w-6xl mx-auto px-4 sm:px-6">
             
@@ -139,7 +139,7 @@
                 <div class="md:col-span-5">
                     <div class="w-full h-full min-h-[340px] sm:min-h-[420px] bg-charcoal overflow-hidden relative border border-white/10">
                         <img 
-                            src="photo-2.jpg" 
+                            src="1000018948.jpg" 
                             onerror="this.src='https://placehold.co/600x700/0D0D10/E11D48?text=ЕКАТЕРИНА+ВОВК'"
                             alt="Екатерина Вовк ведущая" 
                             class="w-full h-full object-cover object-[center_15%]"
@@ -147,14 +147,14 @@
                     </div>
                 </div>
 
-                <!-- Правый блок: 3 мощных яруса текста как в референсе («ЕКАТЕРИНА / СПб 34 / ВОВК») -->
+                <!-- Правый блок: 3 мощных яруса текста -->
                 <div class="md:col-span-7 flex flex-col justify-between py-1 select-none">
                     <!-- 1 ярус: Бордовый акцент -->
                     <div class="hero-giant-text text-burgundyAccent text-[4.2rem] sm:text-[6.2rem] lg:text-[7.3rem] tracking-tight">
                         ЕКАТЕРИНА
                     </div>
                     
-                    <!-- 2 ярус: Белый средний блок (как «БО» на референсе) + мини-бейджи справа -->
+                    <!-- 2 ярус: Белый средний блок + мини-бейджи справа -->
                     <div class="flex items-center justify-between gap-4 my-2 sm:my-0">
                         <div class="hero-giant-text text-white text-[4rem] sm:text-[5.8rem] lg:text-[6.8rem]">
                             СПБ•34
@@ -177,7 +177,7 @@
 
             </div>
 
-            <!-- Строка с разрядкой: ШОУВУМЕН | АКТРИСА | ВЕДУЩАЯ (один в один как на референсе) -->
+            <!-- Строка с разрядкой: ШОУВУМЕН | АКТРИСА | ВЕДУЩАЯ -->
             <div class="mt-6 py-3.5 border-t border-white/15 flex items-center justify-between text-[11px] sm:text-sm font-semibold uppercase tracking-[0.35em] sm:tracking-[0.55em] text-white/75 text-center">
                 <span>Ш О У В У М Е Н</span>
                 <span class="text-burgundyAccent">|</span>
@@ -205,7 +205,7 @@
         </div>
     </section>
 
-    <!-- 3. БЛОК МАНИФЕСТА, 9 ФАКТОВ В 3 КОЛОНКИ И КОЛЛАЖ «МОЯ ЭНЕРГИЯ И СТИЛЬ» (По второму экрану референса) -->
+    <!-- 3. БЛОК МАНИФЕСТА, 9 ФАКТОВ В 3 КОЛОНКИ И КОЛЛАЖ «МОЯ ЭНЕРГИЯ И СТИЛЬ» -->
     <section id="about" class="py-16 sm:py-24 border-b border-white/10">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 space-y-16">
             
@@ -213,14 +213,14 @@
             <div class="max-w-4xl">
                 <h2 class="font-display font-bold text-3xl sm:text-5xl lg:text-[3.4rem] uppercase leading-[1.08] tracking-wide">
                     <span class="text-burgundyAccent">СТИЛЬНО, ЛЕГКО, <br class="hidden sm:inline">С КОМФОРТОМ</span> 
-                    <span class="text-white">ВЕДУ МЕРОПРИЯТИЯ, ДРАЙВ, ДУШЕВНОСТЬ И ЮМОР ПРИСУТСТВУЮТ</span>
+                    <span class="text-white">ВЕДУ МЕРОПРИЯТИЯ, ДРАЙВ, ДУШЕВНОСТЬ И ЮМОР ПРИСУТСТВУЮЮТ</span>
                 </h2>
             </div>
 
-            <!-- 3.2 Сетка из 9 коротких фактов (3 колонки по 3 строки с иконками слева, как на референсе) -->
+            <!-- 3.2 Сетка из 9 коротких фактов -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-6 pt-2 border-t border-white/10">
                 
-                <!-- Колонка 1 (с бордовыми мини-иконками) -->
+                <!-- Колонка 1 -->
                 <div class="space-y-5">
                     <div class="flex items-start gap-3">
                         <i data-lucide="award" class="w-5 h-5 text-burgundyAccent shrink-0 mt-0.5"></i>
@@ -282,7 +282,7 @@
 
             </div>
 
-            <!-- 3.3 Коллаж с нахлестом слева + Бордовая рамка «МОИ ХОББИ И ФИШКИ» справа (Точь-в-точь как внизу референса) -->
+            <!-- 3.3 Коллаж с нахлестом слева + Бордовая рамка «МОИ ХОББИ И СУПЕРСИЛЫ» справа -->
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start pt-6">
                 
                 <!-- Левая часть: Основной портрет (1000018951.jpg) + наложенное сверху справа фото (1000018946.jpg) -->
@@ -290,17 +290,17 @@
                     <!-- Большое основное фото -->
                     <div class="w-full sm:w-[85%] aspect-[4/5] bg-charcoal overflow-hidden border border-white/15 shadow-2xl">
                         <img 
-                            src="photo-3.jpg" 
+                            src="1000018951.jpg" 
                             onerror="this.src='https://placehold.co/600x750/0D0D10/E11D48?text=Портрет'"
                             alt="Екатерина Вовк портрет" 
                             class="w-full h-full object-cover object-[center_15%]"
                         >
                     </div>
 
-                    <!-- Наложенное малое фото в правом верхнем углу (как на референсе) -->
+                    <!-- Наложенное малое фото в правом верхнем углу -->
                     <div class="hidden sm:block absolute top-0 right-2 w-44 h-52 bg-noir p-1.5 border border-burgundyBright shadow-2xl">
                         <img 
-                            src="photo-3.jpg" 
+                            src="1000018946.jpg" 
                             onerror="this.src='https://placehold.co/300x360/0D0D10/FFFFFF?text=Образ'"
                             alt="Вечерний образ" 
                             class="w-full h-full object-cover object-[center_20%]"
@@ -315,56 +315,50 @@
                     </div>
                 </div>
 
-                <!-- Правая часть: Тонкая бордовая рамка с заголовком и пунктами с круглыми аватарками (как блок «МОИ ХОББИ» на референсе) -->
+                <!-- Правая часть: Тонкая бордовая рамка с заголовком и пунктами с круглыми аватарками -->
                 <div class="lg:col-span-6 burgundy-outline-box p-7 sm:p-10">
                     <h3 class="font-display font-bold text-3xl sm:text-4xl uppercase tracking-wide text-burgundyAccent mb-8 leading-none">
                         МОИ ХОББИ <br>И СУПЕРСИЛЫ
                     </h3>
 
                     <div class="space-y-4">
-                        <!-- Пункт 1 с круглой миниатюрой -->
                         <div class="flex items-center gap-4">
-                            <img src="photo-1.jpg" alt="Сцена" class="w-12 h-12 rounded-full object-cover border border-burgundyBright shrink-0">
+                            <img src="1000018948.jpg" alt="Сцена" class="w-12 h-12 rounded-full object-cover border border-burgundyBright shrink-0">
                             <div class="text-xs sm:text-sm uppercase font-semibold tracking-wide text-white">
                                 УДЕРЖИВАЮ ВНИМАНИЕ <br><span class="text-white/70 font-normal">ЗАЛОВ ОТ 15 ДО 5000+ ЧЕЛОВЕК</span>
                             </div>
                         </div>
 
-                        <!-- Пункт 2 -->
                         <div class="flex items-center gap-4">
-                            <img src="photo-4.jpg" alt="Театр" class="w-12 h-12 rounded-full object-cover border border-burgundyBright shrink-0">
+                            <img src="1000018947.jpg" alt="Театр" class="w-12 h-12 rounded-full object-cover border border-burgundyBright shrink-0">
                             <div class="text-xs sm:text-sm uppercase font-semibold tracking-wide text-white">
                                 АКТЕРСКОЕ ПЕРЕВОПЛОЩЕНИЕ <br><span class="text-white/70 font-normal">СОЗДАЮ УНИКАЛЬНЫЕ ОБРАЗЫ ПОД КОНЦЕПТ</span>
                             </div>
                         </div>
 
-                        <!-- Пункт 3 -->
                         <div class="flex items-center gap-4">
-                            <img src="photo-3.jpg" alt="Гала" class="w-12 h-12 rounded-full object-cover border border-burgundyBright shrink-0">
+                            <img src="1000018946.jpg" alt="Гала" class="w-12 h-12 rounded-full object-cover border border-burgundyBright shrink-0">
                             <div class="text-xs sm:text-sm uppercase font-semibold tracking-wide text-white">
                                 БЕЗУПРЕЧНЫЙ СТАТУС И ТАКТ <br><span class="text-white/70 font-normal">ВЕДУ ПРЕМИИ, ФОРУМЫ И ГАЛА-УЖИНЫ</span>
                             </div>
                         </div>
 
-                        <!-- Пункт 4 -->
                         <div class="flex items-center gap-4">
-                            <img src="photo-5.jpg" alt="Open Air" class="w-12 h-12 rounded-full object-cover border border-burgundyBright shrink-0">
+                            <img src="1000018949.jpg" alt="Open Air" class="w-12 h-12 rounded-full object-cover border border-burgundyBright shrink-0">
                             <div class="text-xs sm:text-sm uppercase font-semibold tracking-wide text-white">
                                 СПАСАЮ ЛЮБУЮ ПАУЗУ <br><span class="text-white/70 font-normal">МГНОВЕННЫЙ ИНТЕРАКТИВ ЕСЛИ ЗАДЕРЖАЛИ ТОРТ</span>
                             </div>
                         </div>
 
-                        <!-- Пункт 5 -->
                         <div class="flex items-center gap-4">
-                            <img src="photo-6.jpg" alt="Драйв" class="w-12 h-12 rounded-full object-cover border border-burgundyBright shrink-0">
+                            <img src="1000018950.jpg" alt="Драйв" class="w-12 h-12 rounded-full object-cover border border-burgundyBright shrink-0">
                             <div class="text-xs sm:text-sm uppercase font-semibold tracking-wide text-white">
                                 ХАРИЗМА «ЭНЕРДЖАЙЗЕРА» <br><span class="text-white/70 font-normal">ЗАРЯЖАЮ ПУБЛИКУ С ПЕРВОЙ СЕКУНДЫ</span>
                             </div>
                         </div>
 
-                        <!-- Пункт 6 -->
                         <div class="flex items-center gap-4">
-                            <img src="photo-3.jpg" alt="Душевность" class="w-12 h-12 rounded-full object-cover border border-burgundyBright shrink-0">
+                            <img src="1000018951.jpg" alt="Душевность" class="w-12 h-12 rounded-full object-cover border border-burgundyBright shrink-0">
                             <div class="text-xs sm:text-sm uppercase font-semibold tracking-wide text-white">
                                 ЭМОЦИИ ДО МУРАШЕК <br><span class="text-white/70 font-normal">ЗАПОМИНАЮ ИМЕНА И ИСТОРИИ ГОСТЕЙ</span>
                             </div>
@@ -377,7 +371,7 @@
         </div>
     </section>
 
-    <!-- 4. ИНТЕРАКТИВНЫЙ БЛОК «ПЕРЕКЛЮЧАТЕЛЬ РЕЖИМОВ ЭНЕРГИИ» (Сохранен и стилизован под референс) -->
+    <!-- 4. ИНТЕРАКТИВНЫЙ БЛОК «ПЕРЕКЛЮЧАТЕЛЬ РЕЖИМОВ ЭНЕРГИИ» -->
     <section id="energy-modes" class="py-16 sm:py-24 border-b border-white/10">
         <div class="max-w-6xl mx-auto px-4 sm:px-6">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
@@ -413,7 +407,7 @@
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                     <div class="lg:col-span-5">
                         <div class="relative aspect-[4/3] bg-charcoal overflow-hidden border border-white/15">
-                            <img id="mode-image" src="photo-4.jpg" alt="Режим энергии" class="w-full h-full object-cover object-[center_20%] transition-all duration-500">
+                            <img id="mode-image" src="1000018947.jpg" alt="Режим энергии" class="w-full h-full object-cover object-[center_20%] transition-all duration-500">
                             <div class="absolute bottom-3 left-3 px-3 py-1 bg-burgundyBright text-white font-bold text-xs uppercase tracking-wider" id="mode-badge">
                                 Уровень энергии: 1000 Вольт ⚡
                             </div>
@@ -473,7 +467,7 @@
         </div>
     </section>
 
-    <!-- 5. БЛОК «ФОРМАТЫ МЕРОПРИЯТИЙ» (Все 6 карточек с синхронизацией в калькулятор) -->
+    <!-- 5. БЛОК «ФОРМАТЫ МЕРОПРИЯТИЙ» -->
     <section id="formats" class="py-16 sm:py-24 border-b border-white/10">
         <div class="max-w-6xl mx-auto px-4 sm:px-6">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
@@ -666,7 +660,7 @@
         </div>
     </section>
 
-    <!-- 7. ГАЛЕРЕЯ РЕАЛЬНЫХ КАДРОВ И ОБРАЗОВ (С фильтрами и Lightbox, без видеовизитки) -->
+    <!-- 7. ГАЛЕРЕЯ РЕАЛЬНЫХ КАДРОВ И ОБРАЗОВ -->
     <section id="gallery" class="py-16 sm:py-24 border-b border-white/10">
         <div class="max-w-6xl mx-auto px-4 sm:px-6">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
@@ -700,7 +694,7 @@
                 <!-- Фото 1: 1000018948.jpg -->
                 <div data-category="stage" onclick="openLightbox('1000018948.jpg', 'Работа на большой сцене • Живое ведение и контакт с залом')" class="gallery-item cursor-pointer group editorial-card p-2.5">
                     <div class="relative aspect-[4/5] bg-charcoal overflow-hidden">
-                        <img src="photo-2.jpg" alt="Сцена" class="w-full h-full object-cover object-[center_15%] group-hover:scale-105 transition-transform duration-500">
+                        <img src="1000018948.jpg" alt="Сцена" class="w-full h-full object-cover object-[center_15%] group-hover:scale-105 transition-transform duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-noir via-transparent to-transparent"></div>
                         <div class="absolute bottom-3 left-3 right-3 flex items-end justify-between">
                             <div>
@@ -715,7 +709,7 @@
                 <!-- Фото 2: 1000018946.jpg -->
                 <div data-category="elegant" onclick="openLightbox('1000018946.jpg', 'Корпоративный гала-вечер «Вместе к новым вершинам»')" class="gallery-item cursor-pointer group editorial-card p-2.5">
                     <div class="relative aspect-[4/5] bg-charcoal overflow-hidden">
-                        <img src="photo-3.jpg" alt="Гала вечер" class="w-full h-full object-cover object-[center_20%] group-hover:scale-105 transition-transform duration-500">
+                        <img src="1000018946.jpg" alt="Гала вечер" class="w-full h-full object-cover object-[center_20%] group-hover:scale-105 transition-transform duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-noir via-transparent to-transparent"></div>
                         <div class="absolute bottom-3 left-3 right-3 flex items-end justify-between">
                             <div>
@@ -730,7 +724,7 @@
                 <!-- Фото 3: 1000018947.jpg -->
                 <div data-category="comedy" onclick="openLightbox('1000018947.jpg', 'Актерское перевоплощение для тематических вечеринок и шоу')" class="gallery-item cursor-pointer group editorial-card p-2.5">
                     <div class="relative aspect-[4/5] bg-charcoal overflow-hidden">
-                        <img src="photo-4.jpg" alt="Актерский образ" class="w-full h-full object-cover object-[70%_center] group-hover:scale-105 transition-transform duration-500">
+                        <img src="1000018947.jpg" alt="Актерский образ" class="w-full h-full object-cover object-[70%_center] group-hover:scale-105 transition-transform duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-noir via-transparent to-transparent"></div>
                         <div class="absolute bottom-3 left-3 right-3 flex items-end justify-between">
                             <div>
@@ -742,10 +736,10 @@
                     </div>
                 </div>
 
-                <!-- Фото 4: 1000018949.jpg (автозум против черных полос) -->
+                <!-- Фото 4: 1000018949.jpg -->
                 <div data-category="stage" onclick="openLightbox('1000018949.jpg', 'Open-Air фестиваль «Это сто тысяч героев» на главной сцене')" class="gallery-item cursor-pointer group editorial-card p-2.5">
                     <div class="relative aspect-[4/5] bg-charcoal overflow-hidden">
-                        <img src="photo-5.jpg" alt="Open-Air фестиваль" class="w-full h-full object-cover object-center scale-[1.35] group-hover:scale-[1.42] transition-transform duration-500">
+                        <img src="1000018949.jpg" alt="Open-Air фестиваль" class="w-full h-full object-cover object-center scale-[1.35] group-hover:scale-[1.42] transition-transform duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-noir via-transparent to-transparent"></div>
                         <div class="absolute bottom-3 left-3 right-3 flex items-end justify-between">
                             <div>
@@ -757,10 +751,10 @@
                     </div>
                 </div>
 
-                <!-- Фото 5: 1000018950.jpg (автозум против черных полос) -->
+                <!-- Фото 5: 1000018950.jpg -->
                 <div data-category="comedy" onclick="openLightbox('1000018950.jpg', 'Драйв и живые эмоции с командой на главной сцене')" class="gallery-item cursor-pointer group editorial-card p-2.5">
                     <div class="relative aspect-[4/5] bg-charcoal overflow-hidden">
-                        <img src="photo-6.jpg" alt="Команда на сцене" class="w-full h-full object-cover object-center scale-[1.85] group-hover:scale-[1.92] transition-transform duration-500">
+                        <img src="1000018950.jpg" alt="Команда на сцене" class="w-full h-full object-cover object-center scale-[1.85] group-hover:scale-[1.92] transition-transform duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-noir via-transparent to-transparent"></div>
                         <div class="absolute bottom-3 left-3 right-3 flex items-end justify-between">
                             <div>
@@ -775,7 +769,7 @@
                 <!-- Фото 6: 1000018951.jpg -->
                 <div data-category="elegant" onclick="openLightbox('1000018951.jpg', 'Екатерина Вовк • Камерные и душевные события')" class="gallery-item cursor-pointer group editorial-card p-2.5">
                     <div class="relative aspect-[4/5] bg-charcoal overflow-hidden">
-                        <img src="photo-3.jpg" alt="Портрет" class="w-full h-full object-cover object-[center_15%] group-hover:scale-105 transition-transform duration-500">
+                        <img src="1000018951.jpg" alt="Портрет" class="w-full h-full object-cover object-[center_15%] group-hover:scale-105 transition-transform duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-noir via-transparent to-transparent"></div>
                         <div class="absolute bottom-3 left-3 right-3 flex items-end justify-between">
                             <div>
@@ -791,7 +785,154 @@
         </div>
     </section>
 
-    <!-- 8. КОНСТРУКТОР СОБЫТИЯ И БРОНИРОВАНИЕ ДАТЫ (Полный функционал) -->
+    <!-- 8. НОВЫЙ БЛОК «ОТЗЫВЫ И ВПЕЧАТЛЕНИЯ» (Живые отзывы + Форма добавления нового отзыва) -->
+    <section id="reviews" class="py-16 sm:py-24 border-b border-white/10">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            
+            <!-- Шапка блока отзывов -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-[0.2em] text-burgundyAccent">Честная обратная связь</span>
+                    <h2 class="font-display font-bold text-3xl sm:text-5xl uppercase text-white mt-1">
+                        ЧТО ГОВОРЯТ <span class="text-burgundyAccent">ОРГАНИЗАТОРЫ И ГОСТИ</span>
+                    </h2>
+                </div>
+                <button type="button" onclick="toggleReviewForm()" class="px-6 py-3.5 bg-burgundyBright hover:bg-burgundyAccent text-white font-bold text-xs uppercase tracking-widest flex items-center gap-2 transition-all burgundy-btn-glow self-start md:self-auto">
+                    <i data-lucide="message-square-plus" class="w-4 h-4"></i>
+                    <span>Оставить свой отзыв</span>
+                </button>
+            </div>
+
+            <!-- Выпадающая форма добавления отзыва (скрыта по умолчанию, открывается по кнопке) -->
+            <div id="add-review-box" class="hidden mb-12 burgundy-outline-box p-6 sm:p-10 transition-all">
+                <div class="flex items-center justify-between mb-6 pb-4 border-b border-white/10">
+                    <div>
+                        <h3 class="font-display font-bold text-2xl uppercase text-white">ПОДЕЛИТЬСЯ ВПЕЧАТЛЕНИЕМ О МЕРОПРИЯТИИ</h3>
+                        <p class="text-xs text-white/70 mt-1">Ваш отзыв сразу появится на сайте в списке ниже</p>
+                    </div>
+                    <button type="button" onclick="toggleReviewForm()" class="text-white/60 hover:text-burgundyAccent">
+                        <i data-lucide="x" class="w-6 h-6"></i>
+                    </button>
+                </div>
+
+                <form id="new-review-form" onsubmit="handleReviewSubmit(event)" class="space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <!-- Имя и роль -->
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-burgundyAccent mb-1.5">Ваше имя / Компания *</label>
+                            <input type="text" id="rev-name" required placeholder="Например: Денис, IT-корпоратив" class="w-full px-4 py-3 bg-noir border border-white/20 text-white text-sm focus:outline-none focus:border-burgundyAccent">
+                        </div>
+
+                        <!-- Формат мероприятия -->
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-burgundyAccent mb-1.5">Какое было событие?</label>
+                            <select id="rev-format" class="w-full px-4 py-3 bg-noir border border-white/20 text-white text-sm focus:outline-none focus:border-burgundyAccent">
+                                <option value="Корпоратив">Корпоратив</option>
+                                <option value="Свадьба / Частный вечер">Свадьба / Частный вечер</option>
+                                <option value="Фестиваль / Open-Air">Фестиваль / Open-Air</option>
+                                <option value="Деловой форум / Премия">Деловой форум / Премия</option>
+                                <option value="Тематическая вечеринка">Тематическая вечеринка</option>
+                            </select>
+                        </div>
+
+                        <!-- Оценка в звездах -->
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-burgundyAccent mb-1.5">Оценка работы:</label>
+                            <div class="flex items-center gap-2 h-[46px] px-4 bg-noir border border-white/20" id="star-selector">
+                                <button type="button" onclick="setReviewRating(1)" class="star-btn text-burgundyAccent text-xl leading-none">★</button>
+                                <button type="button" onclick="setReviewRating(2)" class="star-btn text-burgundyAccent text-xl leading-none">★</button>
+                                <button type="button" onclick="setReviewRating(3)" class="star-btn text-burgundyAccent text-xl leading-none">★</button>
+                                <button type="button" onclick="setReviewRating(4)" class="star-btn text-burgundyAccent text-xl leading-none">★</button>
+                                <button type="button" onclick="setReviewRating(5)" class="star-btn text-burgundyAccent text-xl leading-none">★</button>
+                                <span id="rating-label" class="ml-2 text-xs font-bold uppercase text-white/80">5 / 5</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Текст отзыва -->
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-burgundyAccent mb-1.5">Ваш отзыв *</label>
+                        <textarea id="rev-text" rows="3" required placeholder="Напишите своими словами: как прошла подготовка, как Катя держала зал, что больше всего запомнилось..." class="w-full px-4 py-3 bg-noir border border-white/20 text-white text-sm focus:outline-none focus:border-burgundyAccent"></textarea>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <span class="text-xs text-white/60">Спасибо за честную обратную связь!</span>
+                        <button type="submit" class="w-full sm:w-auto px-8 py-4 bg-burgundyBright hover:bg-burgundyAccent text-white font-bold text-xs uppercase tracking-widest transition-all">
+                            Опубликовать отзыв на сайте
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Сетка карточек отзывов (3 настоящих невылизанных отзыва + новые отзывы пользователей) -->
+            <div id="reviews-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <!-- Отзыв 1: Корпоратив с IT-отделом и производством -->
+                <div class="editorial-card p-7 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4 pb-3 border-b border-white/10">
+                            <span class="text-[11px] font-bold uppercase tracking-widest text-burgundyAccent">КОРПОРАТИВ НА 85 ЧЕЛ.</span>
+                            <span class="text-burgundyAccent tracking-widest text-sm">★★★★★</span>
+                        </div>
+                        <p class="text-white/90 text-sm leading-relaxed mb-6">
+                            «Искали ведущую на корпоратив, главная боль была — чтобы без колхозных конкурсов и чтобы наших айтишников никто насильно за руку на сцену не тащил. Катя очень тонко почувствовала грань: где надо — подшутила и раскачала диалог, где люди хотели просто поесть и пообщаться — не грузила. Отдельный респект за тайминг: когда на кухне на 25 минут задержали горячее, она так легко закрыла эту паузу живым общением с залом, что никто из гостей даже не заметил косяка ресторана».
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+                        <div>
+                            <div class="font-display font-bold text-base uppercase text-white">Дмитрий К.</div>
+                            <div class="text-xs text-white/60">HR-директор, Санкт-Петербург</div>
+                        </div>
+                        <span class="text-[11px] uppercase text-white/40 font-semibold">Декабрь</span>
+                    </div>
+                </div>
+
+                <!-- Отзыв 2: Open-Air / Большая сцена -->
+                <div class="editorial-card p-7 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4 pb-3 border-b border-white/10">
+                            <span class="text-[11px] font-bold uppercase tracking-widest text-burgundyAccent">OPEN-AIR И НАГРАЖДЕНИЕ</span>
+                            <span class="text-burgundyAccent tracking-widest text-sm">★★★★★</span>
+                        </div>
+                        <p class="text-white/90 text-sm leading-relaxed mb-6">
+                            «Работали с Екатериной на большом открытом мероприятии со сложным регламентом и награждением сотрудников на главной сцене. Что сразу видно — профессиональная актерская школа: поставленный голос, четкая дикция, вообще не теряется перед большой толпой. При этом нет заученной сухости, как у дикторов: когда у нас прямо по ходу менялись списки выходящих на сцену, Катя ориентировалась на лету без всякой паники. Работать в одной связке как организатору было максимально спокойно».
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+                        <div>
+                            <div class="font-display font-bold text-base uppercase text-white">Алексей Воронов</div>
+                            <div class="text-xs text-white/60">Технический продакшн ивента</div>
+                        </div>
+                        <span class="text-[11px] uppercase text-white/40 font-semibold">Август</span>
+                    </div>
+                </div>
+
+                <!-- Отзыв 3: Камерный вечер / День рождения -->
+                <div class="editorial-card p-7 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4 pb-3 border-b border-white/10">
+                            <span class="text-[11px] font-bold uppercase tracking-widest text-burgundyAccent">ЧАСТНЫЙ ВЕЧЕР • 35 ГОСТЕЙ</span>
+                            <span class="text-burgundyAccent tracking-widest text-sm">★★★★★</span>
+                        </div>
+                        <p class="text-white/90 text-sm leading-relaxed mb-6">
+                            «Делали юбилей мужа в камерном формате, публика была совсем разная — от друзей-ровесников до старших родственников. Очень переживали, как всех объединить. Катя перед вечером реально подготовилась: запомнила кто есть кто, внутренние истории семьи и аккуратно вплетала их в разговор. Было ощущение, что вечер ведет близкая подруга семьи с отменным чувством юмора. И посмеялись от души, и на тостах родителей у половины зала глаза были на мокром месте».
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+                        <div>
+                            <div class="font-display font-bold text-base uppercase text-white">Марина и Игорь</div>
+                            <div class="text-xs text-white/60">Частное мероприятие, СПб</div>
+                        </div>
+                        <span class="text-[11px] uppercase text-white/40 font-semibold">Октябрь</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 9. КОНСТРУКТОР СОБЫТИЯ И БРОНИРОВАНИЕ ДАТЫ -->
     <section id="booking" class="py-16 sm:py-24">
         <div class="max-w-5xl mx-auto px-4 sm:px-6">
             <div class="burgundy-outline-box p-6 sm:p-12">
@@ -885,7 +1026,7 @@
                         </div>
                     </div>
 
-                    <!-- Широкая кнопка отправки в стиле референса -->
+                    <!-- Широкая кнопка отправки -->
                     <div class="pt-2">
                         <button type="submit" class="w-full py-5 bg-burgundyBright hover:bg-burgundyAccent text-white font-sans font-bold text-xs sm:text-sm uppercase tracking-[0.22em] flex items-center justify-center gap-2 transition-all burgundy-btn-glow">
                             <span>ПРОВЕРИТЬ ДАТУ И ПОЛУЧИТЬ КОНЦЕПТ МЕРОПРИЯТИЯ</span>
@@ -932,7 +1073,7 @@
         </div>
     </section>
 
-    <!-- ПОДВАЛ САЙТА (Footer с прямыми кнопками Telegram, WhatsApp и Позвонить) -->
+    <!-- ПОДВАЛ САЙТА -->
     <footer class="border-t border-white/15 bg-noir py-12">
         <div class="max-w-6xl mx-auto px-4 sm:px-6">
             <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 pb-8 border-b border-white/10">
@@ -999,7 +1140,7 @@
                 title: '«ЧИСТЫЙ ДРАЙВ, ПЕРЕВОПЛОЩЕНИЕ И ВЗРЫВНАЯ ЭНЕРГИЯ»',
                 desc: 'Когда нужно раскачать площадь на фестивале, объединить 200 сотрудников компании за 15 минут или провести концептуальную вечеринку в ярком образе. Живой юмор, мгновенная реакция на реплики из зала и полное отсутствие скучных заготовок.',
                 badge: 'Уровень энергии: 1000 Вольт ⚡',
-                image: 'photo-4.jpg',
+                image: '1000018947.jpg',
                 imgPos: 'object-[center_20%]',
                 tags: ['🔥 Работа с огромной толпой', '🎭 Актерские образы', '💃 Интерактив без принуждения'],
                 bars: [100, 95, 20]
@@ -1009,7 +1150,7 @@
                 title: '«ЭЛЕГАНТНОСТЬ, ВЫСОКИЙ СТАТУС И БЕЗУПРЕЧНОЕ ЧУВСТВО ТАКТА»',
                 desc: 'Когда мероприятие требует выдержки, презентабельности и уважения к протоколу. Поставленный актерский голос, интеллигентный шарм, точное соблюдение тайминга по секундам и умение достойно представить первых лиц компании.',
                 badge: 'Режим: Black Tie & Премиум ✨',
-                image: 'photo-3.jpg',
+                image: '1000018946.jpg',
                 imgPos: 'object-[center_22%]',
                 tags: ['👑 Безупречная сценическая речь', '⏱️ Тайминг по секундам', '🥂 Интеллигентная модерация'],
                 bars: [70, 55, 100]
@@ -1019,7 +1160,7 @@
                 title: '«ДУШЕВНОСТЬ, ИСКРЕННЕЕ ТЕПЛО И ЭМОЦИИ ДО МУРАШЕК»',
                 desc: 'Когда собираются самые близкие люди и важна атмосфера уюта. Я запоминаю имена и истории ваших гостей, создаю трогательные моменты, которые вызывают искренние слезы радости и теплый смех — как будто мы знакомы уже много лет.',
                 badge: 'Режим: Искренность и Уют 💛',
-                image: 'photo-3.jpg',
+                image: '1000018951.jpg',
                 imgPos: 'object-[center_18%]',
                 tags: ['💛 Внимание к каждому гостю', '✨ Трогательные моменты до мурашек', '🏡 Уют без шаблонных конкурсов'],
                 bars: [80, 85, 45]
@@ -1029,12 +1170,6 @@
         function switchEnergyMode(modeKey) {
             const data = energyModesData[modeKey];
             if (!data) return;
-
-            const labels = {
-                drive: '01. ЧИСТЫЙ ДРАЙВ И КОМЕДИЯ',
-                elegance: '02. ЭЛЕГАНТНОСТЬ И СТАТУС',
-                soul: '03. ДУШЕВНОСТЬ И ТЕПЛО'
-            };
 
             ['drive', 'elegance', 'soul'].forEach(key => {
                 const btn = document.getElementById('tab-' + key);
@@ -1093,7 +1228,99 @@
             document.getElementById('lightbox-modal').classList.add('hidden');
         }
 
-        // 4. Конфигурация контактов и логика Калькулятора / Отправки заявок
+        // 4. Логика блока Отзывов (добавление нового отзыва + сохранение в localStorage)
+        let currentReviewRating = 5;
+
+        function toggleReviewForm() {
+            const box = document.getElementById('add-review-box');
+            box.classList.toggle('hidden');
+            if (!box.classList.contains('hidden')) {
+                document.getElementById('rev-name').focus();
+            }
+        }
+
+        function setReviewRating(rating) {
+            currentReviewRating = rating;
+            const stars = document.querySelectorAll('#star-selector .star-btn');
+            stars.forEach((star, index) => {
+                if (index < rating) {
+                    star.className = 'star-btn text-burgundyAccent text-xl leading-none';
+                } else {
+                    star.className = 'star-btn text-white/25 text-xl leading-none';
+                }
+            });
+            document.getElementById('rating-label').textContent = `${rating} / 5`;
+        }
+
+        function createReviewCardHTML(review) {
+            const starsStr = '★'.repeat(review.rating) + '☆'.repeat(5 - review.rating);
+            return `
+                <div class="editorial-card p-7 flex flex-col justify-between ring-1 ring-burgundyBright/60">
+                    <div>
+                        <div class="flex items-center justify-between mb-4 pb-3 border-b border-white/10">
+                            <span class="text-[11px] font-bold uppercase tracking-widest text-burgundyAccent">${review.format}</span>
+                            <span class="text-burgundyAccent tracking-widest text-sm">${starsStr}</span>
+                        </div>
+                        <p class="text-white/90 text-sm leading-relaxed mb-6">
+                            «${review.text}»
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+                        <div>
+                            <div class="font-display font-bold text-base uppercase text-white">${review.name}</div>
+                            <div class="text-xs text-white/60">Отзыв с сайта</div>
+                        </div>
+                        <span class="text-[11px] uppercase text-burgundyAccent font-semibold">${review.date}</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        function loadSavedReviews() {
+            try {
+                const saved = JSON.parse(localStorage.getItem('ekaterina_vovk_reviews') || '[]');
+                const grid = document.getElementById('reviews-grid');
+                saved.forEach(rev => {
+                    grid.insertAdjacentHTML('afterbegin', createReviewCardHTML(rev));
+                });
+            } catch (e) {}
+        }
+
+        function handleReviewSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('rev-name').value.trim();
+            const format = document.getElementById('rev-format').value;
+            const text = document.getElementById('rev-text').value.trim();
+            if (!name || !text) return;
+
+            const newReview = {
+                name,
+                format,
+                text,
+                rating: currentReviewRating,
+                date: new Date().toLocaleDateString('ru-RU', { day: 'numeric', month: 'short' })
+            };
+
+            // Добавляем карточку в начало сетки
+            const grid = document.getElementById('reviews-grid');
+            grid.insertAdjacentHTML('afterbegin', createReviewCardHTML(newReview));
+
+            // Сохраняем в браузере, чтобы отзыв не пропадал при перезагрузке
+            try {
+                const saved = JSON.parse(localStorage.getItem('ekaterina_vovk_reviews') || '[]');
+                saved.push(newReview);
+                localStorage.setItem('ekaterina_vovk_reviews', JSON.stringify(saved));
+            } catch (err) {}
+
+            // Сбрасываем и закрываем форму
+            document.getElementById('new-review-form').reset();
+            setReviewRating(5);
+            document.getElementById('add-review-box').classList.add('hidden');
+        }
+
+        loadSavedReviews();
+
+        // 5. Конфигурация контактов и логика Калькулятора / Отправки заявок
         const CONTACT_CONFIG = {
             telegramUsername: 'obezskaya',      // Ник в Telegram без @
             whatsappPhone: '79210913336',       // Номер для WhatsApp
