@@ -85,6 +85,7 @@
                 <a href="#formats" class="hover:text-burgundyAccent transition-colors">Форматы</a>
                 <a href="#gallery" class="hover:text-burgundyAccent transition-colors">Галерея</a>
                 <a href="#reviews" class="hover:text-burgundyAccent transition-colors">Отзывы</a>
+                <a href="#faq" class="hover:text-burgundyAccent transition-colors">FAQ</a>
                 <a href="#booking" class="hover:text-burgundyAccent transition-colors">Контакты</a>
             </nav>
 
@@ -119,7 +120,8 @@
                 <a href="#formats" class="mobile-link p-2 rounded hover:bg-burgundy/20">Форматы событий</a>
                 <a href="#gallery" class="mobile-link p-2 rounded hover:bg-burgundy/20">Галерея образов</a>
                 <a href="#reviews" class="mobile-link p-2 rounded hover:bg-burgundy/20">Отзывы клиентов</a>
-                <a href="#booking" class="mobile-link p-2 rounded hover:bg-burgundy/20">Калькулятор</a>
+                <a href="#faq" class="mobile-link p-2 rounded hover:bg-burgundy/20">Частые вопросы (FAQ)</a>
+                <a href="#booking" class="mobile-link p-2 rounded hover:bg-burgundy/20 col-span-2 text-burgundyAccent">Калькулятор и бронь даты →</a>
             </div>
             <div class="flex gap-2 pt-2">
                 <a href="tel:+79210913336" class="flex-1 py-2.5 bg-charcoal border border-burgundyBright/50 text-center text-xs font-bold uppercase text-white">Позвонить</a>
@@ -282,7 +284,7 @@
 
             </div>
 
-            <!-- 3.3 Коллаж с нахлестом слева + Бордовая рамка «МОИ ХОББИ И СУПЕРСИЛЫ» справа -->
+            <!-- 3.3 Коллаж с нахлестом слева + Бордовая рамка «МОЙ СТИЛЬ И СУПЕРСИЛЫ» справа -->
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start pt-6">
                 
                 <!-- Левая часть: Основной портрет + наложенное сверху справа фото -->
@@ -932,7 +934,174 @@
         </div>
     </section>
 
-    <!-- 9. КОНСТРУКТОР СОБЫТИЯ И БРОНИРОВАНИЕ ДАТЫ -->
+    <!-- 9. НОВЫЙ БЛОК «FAQ — ЧАСТЫЕ ВОПРОСЫ ЗАКАЗЧИКОВ» -->
+    <section id="faq" class="py-16 sm:py-24 border-b border-white/10">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            
+            <!-- Шапка блока FAQ -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-[0.2em] text-burgundyAccent">Все прозрачно и по делу</span>
+                    <h2 class="font-display font-bold text-3xl sm:text-5xl uppercase text-white mt-1">
+                        ЧАСТЫЕ ВОПРОСЫ <span class="text-burgundyAccent">ЗАКАЗЧИКОВ (FAQ)</span>
+                    </h2>
+                </div>
+                <p class="text-xs sm:text-sm text-white/70 max-w-sm">
+                    Ответы на главные организационные вопросы о подготовке, звуке, договоре и тайминге мероприятия:
+                </p>
+            </div>
+
+            <!-- Сетка аккордеона FAQ -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- Левая колонка: Список вопросов (8 колонок) -->
+                <div class="lg:col-span-8 space-y-3.5">
+                    
+                    <!-- Вопрос 1 (Открыт по умолчанию) -->
+                    <div class="faq-item editorial-card border-burgundyAccent">
+                        <button type="button" onclick="toggleFaq(0)" class="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4">
+                            <div class="flex items-center gap-4">
+                                <span class="font-display font-bold text-lg text-burgundyAccent shrink-0">01</span>
+                                <span class="font-display font-bold text-lg sm:text-xl uppercase tracking-wide text-white">
+                                    Работаете ли вы со своим диджеем и звуковым оборудованием?
+                                </span>
+                            </div>
+                            <span id="faq-icon-0" class="w-8 h-8 border border-burgundyBright bg-burgundyBright text-white flex items-center justify-center shrink-0 transition-transform duration-300 rotate-45">
+                                <i data-lucide="plus" class="w-4 h-4"></i>
+                            </span>
+                        </button>
+                        <div id="faq-answer-0" class="px-5 sm:px-6 pb-6 pt-1 text-sm text-white/80 leading-relaxed border-t border-white/10">
+                            Да! Я работаю в сработанном тандеме со своим профессиональным звукорежиссером/DJ. Мы можем привезти полный комплект звукового, микрофонного и светового оборудования «под ключ» под размер вашей площадки, либо подключиться к техническому продакшну зала. Вам не придется отдельно искать подрядчиков и переживать за музыкальные отбивки.
+                        </div>
+                    </div>
+
+                    <!-- Вопрос 2 -->
+                    <div class="faq-item editorial-card">
+                        <button type="button" onclick="toggleFaq(1)" class="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4">
+                            <div class="flex items-center gap-4">
+                                <span class="font-display font-bold text-lg text-burgundyAccent shrink-0">02</span>
+                                <span class="font-display font-bold text-lg sm:text-xl uppercase tracking-wide text-white">
+                                    Можно ли заключить официальный договор и оплатить по безналу (для юрлиц)?
+                                </span>
+                            </div>
+                            <span id="faq-icon-1" class="w-8 h-8 border border-white/20 bg-charcoal text-burgundyAccent flex items-center justify-center shrink-0 transition-transform duration-300">
+                                <i data-lucide="plus" class="w-4 h-4"></i>
+                            </span>
+                        </button>
+                        <div id="faq-answer-1" class="hidden px-5 sm:px-6 pb-6 pt-1 text-sm text-white/80 leading-relaxed border-t border-white/10">
+                            Разумеется. С корпоративными клиентами, ивент-агентствами и частными заказчиками мы заключаем официальный договор. Возможна оплата по безналичному расчету на расчетный счет со всеми закрывающими документами (актами) для вашей бухгалтерии. Дата бронируется железно за вами сразу после подписания договора и внесения предоплаты.
+                        </div>
+                    </div>
+
+                    <!-- Вопрос 3 -->
+                    <div class="faq-item editorial-card">
+                        <button type="button" onclick="toggleFaq(2)" class="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4">
+                            <div class="flex items-center gap-4">
+                                <span class="font-display font-bold text-lg text-burgundyAccent shrink-0">03</span>
+                                <span class="font-display font-bold text-lg sm:text-xl uppercase tracking-wide text-white">
+                                    Как строится подготовка сценария? Будут ли шаблонные конкурсы?
+                                </span>
+                            </div>
+                            <span id="faq-icon-2" class="w-8 h-8 border border-white/20 bg-charcoal text-burgundyAccent flex items-center justify-center shrink-0 transition-transform duration-300">
+                                <i data-lucide="plus" class="w-4 h-4"></i>
+                            </span>
+                        </button>
+                        <div id="faq-answer-2" class="hidden px-5 sm:px-6 pb-6 pt-1 text-sm text-white/80 leading-relaxed border-t border-white/10">
+                            Никаких старомодных конкурсов, переодеваний и неловких заданий! Подготовка идет в 3 простых шага: 1) Встречаемся в Санкт-Петербурге или созваниваемся по видеосвязи, чтобы обсудить ваших гостей и задачи вечера; 2) Я присылаю короткий бриф и собираю интересные факты о компании или гостях; 3) Составляю индивидуальный сценарный план и тайминг, где все интерактивы согласованы с вами заранее.
+                        </div>
+                    </div>
+
+                    <!-- Вопрос 4 -->
+                    <div class="faq-item editorial-card">
+                        <button type="button" onclick="toggleFaq(3)" class="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4">
+                            <div class="flex items-center gap-4">
+                                <span class="font-display font-bold text-lg text-burgundyAccent shrink-0">04</span>
+                                <span class="font-display font-bold text-lg sm:text-xl uppercase tracking-wide text-white">
+                                    Сколько часов длится стандартная программа и во сколько вы приезжаете?
+                                </span>
+                            </div>
+                            <span id="faq-icon-3" class="w-8 h-8 border border-white/20 bg-charcoal text-burgundyAccent flex items-center justify-center shrink-0 transition-transform duration-300">
+                                <i data-lucide="plus" class="w-4 h-4"></i>
+                            </span>
+                        </button>
+                        <div id="faq-answer-3" class="hidden px-5 sm:px-6 pb-6 pt-1 text-sm text-white/80 leading-relaxed border-t border-white/10">
+                            Стандартный формат банкета или корпоратива — 5–6 часов (например, 1 час легкого велкома при сборе гостей + 5 часов основной программы). На площадку мы с диджеем всегда приезжаем за 1.5–2 часа до начала, чтобы спокойно провести саундчек, проверить презентации на экранах и встретить первых гостей в полной готовности. Для форумов и фестивалей тайминг рассчитывается индивидуально.
+                        </div>
+                    </div>
+
+                    <!-- Вопрос 5 -->
+                    <div class="faq-item editorial-card">
+                        <button type="button" onclick="toggleFaq(4)" class="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4">
+                            <div class="flex items-center gap-4">
+                                <span class="font-display font-bold text-lg text-burgundyAccent shrink-0">05</span>
+                                <span class="font-display font-bold text-lg sm:text-xl uppercase tracking-wide text-white">
+                                    Выезжаете ли вы за город в Ленобласть, Москву или другие регионы?
+                                </span>
+                            </div>
+                            <span id="faq-icon-4" class="w-8 h-8 border border-white/20 bg-charcoal text-burgundyAccent flex items-center justify-center shrink-0 transition-transform duration-300">
+                                <i data-lucide="plus" class="w-4 h-4"></i>
+                            </span>
+                        </button>
+                        <div id="faq-answer-4" class="hidden px-5 sm:px-6 pb-6 pt-1 text-sm text-white/80 leading-relaxed border-t border-white/10">
+                            Да, я базируюсь в Санкт-Петербурге, регулярно выезжаю на загородные площадки Ленинградской области, а также легко летаю в Москву и любой другой город России. У меня продуманный и компактный бытовой райдер, поэтому организация выездного мероприятия пройдет для вас максимально просто.
+                        </div>
+                    </div>
+
+                    <!-- Вопрос 6 -->
+                    <div class="faq-item editorial-card">
+                        <button type="button" onclick="toggleFaq(5)" class="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4">
+                            <div class="flex items-center gap-4">
+                                <span class="font-display font-bold text-lg text-burgundyAccent shrink-0">06</span>
+                                <span class="font-display font-bold text-lg sm:text-xl uppercase tracking-wide text-white">
+                                    Что если на мероприятии сдвинется тайминг кухни или изменится список спикеров?
+                                </span>
+                            </div>
+                            <span id="faq-icon-5" class="w-8 h-8 border border-white/20 bg-charcoal text-burgundyAccent flex items-center justify-center shrink-0 transition-transform duration-300">
+                                <i data-lucide="plus" class="w-4 h-4"></i>
+                            </span>
+                        </button>
+                        <div id="faq-answer-5" class="hidden px-5 sm:px-6 pb-6 pt-1 text-sm text-white/80 leading-relaxed border-t border-white/10">
+                            Живой ивент — это всегда динамика, и именно здесь работает моя суперсила живой импровизации. Я постоянно держу связь с банкетным менеджером и организаторами: если горячее задерживается на 20 минут или спикер опаздывает, я мягко перестрою блоки программы и заполню паузу остроумным общением с залом так, что гости будут уверены — все идет строго по плану.
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Правая колонка: Плашка быстрой консультации (4 колонки) -->
+                <div class="lg:col-span-4 burgundy-outline-box p-7 sm:p-8 space-y-6">
+                    <div class="inline-block px-3 py-1 bg-burgundyBright text-white text-[10px] font-bold uppercase tracking-widest">
+                        Прямая связь с ведущей
+                    </div>
+                    <h3 class="font-display font-bold text-2xl sm:text-3xl uppercase text-white leading-tight">
+                        ОСТАЛСЯ СВОЙ ВОПРОС ИЛИ НЕСТАНДАРТНАЯ ЗАДАЧА?
+                    </h3>
+                    <p class="text-xs sm:text-sm text-white/80 leading-relaxed">
+                        Напишите мне напрямую в Telegram или WhatsApp — я на связи без посредников и менеджеров. Расскажу, как лучше выстроить тайминг вашего вечера, и сориентирую по стоимости за 5 минут.
+                    </p>
+
+                    <div class="space-y-3 pt-2">
+                        <a href="https://t.me/obezskaya" target="_blank" rel="noopener noreferrer" class="w-full py-4 px-5 bg-burgundyBright hover:bg-burgundyAccent text-white font-bold text-xs uppercase tracking-widest flex items-center justify-between transition-all burgundy-btn-glow">
+                            <span>Спросить в Telegram</span>
+                            <i data-lucide="send" class="w-4 h-4"></i>
+                        </a>
+                        <a href="https://wa.me/79210913336" target="_blank" rel="noopener noreferrer" class="w-full py-4 px-5 bg-charcoal hover:bg-burgundyDark/60 border border-burgundyBright/50 text-white font-bold text-xs uppercase tracking-widest flex items-center justify-between transition-all">
+                            <span>Написать в WhatsApp</span>
+                            <i data-lucide="message-circle" class="w-4 h-4 text-burgundyAccent"></i>
+                        </a>
+                    </div>
+
+                    <div class="pt-4 border-t border-white/10 flex items-center gap-3 text-xs text-white/60">
+                        <i data-lucide="clock" class="w-4 h-4 text-burgundyAccent shrink-0"></i>
+                        <span>Среднее время ответа в мессенджерах: 15 минут</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 10. КОНСТРУКТОР СОБЫТИЯ И БРОНИРОВАНИЕ ДАТЫ -->
     <section id="booking" class="py-16 sm:py-24">
         <div class="max-w-5xl mx-auto px-4 sm:px-6">
             <div class="burgundy-outline-box p-6 sm:p-12">
@@ -1228,7 +1397,7 @@
             document.getElementById('lightbox-modal').classList.add('hidden');
         }
 
-        // 4. Логика блока Отзывов (добавление нового отзыва + сохранение в localStorage)
+        // 4. Логика блока Отзывов
         let currentReviewRating = 5;
 
         function toggleReviewForm() {
@@ -1317,7 +1486,35 @@
 
         loadSavedReviews();
 
-        // 5. Конфигурация контактов и логика Калькулятора / Отправки заявок
+        // 5. Логика аккордеона FAQ
+        function toggleFaq(index) {
+            const answer = document.getElementById(`faq-answer-${index}`);
+            const icon = document.getElementById(`faq-icon-${index}`);
+            const card = answer.closest('.faq-item');
+            const isOpen = !answer.classList.contains('hidden');
+
+            // Закрываем все остальные вопросы, чтобы страница оставалась аккуратной
+            document.querySelectorAll('[id^="faq-answer-"]').forEach((el, i) => {
+                el.classList.add('hidden');
+                const ic = document.getElementById(`faq-icon-${i}`);
+                const parentCard = el.closest('.faq-item');
+                if (ic) {
+                    ic.className = 'w-8 h-8 border border-white/20 bg-charcoal text-burgundyAccent flex items-center justify-center shrink-0 transition-transform duration-300';
+                }
+                if (parentCard) {
+                    parentCard.classList.remove('border-burgundyAccent');
+                }
+            });
+
+            // Если выбранный вопрос был закрыт — открываем его
+            if (!isOpen) {
+                answer.classList.remove('hidden');
+                icon.className = 'w-8 h-8 border border-burgundyBright bg-burgundyBright text-white flex items-center justify-center shrink-0 transition-transform duration-300 rotate-45';
+                card.classList.add('border-burgundyAccent');
+            }
+        }
+
+        // 6. Конфигурация контактов и логика Калькулятора / Отправки заявок
         const CONTACT_CONFIG = {
             telegramUsername: 'obezskaya',      // Ник в Telegram без @
             whatsappPhone: '79210913336',       // Номер для WhatsApp
