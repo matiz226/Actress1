@@ -6,7 +6,7 @@
     <title>Екатерина Вовк — Ведущая мероприятий & Шоувумен | Санкт-Петербург</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Oswald (плотный высокий гротеск один-в-один как на референсе) + Manrope (чистый текст) -->
+    <!-- Google Fonts: Oswald (плотный высокий гротеск) + Manrope (чистый текст) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
@@ -41,12 +41,12 @@
             color: #FFFFFF;
             overflow-x: hidden;
         }
-        /* Узкая журнальная типографика как на референсе */
+        /* Узкая журнальная типографика */
         .hero-giant-text {
             font-family: 'Oswald', sans-serif;
             font-weight: 700;
             text-transform: uppercase;
-            line-height: 0.91;
+            line-height: 0.88;
             letter-spacing: -0.02em;
         }
         /* Тонкая фирменная бордовая рамка */
@@ -70,6 +70,52 @@
         .bg-noise {
             background-image: radial-gradient(rgba(225, 29, 72, 0.06) 1px, transparent 0);
             background-size: 28px 28px;
+        }
+
+        /* Эффекты сценических прожекторов и микрофона */
+        .stage-art-box {
+            background: radial-gradient(circle at 50% 35%, rgba(190, 18, 60, 0.16) 0%, rgba(13, 13, 16, 0.92) 70%, #050505 100%);
+            box-shadow: inset 0 0 70px rgba(0, 0, 0, 0.9);
+        }
+        .spotlight-beam-left {
+            position: absolute;
+            top: -25%;
+            left: -10%;
+            width: 75%;
+            height: 150%;
+            background: linear-gradient(155deg, rgba(225, 29, 72, 0.26) 0%, rgba(225, 29, 72, 0.06) 45%, transparent 75%);
+            transform: rotate(-18deg);
+            filter: blur(22px);
+            pointer-events: none;
+        }
+        .spotlight-beam-right {
+            position: absolute;
+            top: -25%;
+            right: -10%;
+            width: 70%;
+            height: 150%;
+            background: linear-gradient(205deg, rgba(255, 255, 255, 0.14) 0%, rgba(225, 29, 72, 0.08) 45%, transparent 75%);
+            transform: rotate(18deg);
+            filter: blur(20px);
+            pointer-events: none;
+        }
+        .spotlight-center-cone {
+            position: absolute;
+            top: -10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 85%;
+            height: 110%;
+            background: conic-gradient(from 180deg at 50% 0%, transparent 38%, rgba(225, 29, 72, 0.18) 48%, rgba(255, 255, 255, 0.12) 50%, rgba(225, 29, 72, 0.18) 52%, transparent 62%);
+            filter: blur(16px);
+            pointer-events: none;
+        }
+        @keyframes pulseSlow {
+            0%, 100% { opacity: 0.45; transform: scale(1); }
+            50% { opacity: 0.85; transform: scale(1.04); }
+        }
+        .mic-aura {
+            animation: pulseSlow 5s ease-in-out infinite;
         }
     </style>
 </head>
@@ -130,50 +176,161 @@
         </div>
     </header>
 
-    <!-- 2. ГЛАВНЫЙ ЭКРАН (Точная композиция референса) -->
-    <section class="pt-24 pb-14 sm:pt-28 sm:pb-20 border-b border-white/10">
+    <!-- 2. ГЛАВНЫЙ ЭКРАН (Слева: ЕКАТЕРИНА ВОВК | Справа: Полупрозрачный микрофон в лучах прожекторов) -->
+    <section class="pt-24 pb-14 sm:pt-28 sm:pb-20 border-b border-white/10 relative overflow-hidden">
         <div class="max-w-6xl mx-auto px-4 sm:px-6">
             
-            <!-- Верхняя часть: Фото вплотную к гигантской типографике -->
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-5 items-stretch">
+            <!-- Верхняя часть: Гигантская типографика слева + Арт-сцена с микрофоном и прожекторами справа -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-6 items-stretch">
                 
-                <!-- Левый блок: Квадратно-вертикальный портрет -->
-                <div class="md:col-span-5">
-                    <div class="w-full h-full min-h-[340px] sm:min-h-[420px] bg-charcoal overflow-hidden relative border border-white/10">
-                        <img 
-                            src="photo-2.jpg" 
-                            onerror="this.src='https://placehold.co/600x700/0D0D10/E11D48?text=ЕКАТЕРИНА+ВОВК'"
-                            alt="Екатерина Вовк ведущая" 
-                            class="w-full h-full object-cover object-[center_15%]"
-                        >
-                    </div>
-                </div>
-
-                <!-- Правый блок: 3 мощных яруса текста -->
-                <div class="md:col-span-7 flex flex-col justify-between py-1 select-none">
-                    <!-- 1 ярус: Бордовый акцент -->
-                    <div class="hero-giant-text text-burgundyAccent text-[4.2rem] sm:text-[6.2rem] lg:text-[7.3rem] tracking-tight">
-                        ЕКАТЕРИНА
+                <!-- ЛЕВЫЙ БЛОК (7 колонок): Имя и Фамилия «ЕКАТЕРИНА ВОВК» + СПБ•34 -->
+                <div class="md:col-span-7 flex flex-col justify-between py-2 select-none z-10">
+                    <!-- 1 ярус: Бордовое имя -->
+                    <div class="space-y-1">
+                        <div class="inline-flex items-center gap-2 text-[10px] sm:text-xs font-bold uppercase tracking-[0.3em] text-white/50 mb-1">
+                            <span class="w-2 h-2 rounded-full bg-burgundyAccent animate-ping"></span>
+                            <span>Санкт-Петербург • Вся Россия</span>
+                        </div>
+                        <div class="hero-giant-text text-burgundyAccent text-[4.4rem] sm:text-[6.4rem] lg:text-[7.5rem] tracking-tight drop-shadow-[0_0_25px_rgba(225,29,72,0.22)]">
+                            ЕКАТЕРИНА
+                        </div>
                     </div>
                     
-                    <!-- 2 ярус: Белый средний блок + мини-бейджи справа -->
-                    <div class="flex items-center justify-between gap-4 my-2 sm:my-0">
-                        <div class="hero-giant-text text-white text-[4rem] sm:text-[5.8rem] lg:text-[6.8rem]">
-                            СПБ•34
+                    <!-- 2 ярус: Белая фамилия ВОВК -->
+                    <div class="hero-giant-text text-white text-[5.2rem] sm:text-[7.5rem] lg:text-[8.8rem] tracking-tight my-1 sm:my-2">
+                        ВОВК
+                    </div>
+
+                    <!-- 3 ярус: СПБ•34 + плашка импровизации -->
+                    <div class="pt-3 border-t border-white/10 flex flex-wrap sm:flex-nowrap items-center justify-between gap-4">
+                        <div class="hero-giant-text text-white/95 text-[3.2rem] sm:text-[4.4rem] lg:text-[5rem] leading-none">
+                            СПБ<span class="text-burgundyAccent">•</span>34
                         </div>
-                        <div class="text-right space-y-1 pr-1">
-                            <div class="inline-block px-3 py-1 bg-burgundyDark/60 border border-burgundyBright text-[10px] sm:text-xs font-bold uppercase tracking-widest text-burgundyAccent">
+                        <div class="text-left sm:text-right space-y-1.5 sm:ml-auto">
+                            <div class="inline-block px-3.5 py-1 bg-burgundyDark/70 border border-burgundyBright text-[10px] sm:text-xs font-bold uppercase tracking-widest text-burgundyAccent shadow-[0_0_20px_rgba(225,29,72,0.25)]">
                                 100% Живая импровизация
                             </div>
-                            <p class="text-[11px] sm:text-xs text-white/70 max-w-[190px] ml-auto leading-tight">
-                                От камерных ужинов на 15 гостей до фестивалей на 5000+ зрителей
+                            <p class="text-[11px] sm:text-xs text-white/70 max-w-[230px] sm:ml-auto leading-tight">
+                                От камерных ужинов на 15 гостей до масштабных фестивалей на 5000+ зрителей
                             </p>
                         </div>
                     </div>
+                </div>
 
-                    <!-- 3 ярус: Белая фамилия во всю ширину -->
-                    <div class="hero-giant-text text-white text-[4.8rem] sm:text-[7.2rem] lg:text-[8.8rem] tracking-tight">
-                        ВОВК
+                <!-- ПРАВЫЙ БЛОК (5 колонок): Эстетичная сцена с прожекторами и полупрозрачным микрофоном -->
+                <div class="md:col-span-5">
+                    <div class="w-full h-full min-h-[370px] sm:min-h-[450px] stage-art-box relative overflow-hidden border border-burgundyBright/40 flex items-center justify-center p-6 group">
+                        
+                        <!-- Сценические лучи прожекторов сверху -->
+                        <div class="spotlight-beam-left"></div>
+                        <div class="spotlight-beam-right"></div>
+                        <div class="spotlight-center-cone"></div>
+
+                        <!-- Верхние точки-софиты (источники света на потолке сцены) -->
+                        <div class="absolute top-0 left-1/4 w-16 h-1.5 bg-burgundyAccent/80 blur-[3px]"></div>
+                        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-1 bg-white/90 blur-[2px]"></div>
+                        <div class="absolute top-0 right-1/4 w-16 h-1.5 bg-burgundyAccent/80 blur-[3px]"></div>
+
+                        <!-- Мягкое центральное свечение позади микрофона -->
+                        <div class="absolute w-64 h-64 rounded-full bg-burgundyBright/20 blur-3xl mic-aura pointer-events-none"></div>
+                        <div class="absolute w-36 h-36 rounded-full bg-white/5 blur-2xl pointer-events-none"></div>
+
+                        <!-- Декоративная тонкая рамка по периметру сцены -->
+                        <div class="absolute inset-3 border border-white/10 pointer-events-none flex flex-col justify-between p-3">
+                            <div class="flex justify-between items-center text-[9px] uppercase tracking-[0.25em] text-white/40 font-semibold">
+                                <span>STAGE // LIVE</span>
+                                <span class="text-burgundyAccent">ON AIR ●</span>
+                            </div>
+                            <div class="flex justify-between items-center text-[9px] uppercase tracking-[0.25em] text-white/35 font-semibold">
+                                <span>1000 VOLTS</span>
+                                <span>SAINT PETERSBURG</span>
+                            </div>
+                        </div>
+
+                        <!-- Эстетичный полупрозрачный студийный/сценический микрофон (детальный SVG) -->
+                        <svg viewBox="0 0 320 420" class="w-60 sm:w-68 h-auto relative z-10 drop-shadow-[0_15px_35px_rgba(225,29,72,0.35)] group-hover:scale-[1.03] transition-transform duration-700" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <!-- Полупрозрачный стеклянно-металлический градиент корпуса -->
+                                <linearGradient id="micGlass" x1="90" y1="60" x2="230" y2="260" gradientUnits="userSpaceOnUse">
+                                    <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.28"/>
+                                    <stop offset="35%" stop-color="#E11D48" stop-opacity="0.18"/>
+                                    <stop offset="70%" stop-color="#0D0D10" stop-opacity="0.65"/>
+                                    <stop offset="100%" stop-color="#BE123C" stop-opacity="0.35"/>
+                                </linearGradient>
+
+                                <!-- Градиент неонового контура -->
+                                <linearGradient id="rimLight" x1="160" y1="40" x2="160" y2="390" gradientUnits="userSpaceOnUse">
+                                    <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.9"/>
+                                    <stop offset="45%" stop-color="#E11D48" stop-opacity="0.75"/>
+                                    <stop offset="100%" stop-color="#881337" stop-opacity="0.2"/>
+                                </linearGradient>
+
+                                <!-- Свечение прожектора сверху -->
+                                <radialGradient id="topGlow" cx="50%" cy="25%" r="50%">
+                                    <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.45"/>
+                                    <stop offset="50%" stop-color="#E11D48" stop-opacity="0.2"/>
+                                    <stop offset="100%" stop-color="#050505" stop-opacity="0"/>
+                                </radialGradient>
+                            </defs>
+
+                            <!-- Декоративные звуковые волны / орбиты вокруг микрофона -->
+                            <circle cx="160" cy="145" r="105" stroke="url(#rimLight)" stroke-opacity="0.18" stroke-width="1" stroke-dasharray="3 6"/>
+                            <circle cx="160" cy="145" r="84" stroke="#E11D48" stroke-opacity="0.28" stroke-width="1"/>
+                            <ellipse cx="160" cy="145" rx="122" ry="42" transform="rotate(-18 160 145)" stroke="url(#rimLight)" stroke-opacity="0.22" stroke-width="1"/>
+
+                            <!-- Ореол света вокруг головки микрофона -->
+                            <circle cx="160" cy="140" r="75" fill="url(#topGlow)"/>
+
+                            <!-- ВнешняяU-образная вилка-держатель (крепление ретро-микрофона) -->
+                            <path d="M96 148 C96 225, 224 225, 224 148" stroke="url(#rimLight)" stroke-width="3.5" stroke-linecap="round"/>
+                            <path d="M102 148 C102 216, 218 216, 218 148" stroke="#FFFFFF" stroke-opacity="0.18" stroke-width="1"/>
+                            <!-- Боковые винты-фиксаторы -->
+                            <circle cx="96" cy="148" r="7" fill="#151519" stroke="url(#rimLight)" stroke-width="2"/>
+                            <circle cx="224" cy="148" r="7" fill="#151519" stroke="url(#rimLight)" stroke-width="2"/>
+
+                            <!-- КАПСЮЛЬ МИКРОФОНА (Полупрозрачный корпус) -->
+                            <rect x="114" y="68" width="92" height="136" rx="46" fill="url(#micGlass)" stroke="url(#rimLight)" stroke-width="2.2"/>
+                            
+                            <!-- Внутренний светящийся сердечник капсюля (полупрозрачный) -->
+                            <rect x="132" y="88" width="56" height="96" rx="28" fill="#E11D48" fill-opacity="0.12" stroke="#FFFFFF" stroke-opacity="0.2" stroke-width="1"/>
+
+                            <!-- Горизонтальные акустические ребра решетки микрофона -->
+                            <line x1="118" y1="96" x2="202" y2="96" stroke="#FFFFFF" stroke-opacity="0.28" stroke-width="1.5"/>
+                            <line x1="115" y1="112" x2="205" y2="112" stroke="#FFFFFF" stroke-opacity="0.35" stroke-width="1.5"/>
+                            <line x1="114" y1="128" x2="206" y2="128" stroke="#FFFFFF" stroke-opacity="0.4" stroke-width="1.5"/>
+                            <!-- Центральное акцентное кольцо микрофона -->
+                            <rect x="112" y="139" width="96" height="8" rx="4" fill="#BE123C" fill-opacity="0.55" stroke="#FFFFFF" stroke-opacity="0.6" stroke-width="1.2"/>
+                            <line x1="115" y1="158" x2="205" y2="158" stroke="#FFFFFF" stroke-opacity="0.3" stroke-width="1.5"/>
+                            <line x1="118" y1="174" x2="202" y2="174" stroke="#FFFFFF" stroke-opacity="0.22" stroke-width="1.5"/>
+
+                            <!-- Вертикальный блик от прожектора на корпусе -->
+                            <path d="M138 78 C130 105, 130 165, 138 192" stroke="#FFFFFF" stroke-opacity="0.45" stroke-width="2.5" stroke-linecap="round"/>
+                            <line x1="160" y1="69" x2="160" y2="203" stroke="#E11D48" stroke-opacity="0.35" stroke-width="1.2"/>
+
+                            <!-- Нижний узел крепления и переход в стойку -->
+                            <path d="M142 208 L178 208 L172 242 L148 242 Z" fill="url(#micGlass)" stroke="url(#rimLight)" stroke-width="1.8"/>
+                            <rect x="150" y="242" width="20" height="12" rx="3" fill="#BE123C" fill-opacity="0.5" stroke="#FFFFFF" stroke-opacity="0.4" stroke-width="1"/>
+
+                            <!-- Стойка микрофона, уходящая в легкую дымку внизу -->
+                            <rect x="154" y="254" width="12" height="145" fill="url(#micGlass)" stroke="url(#rimLight)" stroke-width="1.5"/>
+                            <line x1="158" y1="254" x2="158" y2="395" stroke="#FFFFFF" stroke-opacity="0.4" stroke-width="1.5"/>
+
+                            <!-- Световые блики-звездочки от софитов -->
+                            <g opacity="0.85">
+                                <path d="M202 82 L205 92 L215 95 L205 98 L202 108 L199 98 L189 95 L199 92 Z" fill="#FFFFFF"/>
+                                <circle cx="202" cy="95" r="8" fill="#E11D48" fill-opacity="0.4" filter="blur(4px)"/>
+                            </g>
+                            <g opacity="0.65">
+                                <path d="M108 110 L110 116 L116 118 L110 120 L108 126 L106 120 L100 118 L106 116 Z" fill="#E11D48"/>
+                            </g>
+                            <circle cx="235" cy="195" r="2" fill="#FFFFFF" fill-opacity="0.6"/>
+                            <circle cx="88" cy="185" r="2.5" fill="#E11D48" fill-opacity="0.7"/>
+                            <circle cx="122" cy="52" r="1.8" fill="#FFFFFF" fill-opacity="0.5"/>
+                            <circle cx="212" cy="58" r="2" fill="#E11D48" fill-opacity="0.6"/>
+                        </svg>
+
+                        <!-- Нижний градиент сценического дыма -->
+                        <div class="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-noir via-noir/60 to-transparent pointer-events-none"></div>
                     </div>
                 </div>
 
@@ -302,10 +459,10 @@
                     <!-- Наложенное малое фото в правом верхнем углу -->
                     <div class="hidden sm:block absolute top-0 right-2 w-44 h-52 bg-noir p-1.5 border border-burgundyBright shadow-2xl">
                         <img 
-                            src="photo-3.jpg" 
+                            src="photo-2.jpg" 
                             onerror="this.src='https://placehold.co/300x360/0D0D10/FFFFFF?text=Образ'"
-                            alt="Вечерний образ" 
-                            class="w-full h-full object-cover object-[center_20%]"
+                            alt="Сценический образ" 
+                            class="w-full h-full object-cover object-[center_15%]"
                         >
                     </div>
 
@@ -957,7 +1114,7 @@
                 <!-- Левая колонка: Список вопросов (8 колонок) -->
                 <div class="lg:col-span-8 space-y-3.5">
                     
-                    <!-- Вопрос 1 (Открыт по умолчанию — про работу с разной публикой и интровертами) -->
+                    <!-- Вопрос 1 -->
                     <div class="faq-item editorial-card border-burgundyAccent">
                         <button type="button" onclick="toggleFaq(0)" class="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4">
                             <div class="flex items-center gap-4">
@@ -1622,4 +1779,4 @@
         }
     </script>
 </body>
-    </html>
+</html>
