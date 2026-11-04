@@ -13,6 +13,16 @@
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
+    <!-- Подключаем Three.js (Importmap для 3D Liquid Chrome Microphone) -->
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+        }
+      }
+    </script>
+
     <script>
         tailwind.config = {
             theme: {
@@ -72,57 +82,21 @@
             background-size: 28px 28px;
         }
 
-        /* ================= АНИМАЦИЯ ЖИВОГО ПАРЯЩЕГО ГУСТОГО ДЫМА И МИКРОФОНА ================= */
-        @keyframes smokeBillowBack {
-            0%   { transform: translate3d(0px, 0px, 0) scale(1) rotate(0deg); opacity: 0.9; }
-            33%  { transform: translate3d(-18px, -14px, 0) scale(1.08) rotate(-3deg); opacity: 1; }
-            66%  { transform: translate3d(12px, -22px, 0) scale(1.04) rotate(2deg); opacity: 0.94; }
-            100% { transform: translate3d(0px, 0px, 0) scale(1) rotate(0deg); opacity: 0.9; }
+        /* Контейнер 3D-микрофона — полностью прозрачный и встроенный в фон сайта */
+        #mic-canvas-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            min-height: 440px;
+            background: transparent;
+            pointer-events: auto;
         }
-
-        @keyframes smokeBillowMid {
-            0%   { transform: translate3d(0px, 0px, 0) scale(1) rotate(0deg); opacity: 0.85; }
-            50%  { transform: translate3d(22px, -16px, 0) scale(1.12) rotate(4deg); opacity: 1; }
-            100% { transform: translate3d(0px, 0px, 0) scale(1) rotate(0deg); opacity: 0.85; }
+        #mic-canvas-container canvas {
+            display: block;
+            width: 100% !important;
+            height: 100% !important;
+            outline: none;
         }
-
-        @keyframes smokeBillowFront {
-            0%   { transform: translate3d(-10px, 8px, 0) scale(0.96) rotate(-2deg); opacity: 0.55; }
-            50%  { transform: translate3d(16px, -12px, 0) scale(1.09) rotate(3deg); opacity: 0.82; }
-            100% { transform: translate3d(-10px, 8px, 0) scale(0.96) rotate(-2deg); opacity: 0.55; }
-        }
-
-        @keyframes micFloatGlass {
-            0%, 100% { transform: translateY(0px) rotate(-3deg); }
-            50%      { transform: translateY(-7px) rotate(-2.2deg); }
-        }
-
-        @keyframes dustRise {
-            0%   { transform: translateY(15px) translateX(0px); opacity: 0; }
-            30%  { opacity: 0.85; }
-            70%  { opacity: 0.85; }
-            100% { transform: translateY(-45px) translateX(-12px); opacity: 0; }
-        }
-
-        .smoke-layer-back {
-            transform-origin: 260px 310px;
-            animation: smokeBillowBack 13s ease-in-out infinite;
-        }
-        .smoke-layer-mid {
-            transform-origin: 340px 380px;
-            animation: smokeBillowMid 9.5s ease-in-out infinite;
-        }
-        .smoke-layer-front {
-            transform-origin: 300px 360px;
-            animation: smokeBillowFront 7.5s ease-in-out infinite;
-        }
-        .mic-floating-group {
-            transform-origin: 300px 360px;
-            animation: micFloatGlass 6.5s ease-in-out infinite;
-        }
-        .sparkle-1 { animation: dustRise 6s ease-in-out infinite; }
-        .sparkle-2 { animation: dustRise 8s ease-in-out infinite 2s; }
-        .sparkle-3 { animation: dustRise 7s ease-in-out infinite 3.5s; }
     </style>
 </head>
 <body class="antialiased selection:bg-burgundyBright selection:text-white bg-noise">
@@ -182,354 +156,27 @@
         </div>
     </header>
 
-    <!-- 2. ГЛАВНЫЙ ЭКРАН (Слева: ЕКАТЕРИНА ВОВК | Справа: зеркально-прозрачный глянцевый микрофон в густом парящем дыму) -->
+    <!-- 2. ГЛАВНЫЙ ЭКРАН (Слева: ЕКАТЕРИНА ВОВК | Справа: Твой 3D Liquid Chrome Microphone на Three.js) -->
     <section class="pt-20 pb-14 sm:pt-24 sm:pb-20 border-b border-white/10 relative overflow-hidden">
         
-        <!-- Глубокое атмосферное свечение позади дыма, бесшовно сливающееся с черным фоном сайта -->
-        <div class="absolute top-1/2 right-[2%] -translate-y-1/2 w-[560px] h-[560px] rounded-full bg-burgundyBright/20 blur-[140px] pointer-events-none"></div>
-        <div class="absolute top-[38%] right-[14%] w-[320px] h-[320px] rounded-full bg-burgundyAccent/15 blur-[95px] pointer-events-none"></div>
-
         <div class="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
             
-            <!-- Основная композиция: Слева только Имя и Фамилия, Справа парящий дым и зеркальный микрофон -->
-            <div class="grid grid-cols-1 md:grid-cols-12 items-center min-h-[430px] sm:min-h-[520px]">
+            <!-- Основная композиция: Слева только Имя и Фамилия, Справа 3D-микрофон в клубах дыма -->
+            <div class="grid grid-cols-1 md:grid-cols-12 items-center min-h-[440px] sm:min-h-[520px]">
                 
-                <!-- ЛЕВАЯ ЧАСТЬ (7 колонок): Только ЕКАТЕРИНА ВОВК -->
-                <div class="md:col-span-7 flex flex-col justify-center select-none z-20 pt-6 md:pt-0">
-                    <div class="hero-giant-text text-burgundyAccent text-[4.8rem] sm:text-[7.4rem] lg:text-[8.8rem] tracking-tight drop-shadow-[0_0_35px_rgba(225,29,72,0.28)]">
+                <!-- ЛЕВАЯ ЧАСТЬ (6 колонок): Только ЕКАТЕРИНА ВОВК -->
+                <div class="md:col-span-6 flex flex-col justify-center select-none z-20 pt-6 md:pt-0 pointer-events-none">
+                    <div class="hero-giant-text text-burgundyAccent text-[4.6rem] sm:text-[7.2rem] lg:text-[8.5rem] tracking-tight drop-shadow-[0_0_35px_rgba(225,29,72,0.28)]">
                         ЕКАТЕРИНА
                     </div>
-                    <div class="hero-giant-text text-white text-[6.2rem] sm:text-[9.6rem] lg:text-[11.4rem] tracking-tight mt-2 sm:mt-3">
+                    <div class="hero-giant-text text-white text-[6rem] sm:text-[9.4rem] lg:text-[11rem] tracking-tight mt-2 sm:mt-3">
                         ВОВК
                     </div>
                 </div>
 
-                <!-- ПРАВАЯ ЧАСТЬ (5 колонок): Бесшовная сцена — густой живой дым + зеркально-прозрачный глянцевый микрофон -->
-                <div class="md:col-span-5 relative flex items-center justify-center h-[450px] sm:h-[540px] -mt-6 md:mt-0 overflow-visible">
-                    
-                    <!-- Верхний холодный луч прожектора, который зажигает зеркальные грани микрофона -->
-                    <div class="absolute -top-20 left-1/2 -translate-x-1/2 w-80 h-96 bg-gradient-to-b from-white/15 via-burgundyAccent/10 to-transparent blur-3xl pointer-events-none"></div>
-
-                    <!-- SVG-СЦЕНА (100% код: живая процедурная турбулентность дыма + зеркальный жидкий хром) -->
-                    <svg viewBox="0 0 640 680" class="w-[145%] max-w-[680px] h-auto overflow-visible pointer-events-none select-none" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <!-- 1. ФИЛЬТР ГУСТОГО ОБЪЕМНОГО ПАРЯЩЕГО ДЫМА (с живой анимацией завихрений внутри SVG) -->
-                            <filter id=" billowing-smoke-heavy" x="-50%" y="-50%" width="200%" height="200%" color-interpolation-filters="sRGB">
-                                <!-- Крупные клубы пара -->
-                                <feTurbulence type="fractalNoise" baseFrequency="0.011 0.015" numOctaves="5" seed="21" result="heavyNoise">
-                                    <animate attributeName="baseFrequency" values="0.011 0.015; 0.014 0.019; 0.011 0.015" dur="14s" repeatCount="indefinite"/>
-                                </feTurbulence>
-                                <feDisplacementMap in="SourceGraphic" in2="heavyNoise" scale="115" xChannelSelector="R" yChannelSelector="G" result="heavyDisplaced">
-                                    <animate attributeName="scale" values="105; 130; 105" dur="10s" repeatCount="indefinite"/>
-                                </feDisplacementMap>
-                                <feGaussianBlur in="heavyDisplaced" stdDeviation="16" result="softCloud"/>
-                                <!-- Усиление плотности и воздушности облаков -->
-                                <feComponentTransfer in="softCloud" result="denseCloud">
-                                    <feFuncA type="linear" slope="1.45" intercept="0"/>
-                                </feComponentTransfer>
-                            </filter>
-
-                            <!-- 2. ФИЛЬТР ВОЗДУШНЫХ КУЧЕВЫХ ЗАВИХРЕНИЙ (детализация краев дыма как на фото) -->
-                            <filter id="airy-smoke-curls" x="-45%" y="-45%" width="190%" height="190%" color-interpolation-filters="sRGB">
-                                <feTurbulence type="turbulence" baseFrequency="0.022 0.026" numOctaves="4" seed="8" result="curlNoise">
-                                    <animate attributeName="baseFrequency" values="0.022 0.026; 0.018 0.022; 0.022 0.026" dur="11s" repeatCount="indefinite"/>
-                                </feTurbulence>
-                                <feDisplacementMap in="SourceGraphic" in2="curlNoise" scale="75" xChannelSelector="G" yChannelSelector="B" result="curlDisplaced"/>
-                                <feGaussianBlur in="curlDisplaced" stdDeviation="8" result="airyWisps"/>
-                            </filter>
-
-                            <!-- 3. ФИЛЬТР ПЕРЕДНЕЙ ПОЛУПРОЗРАЧНОЙ ДЫМКИ (обволакивает стойку спереди) -->
-                            <filter id="front-veil-mist" x="-40%" y="-40%" width="180%" height="180%" color-interpolation-filters="sRGB">
-                                <feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="3" seed="33" result="mistNoise"/>
-                                <feDisplacementMap in="SourceGraphic" in2="mistNoise" scale="60" result="mistDisplaced"/>
-                                <feGaussianBlur in="mistDisplaced" stdDeviation="12"/>
-                            </filter>
-
-                            <!-- ГРАДИЕНТЫ ГУСТОГО МАЛИНОВО-РУБИНОВОГО ДЫМА -->
-                            <!-- Яркий клуб слева сверху (подсвеченный прожектором) -->
-                            <radialGradient id="plumeLeftBright" cx="46%" cy="44%" r="52%">
-                                <stop offset="0%" stop-color="#FF94B2" stop-opacity="0.95"/>
-                                <stop offset="24%" stop-color="#FF2A6D" stop-opacity="0.88"/>
-                                <stop offset="55%" stop-color="#BE123C" stop-opacity="0.58"/>
-                                <stop offset="82%" stop-color="#4C0519" stop-opacity="0.22"/>
-                                <stop offset="100%" stop-color="#050505" stop-opacity="0"/>
-                            </radialGradient>
-
-                            <!-- Густой клуб справа и снизу -->
-                            <radialGradient id="plumeRightDeep" cx="50%" cy="48%" r="54%">
-                                <stop offset="0%" stop-color="#FF6690" stop-opacity="0.92"/>
-                                <stop offset="30%" stop-color="#E11D48" stop-opacity="0.82"/>
-                                <stop offset="65%" stop-color="#881337" stop-opacity="0.48"/>
-                                <stop offset="88%" stop-color="#3B0414" stop-opacity="0.18"/>
-                                <stop offset="100%" stop-color="#050505" stop-opacity="0"/>
-                            </radialGradient>
-
-                            <!-- Горячее розово-малиновое ядро непосредственно позади микрофона -->
-                            <radialGradient id="plumeCenterCore" cx="50%" cy="46%" r="48%">
-                                <stop offset="0%" stop-color="#FFC2D1" stop-opacity="0.85"/>
-                                <stop offset="32%" stop-color="#FF3366" stop-opacity="0.72"/>
-                                <stop offset="68%" stop-color="#9F1239" stop-opacity="0.38"/>
-                                <stop offset="100%" stop-color="#050505" stop-opacity="0"/>
-                            </radialGradient>
-
-                            <!-- ================= ГРАДИЕНТЫ ПРОЗРАЧНОГО ЗЕРКАЛЬНОГО ХРОМА (ДЛЯ МИКРОФОНА) ================= -->
-                            <!-- 1. Основное зеркально-стеклянное тело (прозрачное внутри, зеркальное по краям) -->
-                            <linearGradient id="mirrorCrystalBody" x1="238" y1="200" x2="368" y2="360" gradientUnits="userSpaceOnUse">
-                                <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.85"/>
-                                <stop offset="14%" stop-color="#F8FAFC" stop-opacity="0.38"/>
-                                <stop offset="32%" stop-color="#FDA4AF" stop-opacity="0.12"/>
-                                <stop offset="52%" stop-color="#09090B" stop-opacity="0.24"/>
-                                <stop offset="74%" stop-color="#F43F5E" stop-opacity="0.18"/>
-                                <stop offset="90%" stop-color="#E2E8F0" stop-opacity="0.48"/>
-                                <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.88"/>
-                            </linearGradient>
-
-                            <!-- 2. Горизонтальный жидкий хром для ребер решетки (эффект полированного зеркала) -->
-                            <linearGradient id="liquidChromeRib" x1="242" y1="0" x2="358" y2="0" gradientUnits="userSpaceOnUse">
-                                <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.98"/>
-                                <stop offset="12%" stop-color="#F1F5F9" stop-opacity="0.82"/>
-                                <stop offset="26%" stop-color="#FDA4AF" stop-opacity="0.32"/>
-                                <stop offset="46%" stop-color="#0F172A" stop-opacity="0.28"/>
-                                <stop offset="68%" stop-color="#FB7185" stop-opacity="0.38"/>
-                                <stop offset="86%" stop-color="#E2E8F0" stop-opacity="0.78"/>
-                                <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.95"/>
-                            </linearGradient>
-
-                            <!-- 3. Вертикальная зеркальная стойка-хребет микрофона -->
-                            <linearGradient id="mirrorSpineChrome" x1="294" y1="200" x2="308" y2="360" gradientUnits="userSpaceOnUse">
-                                <stop offset="0%" stop-color="#FFFFFF" stop-opacity="1"/>
-                                <stop offset="22%" stop-color="#E2E8F0" stop-opacity="0.85"/>
-                                <stop offset="48%" stop-color="#FDA4AF" stop-opacity="0.42"/>
-                                <stop offset="75%" stop-color="#FFFFFF" stop-opacity="0.8"/>
-                                <stop offset="100%" stop-color="#CBD5E1" stop-opacity="0.65"/>
-                            </linearGradient>
-
-                            <!-- 4. Скользящий диагональный блик по металлу (живое переливание зеркала) -->
-                            <linearGradient id="movingMirrorSheen" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0"/>
-                                <stop offset="45%" stop-color="#FFFFFF" stop-opacity="0.05"/>
-                                <stop offset="50%" stop-color="#FFFFFF" stop-opacity="0.65"/>
-                                <stop offset="55%" stop-color="#FFE4E6" stop-opacity="0.08"/>
-                                <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
-                                <animateTransform attributeName="gradientTransform" type="translate" values="-0.6 -0.6; 0.6 0.6; -0.6 -0.6" dur="7s" repeatCount="indefinite"/>
-                            </linearGradient>
-
-                            <!-- 5. Ослепительный верхний блик софита на куполе -->
-                            <radialGradient id="mirrorCrownFlash" cx="40%" cy="14%" r="52%">
-                                <stop offset="0%" stop-color="#FFFFFF" stop-opacity="1"/>
-                                <stop offset="28%" stop-color="#F8FAFC" stop-opacity="0.75"/>
-                                <stop offset="58%" stop-color="#FECDD3" stop-opacity="0.28"/>
-                                <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
-                            </radialGradient>
-
-                            <!-- 6. Зеркально-прозрачная трубка стойки, уходящая в дым -->
-                            <linearGradient id="chromeStandTube" x1="288" y1="468" x2="312" y2="650" gradientUnits="userSpaceOnUse">
-                                <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.78"/>
-                                <stop offset="25%" stop-color="#FDA4AF" stop-opacity="0.35"/>
-                                <stop offset="60%" stop-color="#E11D48" stop-opacity="0.18"/>
-                                <stop offset="92%" stop-color="#4C0519" stop-opacity="0.05"/>
-                                <stop offset="100%" stop-color="#050505" stop-opacity="0"/>
-                            </linearGradient>
-                        </defs>
-
-                        <!-- ================= СЛОЙ 1: ЗАДНЯЯ ГУСТАЯ МАССА ПАРЯЩЕГО ДЫМА ================= -->
-                        <g filter="url(# billowing-smoke-heavy)" class="smoke-layer-back" style="mix-blend-mode: screen;">
-                            <!-- Мощный верхне-левый клуб дыма (диагональный выброс как на фото-референсе) -->
-                            <ellipse cx="165" cy="245" rx="185" ry="125" transform="rotate(26 165 245)" fill="url(#plumeLeftBright)"/>
-                            <ellipse cx="115" cy="195" rx="130" ry="90" transform="rotate(15 115 195)" fill="url(#plumeLeftBright)"/>
-                            
-                            <!-- Густая подушка дыма позади самого микрофона -->
-                            <circle cx="290" cy="325" r="145" fill="url(#plumeCenterCore)"/>
-
-                            <!-- Объемный клуб справа и снизу -->
-                            <ellipse cx="445" cy="405" rx="195" ry="140" transform="rotate(-22 445 405)" fill="url(#plumeRightDeep)"/>
-                            <ellipse cx="365" cy="470" rx="175" ry="120" fill="url(#plumeRightDeep)"/>
-                        </g>
-
-                        <!-- ================= СЛОЙ 2: ВОЗДУШНЫЕ КУЧЕВЫЕ ЗАВИХРЕНИЯ И ЯЗЫКИ ПАРА ================= -->
-                        <g filter="url(#airy-smoke-curls)" class="smoke-layer-mid" style="mix-blend-mode: screen;">
-                            <!-- Кучевые шапки слева от головки микрофона -->
-                            <circle cx="195" cy="260" r="95" fill="url(#plumeLeftBright)"/>
-                            <circle cx="235" cy="375" r="105" fill="url(#plumeCenterCore)"/>
-                            <!-- Кучевые шапки справа от микрофона -->
-                            <circle cx="405" cy="365" r="115" fill="url(#plumeRightDeep)"/>
-                            <ellipse cx="315" cy="435" rx="140" ry="95" fill="url(#plumeCenterCore)"/>
-                            <!-- Извилистые воздушные потоки дыма -->
-                            <path d="M95 215 C175 180, 225 275, 285 330 C345 385, 425 315, 515 375" stroke="#FF4D79" stroke-opacity="0.75" stroke-width="52" stroke-linecap="round"/>
-                            <path d="M165 395 C235 345, 315 415, 445 350" stroke="#FFB3C6" stroke-opacity="0.6" stroke-width="32" stroke-linecap="round"/>
-                        </g>
-
-                        <!-- Парящие микро-искры в клубах дыма -->
-                        <g class="sparkle-1">
-                            <circle cx="215" cy="225" r="1.6" fill="#FFFFFF"/>
-                            <circle cx="178" cy="285" r="2" fill="#FF94B2"/>
-                            <circle cx="395" cy="295" r="1.5" fill="#FFFFFF"/>
-                        </g>
-                        <g class="sparkle-2">
-                            <circle cx="228" cy="345" r="1.8" fill="#FFE4E6"/>
-                            <circle cx="155" cy="365" r="1.4" fill="#FF4D79"/>
-                            <circle cx="425" cy="365" r="1.8" fill="#FFB3C6"/>
-                        </g>
-                        <g class="sparkle-3">
-                            <circle cx="255" cy="195" r="1.5" fill="#FFFFFF"/>
-                            <circle cx="368" cy="415" r="1.7" fill="#FFE4E6"/>
-                        </g>
-
-                        <!-- ================= СЛОЙ 3: ЗЕРКАЛЬНО-ПРОЗРАЧНЫЙ ГЛЯНЦЕВЫЙ МИКРОФОН (ЧИСТЫЙ МЕТАЛЛ + СТЕКЛО) ================= -->
-                        <g class="mic-floating-group">
-                            
-                            <!-- Преломление розового дыма внутри прозрачной колбы микрофона -->
-                            <ellipse cx="300" cy="280" rx="44" ry="60" fill="#FF2A6D" fill-opacity="0.18" filter="blur(10px)"/>
-                            <ellipse cx="288" cy="255" rx="28" ry="42" fill="#FFFFFF" fill-opacity="0.22" filter="blur(6px)"/>
-
-                            <!-- Внутренний стеклянно-зеркальный акустический цилиндр (виден сквозь прозрачные соты решетки) -->
-                            <rect x="264" y="220" width="72" height="116" rx="36" 
-                                  fill="url(#mirrorCrystalBody)" 
-                                  stroke="#FFFFFF" 
-                                  stroke-opacity="0.55" 
-                                  stroke-width="1.2"/>
-                            <!-- Вертикальный зеркальный блик на внутреннем цилиндре -->
-                            <path d="M276 232 L276 322" stroke="#FFFFFF" stroke-opacity="0.65" stroke-width="2.5" stroke-linecap="round" filter="blur(0.5px)"/>
-
-                            <!-- ВНЕШНИЙ КОНТУР ГОЛОВКИ SHURE 55 (прозрачное зеркало с хромированной окантовкой) -->
-                            <path d="M254 218 
-                                     C254 196, 346 196, 346 218 
-                                     L354 316 
-                                     C354 342, 330 354, 300 354 
-                                     C270 354, 246 342, 246 316 Z" 
-                                  fill="url(#mirrorCrystalBody)" 
-                                  stroke="url(#liquidChromeRib)" 
-                                  stroke-width="2.4"/>
-
-                            <!-- Скользящий по металлу диагональный блик прожектора -->
-                            <path d="M254 218 C254 196, 346 196, 346 218 L354 316 C354 342, 330 354, 300 354 C270 354, 246 342, 246 316 Z" 
-                                  fill="url(#movingMirrorSheen)"/>
-
-                            <!-- Зеркальная крышка купола с ярким белым отражением софита -->
-                            <path d="M255 224 C258 200, 342 200, 345 224 C325 215, 275 215, 255 224 Z" fill="url(#mirrorCrownFlash)"/>
-                            <path d="M264 210 C282 202, 318 202, 336 210" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"/>
-
-                            <!-- ВЕРТИКАЛЬНЫЕ ХРОМИРОВАННЫЕ СТОЙКИ ВНУТРИ КАРКАСА (дают 3D-глубину прозрачному металлу) -->
-                            <path d="M267 210 L262 344" stroke="url(#mirrorSpineChrome)" stroke-width="3.2" opacity="0.85"/>
-                            <path d="M333 210 L338 344" stroke="url(#mirrorSpineChrome)" stroke-width="2.8" opacity="0.7"/>
-
-                            <!-- ГОРИЗОНТАЛЬНЫЕ ЗЕРКАЛЬНЫЕ ДУГИ РЕШЕТКИ (жидкий полированный хром) -->
-                            <g stroke="url(#liquidChromeRib)" stroke-width="3.4" stroke-linecap="round">
-                                <path d="M252 232 C275 225, 325 225, 348 232"/>
-                                <path d="M250 245 C275 239, 325 239, 350 245"/>
-                                <path d="M249 258 C275 253, 325 253, 351 258"/>
-                                <path d="M248 271 C275 267, 325 267, 352 271"/>
-                                <path d="M247 284 C275 281, 325 281, 353 284"/>
-                                <path d="M247 297 C275 295, 325 295, 353 297"/>
-                                <path d="M248 310 C275 309, 325 309, 352 310"/>
-                                <path d="M251 323 C275 323, 325 323, 349 323"/>
-                                <path d="M257 336 C278 337, 322 337, 343 336"/>
-                            </g>
-
-                            <!-- Острые чисто-белые зеркальные нити по верхнему краю каждого ребра (эффект чистого хрома) -->
-                            <g stroke="#FFFFFF" stroke-opacity="0.92" stroke-width="1.15" stroke-linecap="round">
-                                <path d="M253 231 C270 226, 290 225, 312 226"/>
-                                <path d="M251 244 C270 239, 290 238, 312 239"/>
-                                <path d="M250 257 C270 253, 290 252, 312 253"/>
-                                <path d="M249 270 C270 267, 290 266, 312 267"/>
-                                <path d="M248 283 C270 280, 290 280, 312 281"/>
-                                <path d="M248 296 C270 294, 290 294, 312 295"/>
-                                <path d="M249 309 C270 308, 290 308, 312 309"/>
-                                <path d="M252 322 C270 322, 290 322, 310 322"/>
-                            </g>
-
-                            <!-- Правые контровые блики на ребрах -->
-                            <g stroke="#FFFFFF" stroke-opacity="0.75" stroke-width="1" stroke-linecap="round">
-                                <path d="M332 229 C338 230, 344 231, 348 232"/>
-                                <path d="M334 242 C340 243, 345 244, 350 245"/>
-                                <path d="M335 255 C341 256, 346 257, 351 258"/>
-                                <path d="M336 268 C342 269, 347 270, 352 271"/>
-                                <path d="M336 282 C342 283, 348 283, 353 284"/>
-                            </g>
-
-                            <!-- ЦЕНТРАЛЬНАЯ ВЕРТИКАЛЬНАЯ ЗЕРКАЛЬНАЯ ПОЛОСА (Хром-хребет) -->
-                            <rect x="295" y="202" width="10" height="152" rx="5" 
-                                  fill="url(#mirrorSpineChrome)" 
-                                  stroke="#FFFFFF" 
-                                  stroke-opacity="0.9" 
-                                  stroke-width="1"/>
-                            <line x1="298" y1="206" x2="298" y2="350" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round"/>
-
-                            <!-- Нижняя зеркальная чаша капсюля -->
-                            <path d="M266 348 C280 359, 320 359, 334 348 L322 365 L278 365 Z" 
-                                  fill="url(#mirrorCrystalBody)" 
-                                  stroke="url(#liquidChromeRib)" 
-                                  stroke-width="1.8"/>
-
-                            <!-- ЗЕРКАЛЬНЫЙ ШАРНИР С ХРОМИРОВАННЫМ ВИНТОМ -->
-                            <rect x="282" y="365" width="36" height="22" rx="4" 
-                                  fill="url(#mirrorCrystalBody)" 
-                                  stroke="#FFFFFF" 
-                                  stroke-opacity="0.8" 
-                                  stroke-width="1.5"/>
-                            <!-- Круглое зеркальное колесико зажима -->
-                            <circle cx="312" cy="376" r="10" fill="url(#mirrorCrystalBody)" stroke="url(#liquidChromeRib)" stroke-width="2.2"/>
-                            <circle cx="312" cy="376" r="4.5" fill="#FFFFFF" fill-opacity="0.75"/>
-                            <circle cx="286" cy="376" r="6" fill="url(#mirrorCrystalBody)" stroke="#FFFFFF" stroke-opacity="0.75" stroke-width="1.5"/>
-
-                            <!-- ГЛЯНЦЕВЫЙ ПРОЗРАЧНО-ЗЕРКАЛЬНЫЙ ДЕРЖАТЕЛЬ С ТУМБЛЕРОМ -->
-                            <path d="M284 387 L318 387 L324 452 L282 452 Z" 
-                                  fill="url(#mirrorCrystalBody)" 
-                                  stroke="url(#liquidChromeRib)" 
-                                  stroke-width="1.8"/>
-                            <!-- Зеркальная левая грань держателя (чистый металлический отблеск) -->
-                            <path d="M284 387 L295 387 L293 452 L282 452 Z" fill="#FFFFFF" fill-opacity="0.48"/>
-                            <!-- Правая тонкая зеркальная кромка -->
-                            <line x1="317" y1="388" x2="323" y2="451" stroke="#FFFFFF" stroke-opacity="0.75" stroke-width="1.4"/>
-
-                            <!-- Хромированный блок переключателя слева -->
-                            <rect x="276" y="398" width="9" height="42" rx="1.5" 
-                                  fill="url(#mirrorCrystalBody)" 
-                                  stroke="#FFFFFF" 
-                                  stroke-opacity="0.85" 
-                                  stroke-width="1.3"/>
-                            <!-- Глянцевый рычажок тумблера -->
-                            <rect x="271" y="416" width="12" height="8" rx="1.5" 
-                                  fill="#FFFFFF" 
-                                  fill-opacity="0.9" 
-                                  stroke="url(#liquidChromeRib)" 
-                                  stroke-width="1.2"/>
-
-                            <!-- Хромированная гайка-муфта перехода в стойку -->
-                            <rect x="287" y="452" width="26" height="16" rx="2" 
-                                  fill="url(#mirrorSpineChrome)" 
-                                  stroke="#FFFFFF" 
-                                  stroke-opacity="0.85" 
-                                  stroke-width="1.2"/>
-                            <line x1="288" y1="457" x2="312" y2="457" stroke="#09090B" stroke-opacity="0.45" stroke-width="1.2"/>
-                            <line x1="288" y1="462" x2="312" y2="462" stroke="#09090B" stroke-opacity="0.45" stroke-width="1.2"/>
-
-                            <!-- ВЕРТИКАЛЬНАЯ ЗЕРКАЛЬНО-ПРОЗРАЧНАЯ СТОЙКА (уходит в клубы дыма) -->
-                            <rect x="290" y="468" width="20" height="175" fill="url(#chromeStandTube)"/>
-                            <!-- Левый ослепительный хромовый блик стойки -->
-                            <line x1="291" y1="468" x2="291" y2="635" stroke="#FFFFFF" stroke-opacity="0.9" stroke-width="2.2"/>
-                            <!-- Центральная тонкая нить преломления -->
-                            <line x1="297" y1="468" x2="297" y2="610" stroke="#FDA4AF" stroke-opacity="0.55" stroke-width="1"/>
-                            <!-- Правый зеркальный кант стойки -->
-                            <line x1="309" y1="468" x2="309" y2="615" stroke="#FFFFFF" stroke-opacity="0.6" stroke-width="1.3"/>
-
-                            <!-- Ювелирные блики-звездочки на зеркальных ребрах микрофона -->
-                            <g opacity="0.95">
-                                <path d="M272 212 L274 221 L283 223 L274 225 L272 234 L270 225 L261 223 L270 221 Z" fill="#FFFFFF"/>
-                                <circle cx="272" cy="223" r="6" fill="#FFFFFF" fill-opacity="0.6" filter="blur(2px)"/>
-                            </g>
-                            <g opacity="0.85">
-                                <path d="M316 370 L317.5 375 L322.5 376.5 L317.5 378 L316 383 L314.5 378 L309.5 376.5 L314.5 375 Z" fill="#FFFFFF"/>
-                            </g>
-                        </g>
-
-                        <!-- ================= СЛОЙ 4: ПЕРЕДНЯЯ ВОЗДУШНАЯ ВУАЛЬ ДЫМА (плывет прямо перед стойкой) ================= -->
-                        <g filter="url(#front-veil-mist)" class="smoke-layer-front" style="mix-blend-mode: screen;">
-                            <ellipse cx="310" cy="485" rx="155" ry="65" fill="url(#plumeCenterCore)"/>
-                            <ellipse cx="235" cy="435" rx="115" ry="52" transform="rotate(14 235 435)" fill="url(#plumeLeftBright)" opacity="0.7"/>
-                        </g>
-                    </svg>
-
+                <!-- ПРАВАЯ ЧАСТЬ (6 колонок): Контейнер с 3D-микрофоном и парящим дымом -->
+                <div class="md:col-span-6 relative h-[440px] sm:h-[520px] w-full flex items-center justify-center z-10">
+                    <div id="mic-canvas-container"></div>
                 </div>
 
             </div>
@@ -1643,7 +1290,7 @@
         </div>
     </div>
 
-    <!-- JAVASCRIPT ЛОГИКА -->
+    <!-- ОСНОВНАЯ JAVASCRIPT ЛОГИКА САЙТА -->
     <script>
         lucide.createIcons();
 
@@ -1974,6 +1621,297 @@
             setTimeout(() => {
                 copyText.textContent = 'Скопировать текст';
             }, 3000);
+        }
+    </script>
+
+    <!-- 3D LIQUID CHROME MICROPHONE & SMOKE (Three.js Модуль) -->
+    <script type="module">
+        import * as THREE from 'three';
+        import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+
+        const container = document.getElementById('mic-canvas-container');
+
+        // 1. СЦЕНА И КАМЕРА
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(42, container.clientWidth / container.clientHeight, 0.1, 100);
+        camera.position.set(0, 0.1, 6.6);
+
+        // 2. РЕНДЕРЕР С ПОЛНОЙ ПРОЗРАЧНОСТЬЮ (alpha: true)
+        const renderer = new THREE.WebGLRenderer({ 
+            antialias: true, 
+            alpha: true, 
+            powerPreference: "high-performance" 
+        });
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.setClearColor(0x000000, 0); // 0 = абсолютно прозрачный фон
+        renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 0.85; // Приглушенная экспозиция (без пересветов)
+        container.appendChild(renderer.domElement);
+
+        // Карта отражений для эффекта жидкого зеркала/металла
+        const pmremGenerator = new THREE.PMREMGenerator(renderer);
+        scene.environment = pmremGenerator.fromScene(new RoomEnvironment(), 0.04).texture;
+        scene.environmentIntensity = 0.45; // Умеренные блики окружения
+
+        // 3. ПРИГЛУШЕННЫЕ ПРОЖЕКТОРЫ (Темно-бордовый / винный и глубокий теневой)
+        const ambientLight = new THREE.AmbientLight(0x1a050d, 0.6);
+        scene.add(ambientLight);
+
+        // Левый прожектор (приглушенный малиново-бордовый)
+        const spotLightLeft = new THREE.SpotLight(0xb81d48, 8);
+        spotLightLeft.position.set(-4.5, 2.5, 2);
+        spotLightLeft.angle = Math.PI / 3;
+        spotLightLeft.penumbra = 1;
+        spotLightLeft.decay = 1.8;
+        scene.add(spotLightLeft);
+
+        // Правый контровой прожектор (глубокий винный для объема)
+        const spotLightRight = new THREE.SpotLight(0x800f2f, 6);
+        spotLightRight.position.set(4.5, -1.5, -2);
+        spotLightRight.angle = Math.PI / 2.5;
+        spotLightRight.penumbra = 1;
+        spotLightRight.decay = 1.8;
+        scene.add(spotLightRight);
+
+        // Верхний холодный блик для подчеркивания хрома и граней стекла
+        const topRimLight = new THREE.DirectionalLight(0xffccd5, 0.8);
+        topRimLight.position.set(0, 5, -3);
+        scene.add(topRimLight);
+
+        // 4. ГУСТОЙ ВОЗДУШНЫЙ ДЫМ НА ВЕТРУ
+        function createSmokeTexture() {
+            const canvas = document.createElement('canvas');
+            canvas.width = 256;
+            canvas.height = 256;
+            const ctx = canvas.getContext('2d');
+
+            // Создаем многослойное мягкое облако без жестких краев
+            const gradient = ctx.createRadialGradient(128, 128, 10, 128, 128, 128);
+            gradient.addColorStop(0, 'rgba(255, 255, 255, 0.55)');
+            gradient.addColorStop(0.35, 'rgba(220, 180, 195, 0.3)');
+            gradient.addColorStop(0.7, 'rgba(140, 50, 80, 0.08)');
+            gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, 256, 256);
+            return new THREE.CanvasTexture(canvas);
+        }
+
+        const smokeTexture = createSmokeTexture();
+        const smokeGroup = new THREE.Group();
+        scene.add(smokeGroup);
+
+        const smokeParticles = [];
+        const particleCount = 65; // Густота дыма
+
+        for (let i = 0; i < particleCount; i++) {
+            const smokeMat = new THREE.MeshLambertMaterial({
+                map: smokeTexture,
+                color: new THREE.Color().setHSL(0.95 + Math.random() * 0.04, 0.75, 0.22 + Math.random() * 0.12),
+                transparent: true,
+                opacity: 0,
+                depthWrite: false,
+                blending: THREE.AdditiveBlending
+            });
+
+            const size = 2.8 + Math.random() * 3.2;
+            const geo = new THREE.PlaneGeometry(size, size);
+            const mesh = new THREE.Mesh(geo, smokeMat);
+
+            // Начальное распределение клубов дыма вокруг центра
+            resetSmokeParticle(mesh, true);
+            smokeGroup.add(mesh);
+            smokeParticles.push(mesh);
+        }
+
+        function resetSmokeParticle(mesh, initial = false) {
+            mesh.position.x = initial ? (Math.random() - 0.5) * 7 : -4.5 - Math.random() * 2;
+            mesh.position.y = (Math.random() - 0.5) * 3.2;
+            mesh.position.z = (Math.random() - 0.5) * 2.5 - 0.8;
+            mesh.rotation.z = Math.random() * Math.PI * 2;
+
+            mesh.userData = {
+                vx: 0.008 + Math.random() * 0.014, // Скорость ветра вправо
+                vy: (Math.random() - 0.42) * 0.006, // Легкий подъем вверх
+                vr: (Math.random() - 0.5) * 0.008,  // Завихрение
+                maxOpacity: 0.14 + Math.random() * 0.18,
+                life: initial ? Math.random() * 100 : 0,
+                maxLife: 180 + Math.random() * 140,
+                turbulenceOffset: Math.random() * 100
+            };
+        }
+
+        // 5. МАТЕРИАЛЫ МИКРОФОНА (Прозрачное зеркало / Жидкий металл)
+        const liquidMirrorMaterial = new THREE.MeshPhysicalMaterial({
+            color: 0xffffff,
+            metalness: 0.35,          // Баланс между металлом и прозрачным стеклом
+            roughness: 0.04,          // Идеальный глянец
+            transmission: 0.82,       // Прозрачность (видно сквозь него)
+            ior: 2.1,                 // Высокое преломление (как у хрусталя/жидкой ртути)
+            thickness: 1.5,           // Объемное преломление внутри граней
+            envMapIntensity: 1.8,     // Зеркальные блики
+            clearcoat: 1.0,           // Дополнительный лаковый слой
+            clearcoatRoughness: 0.02,
+            transparent: true,
+            opacity: 0.95
+        });
+
+        // Внутреннее ядро (полупрозрачная темная сетка внутри, чтобы читался рельеф)
+        const innerCoreMaterial = new THREE.MeshPhysicalMaterial({
+            color: 0x2b0916,
+            metalness: 0.8,
+            roughness: 0.2,
+            transmission: 0.5,
+            transparent: true,
+            opacity: 0.45
+        });
+
+        // 6. СБОРКА 3D-МОДЕЛИ РЕТРО-МИКРОФОНА (БЕЗ СТОЙКИ)
+        const micGroup = new THREE.Group();
+        scene.add(micGroup);
+
+        // Внутренняя капсула
+        const coreGeo = new THREE.CylinderGeometry(0.52, 0.46, 1.35, 32);
+        const coreMesh = new THREE.Mesh(coreGeo, innerCoreMaterial);
+        coreMesh.position.y = 0.35;
+        micGroup.add(coreMesh);
+
+        // Верхний и нижний куполы внутренней капсулы
+        const topCapGeo = new THREE.SphereGeometry(0.52, 32, 16, 0, Math.PI * 2, 0, Math.PI / 2);
+        const topCap = new THREE.Mesh(topCapGeo, innerCoreMaterial);
+        topCap.position.y = 1.02;
+        micGroup.add(topCap);
+
+        // Горизонтальные глянцевые ребра (фирменный стиль Shure 55)
+        const ribCount = 9;
+        for (let i = 0; i < ribCount; i++) {
+            const t = i / (ribCount - 1); // от 0 до 1
+            const yPos = -0.3 + t * 1.45;
+            
+            // Плавное сужение к верху и низу
+            const profileRadius = 0.62 * Math.sin(t * Math.PI * 0.78 + 0.35);
+            const radius = Math.max(0.38, profileRadius);
+
+            const ribGeo = new THREE.TorusGeometry(radius, 0.048, 20, 48);
+            const ribMesh = new THREE.Mesh(ribGeo, liquidMirrorMaterial);
+            ribMesh.rotation.x = Math.PI / 2;
+            ribMesh.position.y = yPos;
+            micGroup.add(ribMesh);
+        }
+
+        // Центральные вертикальные дуги каркаса (передняя/задняя и боковые)
+        const frontBackArchGeo = new THREE.TorusGeometry(0.64, 0.065, 24, 64, Math.PI * 1.15);
+        const frontBackArch = new THREE.Mesh(frontBackArchGeo, liquidMirrorMaterial);
+        frontBackArch.rotation.z = -Math.PI * 0.075;
+        frontBackArch.position.y = 0.35;
+        frontBackArch.scale.set(0.95, 1.35, 1);
+        micGroup.add(frontBackArch);
+
+        const sideArch = frontBackArch.clone();
+        sideArch.rotation.y = Math.PI / 2;
+        micGroup.add(sideArch);
+
+        // Нижнее основание самого микрофона (шарнир и блок переключателя, БЕЗ ТРУБЫ-СТОЙКИ)
+        const baseCollarGeo = new THREE.CylinderGeometry(0.38, 0.26, 0.28, 32);
+        const baseCollar = new THREE.Mesh(baseCollarGeo, liquidMirrorMaterial);
+        baseCollar.position.y = -0.52;
+        micGroup.add(baseCollar);
+
+        // Шарнирный узел
+        const hingeGeo = new THREE.CylinderGeometry(0.18, 0.18, 0.46, 24);
+        const hinge = new THREE.Mesh(hingeGeo, liquidMirrorMaterial);
+        hinge.rotation.z = Math.PI / 2;
+        hinge.position.y = -0.74;
+        micGroup.add(hinge);
+
+        // Компактный нижний хвостовик (заканчивается в воздухе, без стойки)
+        const tailBodyGeo = new THREE.CylinderGeometry(0.22, 0.14, 0.55, 24);
+        const tailBody = new THREE.Mesh(tailBodyGeo, liquidMirrorMaterial);
+        tailBody.position.y = -1.08;
+        micGroup.add(tailBody);
+
+        // Декоративный тумблер ВКЛ/ВЫКЛ на корпусе
+        const switchPlateGeo = new THREE.BoxGeometry(0.16, 0.32, 0.06);
+        const switchPlate = new THREE.Mesh(switchPlateGeo, liquidMirrorMaterial);
+        switchPlate.position.set(0, -1.05, 0.21);
+        micGroup.add(switchPlate);
+
+        // 7. ИНТЕРАКТИВНОСТЬ (Плавное слежение за курсором/тачем)
+        let mouseX = 0;
+        let mouseY = 0;
+        let targetRotationY = -0.3;
+        let targetRotationX = 0.08;
+
+        window.addEventListener('pointermove', (e) => {
+            mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+            mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
+            targetRotationY = -0.3 + mouseX * 0.55;
+            targetRotationX = 0.08 - mouseY * 0.3;
+        });
+
+        // 8. АНИМАЦИЯ (Левитация микрофона + Разлетающийся на ветру дым)
+        const clock = new THREE.Clock();
+
+        function animate() {
+            requestAnimationFrame(animate);
+            const elapsedTime = clock.getElapsedTime();
+
+            // Плавное парение 3D-микрофона
+            micGroup.position.y = Math.sin(elapsedTime * 1.4) * 0.12 + 0.15;
+            
+            // Плавный поворот за мышкой + легкое живое покачивание
+            micGroup.rotation.y += (targetRotationY + Math.sin(elapsedTime * 0.6) * 0.12 - micGroup.rotation.y) * 0.05;
+            micGroup.rotation.x += (targetRotationX + Math.cos(elapsedTime * 0.8) * 0.05 - micGroup.rotation.x) * 0.05;
+
+            // Физика ветра и клубов дыма
+            for (let i = 0; i < smokeParticles.length; i++) {
+                const p = smokeParticles[i];
+                const data = p.userData;
+
+                data.life++;
+
+                // Движение по ветру с волнообразной турбулентностью
+                p.position.x += data.vx + Math.sin(elapsedTime * 1.2 + data.turbulenceOffset) * 0.004;
+                p.position.y += data.vy + Math.cos(elapsedTime * 0.9 + data.turbulenceOffset) * 0.003;
+                p.rotation.z += data.vr;
+
+                // Воздушное расширение клуба дыма по мере полета
+                const scale = 1 + (data.life / data.maxLife) * 0.65;
+                p.scale.set(scale, scale, 1);
+
+                // Плавное появление и растворение без резких границ
+                const progress = data.life / data.maxLife;
+                if (progress < 0.25) {
+                    p.material.opacity = (progress / 0.25) * data.maxOpacity;
+                } else {
+                    p.material.opacity = ((1 - progress) / 0.75) * data.maxOpacity;
+                }
+
+                // Перезапуск частицы, когда она улетела
+                if (data.life >= data.maxLife || p.position.x > 5.5) {
+                    resetSmokeParticle(p, false);
+                }
+            }
+
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        // Адаптивность под любой экран и контейнер
+        function updateCanvasSize() {
+            if (!container) return;
+            const width = container.clientWidth || 400;
+            const height = container.clientHeight || 480;
+            camera.aspect = width / height;
+            camera.updateProjectionMatrix();
+            renderer.setSize(width, height);
+        }
+
+        window.addEventListener('resize', updateCanvasSize);
+        if (window.ResizeObserver) {
+            new ResizeObserver(updateCanvasSize).observe(container);
         }
     </script>
 </body>
