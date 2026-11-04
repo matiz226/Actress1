@@ -41,13 +41,13 @@
             color: #FFFFFF;
             overflow-x: hidden;
         }
-        /* Узкая журнальная типографика */
+        /* Монументальная журнальная типографика */
         .hero-giant-text {
             font-family: 'Oswald', sans-serif;
             font-weight: 700;
             text-transform: uppercase;
-            line-height: 0.88;
-            letter-spacing: -0.02em;
+            line-height: 0.86;
+            letter-spacing: -0.025em;
         }
         /* Тонкая фирменная бордовая рамка */
         .burgundy-outline-box {
@@ -68,61 +68,31 @@
         }
         /* Текстура деликатного шума */
         .bg-noise {
-            background-image: radial-gradient(rgba(225, 29, 72, 0.06) 1px, transparent 0);
+            background-image: radial-gradient(rgba(225, 29, 72, 0.05) 1px, transparent 0);
             background-size: 28px 28px;
         }
 
-        /* Эффекты сценических прожекторов и микрофона */
-        .stage-art-box {
-            background: radial-gradient(circle at 50% 35%, rgba(190, 18, 60, 0.16) 0%, rgba(13, 13, 16, 0.92) 70%, #050505 100%);
-            box-shadow: inset 0 0 70px rgba(0, 0, 0, 0.9);
+        /* Плавное дыхание клубов дыма на фоне сайта */
+        @keyframes smokeFloatLeft {
+            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.88; }
+            50% { transform: translate(-10px, -8px) scale(1.05); opacity: 1; }
         }
-        .spotlight-beam-left {
-            position: absolute;
-            top: -25%;
-            left: -10%;
-            width: 75%;
-            height: 150%;
-            background: linear-gradient(155deg, rgba(225, 29, 72, 0.26) 0%, rgba(225, 29, 72, 0.06) 45%, transparent 75%);
-            transform: rotate(-18deg);
-            filter: blur(22px);
-            pointer-events: none;
+        @keyframes smokeFloatRight {
+            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.85; }
+            50% { transform: translate(12px, 6px) scale(1.06); opacity: 0.98; }
         }
-        .spotlight-beam-right {
-            position: absolute;
-            top: -25%;
-            right: -10%;
-            width: 70%;
-            height: 150%;
-            background: linear-gradient(205deg, rgba(255, 255, 255, 0.14) 0%, rgba(225, 29, 72, 0.08) 45%, transparent 75%);
-            transform: rotate(18deg);
-            filter: blur(20px);
-            pointer-events: none;
+        .smoke-cloud-1 {
+            animation: smokeFloatLeft 9s ease-in-out infinite;
         }
-        .spotlight-center-cone {
-            position: absolute;
-            top: -10%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 85%;
-            height: 110%;
-            background: conic-gradient(from 180deg at 50% 0%, transparent 38%, rgba(225, 29, 72, 0.18) 48%, rgba(255, 255, 255, 0.12) 50%, rgba(225, 29, 72, 0.18) 52%, transparent 62%);
-            filter: blur(16px);
-            pointer-events: none;
-        }
-        @keyframes pulseSlow {
-            0%, 100% { opacity: 0.45; transform: scale(1); }
-            50% { opacity: 0.85; transform: scale(1.04); }
-        }
-        .mic-aura {
-            animation: pulseSlow 5s ease-in-out infinite;
+        .smoke-cloud-2 {
+            animation: smokeFloatRight 11s ease-in-out infinite;
         }
     </style>
 </head>
 <body class="antialiased selection:bg-burgundyBright selection:text-white bg-noise">
 
     <!-- 1. ВЕРХНЯЯ НАВИГАЦИЯ -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-noir/95 backdrop-blur-md border-b border-white/10">
+    <header class="fixed top-0 left-0 right-0 z-50 bg-noir/90 backdrop-blur-md border-b border-white/10">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
             <!-- Меню слева -->
             <nav class="hidden md:flex items-center gap-6 text-[11px] uppercase tracking-[0.18em] font-semibold text-white/75">
@@ -176,168 +146,250 @@
         </div>
     </header>
 
-    <!-- 2. ГЛАВНЫЙ ЭКРАН (Слева: ЕКАТЕРИНА ВОВК | Справа: Полупрозрачный микрофон в лучах прожекторов) -->
-    <section class="pt-24 pb-14 sm:pt-28 sm:pb-20 border-b border-white/10 relative overflow-hidden">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6">
-            
-            <!-- Верхняя часть: Гигантская типографика слева + Арт-сцена с микрофоном и прожекторами справа -->
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-6 items-stretch">
-                
-                <!-- ЛЕВЫЙ БЛОК (7 колонок): Имя и Фамилия «ЕКАТЕРИНА ВОВК» + СПБ•34 -->
-                <div class="md:col-span-7 flex flex-col justify-between py-2 select-none z-10">
-                    <!-- 1 ярус: Бордовое имя -->
-                    <div class="space-y-1">
-                        <div class="inline-flex items-center gap-2 text-[10px] sm:text-xs font-bold uppercase tracking-[0.3em] text-white/50 mb-1">
-                            <span class="w-2 h-2 rounded-full bg-burgundyAccent animate-ping"></span>
-                            <span>Санкт-Петербург • Вся Россия</span>
-                        </div>
-                        <div class="hero-giant-text text-burgundyAccent text-[4.4rem] sm:text-[6.4rem] lg:text-[7.5rem] tracking-tight drop-shadow-[0_0_25px_rgba(225,29,72,0.22)]">
-                            ЕКАТЕРИНА
-                        </div>
-                    </div>
-                    
-                    <!-- 2 ярус: Белая фамилия ВОВК -->
-                    <div class="hero-giant-text text-white text-[5.2rem] sm:text-[7.5rem] lg:text-[8.8rem] tracking-tight my-1 sm:my-2">
-                        ВОВК
-                    </div>
+    <!-- 2. ГЛАВНЫЙ ЭКРАН (Слева: только ЕКАТЕРИНА ВОВК | Справа: бесшовный полупрозрачный микрофон в клубах малинового дыма) -->
+    <section class="pt-20 pb-14 sm:pt-24 sm:pb-20 border-b border-white/10 relative overflow-hidden">
+        
+        <!-- Фоновое мягкое свечение от дыма, растворенное в черном фоне сайта -->
+        <div class="absolute top-1/2 right-[5%] -translate-y-1/2 w-[520px] h-[520px] rounded-full bg-burgundyBright/15 blur-[130px] pointer-events-none"></div>
 
-                    <!-- 3 ярус: СПБ•34 + плашка импровизации -->
-                    <div class="pt-3 border-t border-white/10 flex flex-wrap sm:flex-nowrap items-center justify-between gap-4">
-                        <div class="hero-giant-text text-white/95 text-[3.2rem] sm:text-[4.4rem] lg:text-[5rem] leading-none">
-                            СПБ<span class="text-burgundyAccent">•</span>34
-                        </div>
-                        <div class="text-left sm:text-right space-y-1.5 sm:ml-auto">
-                            <div class="inline-block px-3.5 py-1 bg-burgundyDark/70 border border-burgundyBright text-[10px] sm:text-xs font-bold uppercase tracking-widest text-burgundyAccent shadow-[0_0_20px_rgba(225,29,72,0.25)]">
-                                100% Живая импровизация
-                            </div>
-                            <p class="text-[11px] sm:text-xs text-white/70 max-w-[230px] sm:ml-auto leading-tight">
-                                От камерных ужинов на 15 гостей до масштабных фестивалей на 5000+ зрителей
-                            </p>
-                        </div>
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+            
+            <!-- Основная композиция без рамок: Слева Имя и Фамилия, Справа встроенный в фон микрофон с дымом -->
+            <div class="grid grid-cols-1 md:grid-cols-12 items-center min-h-[420px] sm:min-h-[500px]">
+                
+                <!-- ЛЕВАЯ ЧАСТЬ (7 колонок): Только ЕКАТЕРИНА ВОВК -->
+                <div class="md:col-span-7 flex flex-col justify-center select-none z-20 pt-6 md:pt-0">
+                    <div class="hero-giant-text text-burgundyAccent text-[4.8rem] sm:text-[7.4rem] lg:text-[8.8rem] tracking-tight drop-shadow-[0_0_35px_rgba(225,29,72,0.25)]">
+                        ЕКАТЕРИНА
+                    </div>
+                    <div class="hero-giant-text text-white text-[6.2rem] sm:text-[9.6rem] lg:text-[11.4rem] tracking-tight mt-2 sm:mt-3">
+                        ВОВК
                     </div>
                 </div>
 
-                <!-- ПРАВЫЙ БЛОК (5 колонок): Эстетичная сцена с прожекторами и полупрозрачным микрофоном -->
-                <div class="md:col-span-5">
-                    <div class="w-full h-full min-h-[370px] sm:min-h-[450px] stage-art-box relative overflow-hidden border border-burgundyBright/40 flex items-center justify-center p-6 group">
-                        
-                        <!-- Сценические лучи прожекторов сверху -->
-                        <div class="spotlight-beam-left"></div>
-                        <div class="spotlight-beam-right"></div>
-                        <div class="spotlight-center-cone"></div>
+                <!-- ПРАВАЯ ЧАСТЬ (5 колонок): Бесшовная сцена — полупрозрачный ретро-микрофон и клубы дыма (100% код) -->
+                <div class="md:col-span-5 relative flex items-center justify-center h-[430px] sm:h-[520px] -mt-6 md:mt-0 overflow-visible">
+                    
+                    <!-- Невидимый верхний контровой луч света, падающий на макушку микрофона -->
+                    <div class="absolute -top-16 left-1/2 -translate-x-1/2 w-72 h-80 bg-gradient-to-b from-white/10 via-burgundyAccent/10 to-transparent blur-2xl pointer-events-none"></div>
 
-                        <!-- Верхние точки-софиты (источники света на потолке сцены) -->
-                        <div class="absolute top-0 left-1/4 w-16 h-1.5 bg-burgundyAccent/80 blur-[3px]"></div>
-                        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-1 bg-white/90 blur-[2px]"></div>
-                        <div class="absolute top-0 right-1/4 w-16 h-1.5 bg-burgundyAccent/80 blur-[3px]"></div>
+                    <!-- ПРОЦЕДУРНЫЙ ДЫМ + ПОЛУПРОЗРАЧНЫЙ МИКРОФОН SHURE 55 (SVG без рамок, сливается с #050505) -->
+                    <svg viewBox="0 0 600 650" class="w-[135%] max-w-[620px] h-auto overflow-visible pointer-events-none select-none" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <!-- 1. Фильтр реалистичного клубного дыма (Фрактальный шум + турбулентное смещение как на референсе) -->
+                            <filter id="realistic-smoke" x="-40%" y="-40%" width="180%" height="180%" color-interpolation-filters="sRGB">
+                                <feTurbulence type="fractalNoise" baseFrequency="0.014 0.018" numOctaves="5" seed="14" result="noise"/>
+                                <feDisplacementMap in="SourceGraphic" in2="noise" scale="95" xChannelSelector="R" yChannelSelector="G" result="displaced"/>
+                                <feGaussianBlur in="displaced" stdDeviation="14" result="blurred"/>
+                            </filter>
 
-                        <!-- Мягкое центральное свечение позади микрофона -->
-                        <div class="absolute w-64 h-64 rounded-full bg-burgundyBright/20 blur-3xl mic-aura pointer-events-none"></div>
-                        <div class="absolute w-36 h-36 rounded-full bg-white/5 blur-2xl pointer-events-none"></div>
+                            <!-- Вторичный фильтр для мелких клубов и дымки вокруг микрофона -->
+                            <filter id="fine-wisps" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB">
+                                <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="4" seed="7" result="wispNoise"/>
+                                <feDisplacementMap in="SourceGraphic" in2="wispNoise" scale="55" result="wispDisplaced"/>
+                                <feGaussianBlur in="wispDisplaced" stdDeviation="6"/>
+                            </filter>
 
-                        <!-- Декоративная тонкая рамка по периметру сцены -->
-                        <div class="absolute inset-3 border border-white/10 pointer-events-none flex flex-col justify-between p-3">
-                            <div class="flex justify-between items-center text-[9px] uppercase tracking-[0.25em] text-white/40 font-semibold">
-                                <span>STAGE // LIVE</span>
-                                <span class="text-burgundyAccent">ON AIR ●</span>
-                            </div>
-                            <div class="flex justify-between items-center text-[9px] uppercase tracking-[0.25em] text-white/35 font-semibold">
-                                <span>1000 VOLTS</span>
-                                <span>SAINT PETERSBURG</span>
-                            </div>
-                        </div>
+                            <!-- Градиенты малиново-бордового дыма (1-в-1 с референсом) -->
+                            <radialGradient id="smokeGradLeft" cx="45%" cy="45%" r="55%">
+                                <stop offset="0%" stop-color="#FF4D79" stop-opacity="0.85"/>
+                                <stop offset="35%" stop-color="#E11D48" stop-opacity="0.65"/>
+                                <stop offset="70%" stop-color="#881337" stop-opacity="0.3"/>
+                                <stop offset="100%" stop-color="#050505" stop-opacity="0"/>
+                            </radialGradient>
 
-                        <!-- Эстетичный полупрозрачный студийный/сценический микрофон (детальный SVG) -->
-                        <svg viewBox="0 0 320 420" class="w-60 sm:w-68 h-auto relative z-10 drop-shadow-[0_15px_35px_rgba(225,29,72,0.35)] group-hover:scale-[1.03] transition-transform duration-700" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <!-- Полупрозрачный стеклянно-металлический градиент корпуса -->
-                                <linearGradient id="micGlass" x1="90" y1="60" x2="230" y2="260" gradientUnits="userSpaceOnUse">
-                                    <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.28"/>
-                                    <stop offset="35%" stop-color="#E11D48" stop-opacity="0.18"/>
-                                    <stop offset="70%" stop-color="#0D0D10" stop-opacity="0.65"/>
-                                    <stop offset="100%" stop-color="#BE123C" stop-opacity="0.35"/>
-                                </linearGradient>
+                            <radialGradient id="smokeGradRight" cx="50%" cy="50%" r="55%">
+                                <stop offset="0%" stop-color="#FF3366" stop-opacity="0.8"/>
+                                <stop offset="40%" stop-color="#BE123C" stop-opacity="0.58"/>
+                                <stop offset="75%" stop-color="#4C0519" stop-opacity="0.25"/>
+                                <stop offset="100%" stop-color="#050505" stop-opacity="0"/>
+                            </radialGradient>
 
-                                <!-- Градиент неонового контура -->
-                                <linearGradient id="rimLight" x1="160" y1="40" x2="160" y2="390" gradientUnits="userSpaceOnUse">
-                                    <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.9"/>
-                                    <stop offset="45%" stop-color="#E11D48" stop-opacity="0.75"/>
-                                    <stop offset="100%" stop-color="#881337" stop-opacity="0.2"/>
-                                </linearGradient>
+                            <radialGradient id="smokeCoreGlow" cx="50%" cy="45%" r="48%">
+                                <stop offset="0%" stop-color="#FF809F" stop-opacity="0.55"/>
+                                <stop offset="45%" stop-color="#E11D48" stop-opacity="0.38"/>
+                                <stop offset="100%" stop-color="#050505" stop-opacity="0"/>
+                            </radialGradient>
 
-                                <!-- Свечение прожектора сверху -->
-                                <radialGradient id="topGlow" cx="50%" cy="25%" r="50%">
-                                    <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.45"/>
-                                    <stop offset="50%" stop-color="#E11D48" stop-opacity="0.2"/>
-                                    <stop offset="100%" stop-color="#050505" stop-opacity="0"/>
-                                </radialGradient>
-                            </defs>
+                            <!-- Градиенты полупрозрачного темного хрома и стекла для микрофона -->
+                            <linearGradient id="micBodyGlass" x1="235" y1="210" x2="365" y2="355" gradientUnits="userSpaceOnUse">
+                                <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.55"/>
+                                <stop offset="22%" stop-color="#F43F5E" stop-opacity="0.28"/>
+                                <stop offset="55%" stop-color="#09090B" stop-opacity="0.62"/>
+                                <stop offset="85%" stop-color="#881337" stop-opacity="0.38"/>
+                                <stop offset="100%" stop-color="#FB7185" stop-opacity="0.45"/>
+                            </linearGradient>
 
-                            <!-- Декоративные звуковые волны / орбиты вокруг микрофона -->
-                            <circle cx="160" cy="145" r="105" stroke="url(#rimLight)" stroke-opacity="0.18" stroke-width="1" stroke-dasharray="3 6"/>
-                            <circle cx="160" cy="145" r="84" stroke="#E11D48" stroke-opacity="0.28" stroke-width="1"/>
-                            <ellipse cx="160" cy="145" rx="122" ry="42" transform="rotate(-18 160 145)" stroke="url(#rimLight)" stroke-opacity="0.22" stroke-width="1"/>
+                            <!-- Яркий верхний блик прожектора на макушке микрофона -->
+                            <radialGradient id="crownHighlight" cx="42%" cy="15%" r="55%">
+                                <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.92"/>
+                                <stop offset="30%" stop-color="#FFE4E6" stop-opacity="0.55"/>
+                                <stop offset="65%" stop-color="#E11D48" stop-opacity="0.2"/>
+                                <stop offset="100%" stop-color="#050505" stop-opacity="0"/>
+                            </radialGradient>
 
-                            <!-- Ореол света вокруг головки микрофона -->
-                            <circle cx="160" cy="140" r="75" fill="url(#topGlow)"/>
+                            <!-- Металлические ребра решетки с полупрозрачным переливом -->
+                            <linearGradient id="ribChrome" x1="242" y1="0" x2="358" y2="0" gradientUnits="userSpaceOnUse">
+                                <stop offset="0%" stop-color="#FFE4E6" stop-opacity="0.75"/>
+                                <stop offset="18%" stop-color="#F43F5E" stop-opacity="0.45"/>
+                                <stop offset="48%" stop-color="#18181B" stop-opacity="0.75"/>
+                                <stop offset="78%" stop-color="#E11D48" stop-opacity="0.4"/>
+                                <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.65"/>
+                            </linearGradient>
 
-                            <!-- ВнешняяU-образная вилка-держатель (крепление ретро-микрофона) -->
-                            <path d="M96 148 C96 225, 224 225, 224 148" stroke="url(#rimLight)" stroke-width="3.5" stroke-linecap="round"/>
-                            <path d="M102 148 C102 216, 218 216, 218 148" stroke="#FFFFFF" stroke-opacity="0.18" stroke-width="1"/>
-                            <!-- Боковые винты-фиксаторы -->
-                            <circle cx="96" cy="148" r="7" fill="#151519" stroke="url(#rimLight)" stroke-width="2"/>
-                            <circle cx="224" cy="148" r="7" fill="#151519" stroke="url(#rimLight)" stroke-width="2"/>
+                            <!-- Вертикальная центральная стойка решетки -->
+                            <linearGradient id="centerSpine" x1="292" y1="205" x2="308" y2="355" gradientUnits="userSpaceOnUse">
+                                <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.9"/>
+                                <stop offset="35%" stop-color="#FDA4AF" stop-opacity="0.65"/>
+                                <stop offset="70%" stop-color="#881337" stop-opacity="0.5"/>
+                                <stop offset="100%" stop-color="#18181B" stop-opacity="0.7"/>
+                            </linearGradient>
 
-                            <!-- КАПСЮЛЬ МИКРОФОНА (Полупрозрачный корпус) -->
-                            <rect x="114" y="68" width="92" height="136" rx="46" fill="url(#micGlass)" stroke="url(#rimLight)" stroke-width="2.2"/>
+                            <!-- Полупрозрачная стойка микрофона, растворяющаяся книзу -->
+                            <linearGradient id="standFade" x1="300" y1="440" x2="300" y2="640" gradientUnits="userSpaceOnUse">
+                                <stop offset="0%" stop-color="#F43F5E" stop-opacity="0.55"/>
+                                <stop offset="40%" stop-color="#881337" stop-opacity="0.32"/>
+                                <stop offset="85%" stop-color="#18181B" stop-opacity="0.15"/>
+                                <stop offset="100%" stop-color="#050505" stop-opacity="0"/>
+                            </linearGradient>
+
+                            <linearGradient id="standRimLeft" x1="291" y1="440" x2="291" y2="635" gradientUnits="userSpaceOnUse">
+                                <stop offset="0%" stop-color="#FDA4AF" stop-opacity="0.8"/>
+                                <stop offset="65%" stop-color="#E11D48" stop-opacity="0.45"/>
+                                <stop offset="100%" stop-color="#050505" stop-opacity="0"/>
+                            </linearGradient>
+                        </defs>
+
+                        <!-- ================= СЛОЙ 1: ЗАДНИЙ ПЛАН КЛУБОВ ДЫМА ================= -->
+                        <g filter="url(#realistic-smoke)" class="smoke-cloud-1">
+                            <!-- Верхне-левый клуб дыма (как на референсе) -->
+                            <ellipse cx="170" cy="255" rx="165" ry="110" transform="rotate(24 170 255)" fill="url(#smokeGradLeft)"/>
+                            <circle cx="220" cy="295" r="95" fill="url(#smokeCoreGlow)"/>
+                        </g>
+
+                        <g filter="url(#realistic-smoke)" class="smoke-cloud-2">
+                            <!-- Нижне-правый густой клуб дыма -->
+                            <ellipse cx="425" cy="405" rx="175" ry="125" transform="rotate(-18 425 405)" fill="url(#smokeGradRight)"/>
+                            <!-- Центральное облако позади держателя микрофона -->
+                            <ellipse cx="305" cy="415" rx="150" ry="115" fill="url(#smokeGradLeft)"/>
+                        </g>
+
+                        <!-- Тонкие рваные языки дыма прямо вокруг головки микрофона -->
+                        <g filter="url(#fine-wisps)" opacity="0.75">
+                            <path d="M130 220 C190 190, 235 260, 265 310 C295 360, 390 320, 460 370" stroke="#FF4D79" stroke-width="38" stroke-linecap="round"/>
+                            <path d="M185 380 C240 340, 310 390, 415 345" stroke="#FDA4AF" stroke-width="24" stroke-linecap="round" opacity="0.6"/>
+                        </g>
+
+                        <!-- Мелкие искры/пылинки в лучах света слева от микрофона -->
+                        <g opacity="0.75">
+                            <circle cx="228" cy="215" r="1.3" fill="#FFE4E6"/>
+                            <circle cx="195" cy="252" r="1.6" fill="#FF809F"/>
+                            <circle cx="212" cy="318" r="1.1" fill="#FFFFFF"/>
+                            <circle cx="164" cy="358" r="1.5" fill="#FB7185"/>
+                            <circle cx="152" cy="412" r="1.2" fill="#FFE4E6"/>
+                            <circle cx="385" cy="245" r="1.3" fill="#FB7185"/>
+                            <circle cx="418" cy="308" r="1.5" fill="#FFE4E6"/>
+                        </g>
+
+                        <!-- ================= СЛОЙ 2: ПОЛУПРОЗРАЧНЫЙ МИКРОФОН SHURE 55 ================= -->
+                        <!-- Небольшой наклон как на референсе (-3 градуса) -->
+                        <g transform="rotate(-3 300 350)">
                             
-                            <!-- Внутренний светящийся сердечник капсюля (полупрозрачный) -->
-                            <rect x="132" y="88" width="56" height="96" rx="28" fill="#E11D48" fill-opacity="0.12" stroke="#FFFFFF" stroke-opacity="0.2" stroke-width="1"/>
+                            <!-- Внутреннее свечение сквозь полупрозрачную головку микрофона -->
+                            <ellipse cx="300" cy="280" rx="46" ry="62" fill="#E11D48" fill-opacity="0.22" filter="blur(8px)"/>
 
-                            <!-- Горизонтальные акустические ребра решетки микрофона -->
-                            <line x1="118" y1="96" x2="202" y2="96" stroke="#FFFFFF" stroke-opacity="0.28" stroke-width="1.5"/>
-                            <line x1="115" y1="112" x2="205" y2="112" stroke="#FFFFFF" stroke-opacity="0.35" stroke-width="1.5"/>
-                            <line x1="114" y1="128" x2="206" y2="128" stroke="#FFFFFF" stroke-opacity="0.4" stroke-width="1.5"/>
-                            <!-- Центральное акцентное кольцо микрофона -->
-                            <rect x="112" y="139" width="96" height="8" rx="4" fill="#BE123C" fill-opacity="0.55" stroke="#FFFFFF" stroke-opacity="0.6" stroke-width="1.2"/>
-                            <line x1="115" y1="158" x2="205" y2="158" stroke="#FFFFFF" stroke-opacity="0.3" stroke-width="1.5"/>
-                            <line x1="118" y1="174" x2="202" y2="174" stroke="#FFFFFF" stroke-opacity="0.22" stroke-width="1.5"/>
+                            <!-- Внутренняя полупрозрачная капсула (ветрозащита внутри решетки, просвечивающая сквозь ребра) -->
+                            <rect x="260" y="222" width="80" height="114" rx="36" fill="#18040B" fill-opacity="0.52" stroke="#FB7185" stroke-opacity="0.3" stroke-width="1"/>
+                            <ellipse cx="292" cy="250" rx="26" ry="34" fill="url(#crownHighlight)" opacity="0.65"/>
 
-                            <!-- Вертикальный блик от прожектора на корпусе -->
-                            <path d="M138 78 C130 105, 130 165, 138 192" stroke="#FFFFFF" stroke-opacity="0.45" stroke-width="2.5" stroke-linecap="round"/>
-                            <line x1="160" y1="69" x2="160" y2="203" stroke="#E11D48" stroke-opacity="0.35" stroke-width="1.2"/>
+                            <!-- ОСНОВНОЙ КОРПУС КАПСЮЛЯ (трапециевидно-сферическая форма Shure 55) -->
+                            <path d="M254 218 
+                                     C254 198, 346 198, 346 218 
+                                     L354 316 
+                                     C354 342, 330 354, 300 354 
+                                     C270 354, 246 342, 246 316 Z" 
+                                  fill="url(#micBodyGlass)" 
+                                  stroke="url(#ribChrome)" 
+                                  stroke-width="2"/>
 
-                            <!-- Нижний узел крепления и переход в стойку -->
-                            <path d="M142 208 L178 208 L172 242 L148 242 Z" fill="url(#micGlass)" stroke="url(#rimLight)" stroke-width="1.8"/>
-                            <rect x="150" y="242" width="20" height="12" rx="3" fill="#BE123C" fill-opacity="0.5" stroke="#FFFFFF" stroke-opacity="0.4" stroke-width="1"/>
+                            <!-- Верхний купол с ярким холодным бликом от прожектора -->
+                            <path d="M255 224 C258 202, 342 202, 345 224 C325 216, 275 216, 255 224 Z" fill="url(#crownHighlight)"/>
 
-                            <!-- Стойка микрофона, уходящая в легкую дымку внизу -->
-                            <rect x="154" y="254" width="12" height="145" fill="url(#micGlass)" stroke="url(#rimLight)" stroke-width="1.5"/>
-                            <line x1="158" y1="254" x2="158" y2="395" stroke="#FFFFFF" stroke-opacity="0.4" stroke-width="1.5"/>
-
-                            <!-- Световые блики-звездочки от софитов -->
-                            <g opacity="0.85">
-                                <path d="M202 82 L205 92 L215 95 L205 98 L202 108 L199 98 L189 95 L199 92 Z" fill="#FFFFFF"/>
-                                <circle cx="202" cy="95" r="8" fill="#E11D48" fill-opacity="0.4" filter="blur(4px)"/>
+                            <!-- ГОРИЗОНТАЛЬНЫЕ АКУСТИЧЕСКИЕ РЕБРА (дуги с металлическим свечением и тенями) -->
+                            <g stroke="url(#ribChrome)" stroke-width="3.2" stroke-linecap="round">
+                                <path d="M252 232 C275 225, 325 225, 348 232"/>
+                                <path d="M250 245 C275 239, 325 239, 350 245"/>
+                                <path d="M249 258 C275 253, 325 253, 351 258"/>
+                                <path d="M248 271 C275 267, 325 267, 352 271"/>
+                                <path d="M247 284 C275 281, 325 281, 353 284"/>
+                                <path d="M247 297 C275 295, 325 295, 353 297"/>
+                                <path d="M248 310 C275 309, 325 309, 352 310"/>
+                                <path d="M251 323 C275 323, 325 323, 349 323"/>
+                                <path d="M257 336 C278 337, 322 337, 343 336"/>
                             </g>
-                            <g opacity="0.65">
-                                <path d="M108 110 L110 116 L116 118 L110 120 L108 126 L106 120 L100 118 L106 116 Z" fill="#E11D48"/>
-                            </g>
-                            <circle cx="235" cy="195" r="2" fill="#FFFFFF" fill-opacity="0.6"/>
-                            <circle cx="88" cy="185" r="2.5" fill="#E11D48" fill-opacity="0.7"/>
-                            <circle cx="122" cy="52" r="1.8" fill="#FFFFFF" fill-opacity="0.5"/>
-                            <circle cx="212" cy="58" r="2" fill="#E11D48" fill-opacity="0.6"/>
-                        </svg>
 
-                        <!-- Нижний градиент сценического дыма -->
-                        <div class="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-noir via-noir/60 to-transparent pointer-events-none"></div>
-                    </div>
+                            <!-- Тонкие световые блики поверх каждого ребра слева -->
+                            <g stroke="#FFFFFF" stroke-opacity="0.55" stroke-width="1" stroke-linecap="round">
+                                <path d="M254 231 C268 227, 285 226, 296 226"/>
+                                <path d="M252 244 C268 240, 285 239, 296 239"/>
+                                <path d="M251 257 C268 254, 285 253, 296 253"/>
+                                <path d="M250 270 C268 268, 285 267, 296 267"/>
+                                <path d="M249 283 C268 281, 285 281, 296 281"/>
+                                <path d="M249 296 C268 295, 285 295, 296 295"/>
+                                <path d="M250 309 C268 309, 285 309, 296 309"/>
+                            </g>
+
+                            <!-- Вертикальные боковые стойки каркаса головки (создают 3D-объем как на фото) -->
+                            <path d="M268 210 L264 344" stroke="url(#centerSpine)" stroke-width="3.5" opacity="0.75"/>
+                            <path d="M332 210 L336 344" stroke="#881337" stroke-opacity="0.7" stroke-width="3"/>
+
+                            <!-- Центральная передняя вертикальная шина микрофона -->
+                            <rect x="295" y="204" width="10" height="150" rx="5" fill="url(#centerSpine)" stroke="#FFFFFF" stroke-opacity="0.45" stroke-width="0.8"/>
+
+                            <!-- Нижняя чаша основания капсюля -->
+                            <path d="M266 348 C280 358, 320 358, 334 348 L322 364 L278 364 Z" fill="url(#micBodyGlass)" stroke="url(#ribChrome)" stroke-width="1.5"/>
+
+                            <!-- ШАРНИРНЫЙ УЗЕЛ С КОЛЕСИКОМ ЗАЖИМА (1-в-1 как на референсе) -->
+                            <rect x="282" y="364" width="36" height="22" rx="4" fill="url(#micBodyGlass)" stroke="#FDA4AF" stroke-opacity="0.55" stroke-width="1.4"/>
+                            <!-- Боковое рельефное колесико регулировки наклона -->
+                            <circle cx="312" cy="375" r="10" fill="#18181B" fill-opacity="0.8" stroke="url(#ribChrome)" stroke-width="2"/>
+                            <circle cx="312" cy="375" r="5" fill="#E11D48" fill-opacity="0.45" stroke="#FFFFFF" stroke-opacity="0.6" stroke-width="1"/>
+                            <circle cx="286" cy="375" r="6" fill="#18181B" fill-opacity="0.7" stroke="#FDA4AF" stroke-opacity="0.6" stroke-width="1.5"/>
+
+                            <!-- МАССИВНЫЙ ДЕРЖАТЕЛЬ С ТУМБЛЕРОМ ВКЛЮЧЕНИЯ (ON/OFF блок под шарниром) -->
+                            <path d="M284 386 L318 386 L324 452 L282 452 Z" fill="url(#micBodyGlass)" stroke="url(#ribChrome)" stroke-width="1.6"/>
+                            <!-- Светлая левая грань держателя (отражает розовый дым) -->
+                            <path d="M284 386 L296 386 L294 452 L282 452 Z" fill="#FDA4AF" fill-opacity="0.28"/>
+                            <!-- Выступающий ступенчатый блок переключателя слева -->
+                            <rect x="277" y="398" width="9" height="42" rx="1.5" fill="#18181B" fill-opacity="0.75" stroke="#FDA4AF" stroke-opacity="0.65" stroke-width="1.2"/>
+                            <!-- Сам рычажок тумблера -->
+                            <rect x="272" y="416" width="11" height="8" rx="1.5" fill="#FFE4E6" stroke="#E11D48" stroke-width="1"/>
+
+                            <!-- Кольцо-гайка перехода в трубку стойки -->
+                            <rect x="287" y="452" width="26" height="16" rx="2" fill="url(#micBodyGlass)" stroke="#FDA4AF" stroke-opacity="0.5" stroke-width="1.2"/>
+                            <line x1="287" y1="457" x2="313" y2="457" stroke="#FFFFFF" stroke-opacity="0.4" stroke-width="1"/>
+                            <line x1="287" y1="462" x2="313" y2="462" stroke="#FFFFFF" stroke-opacity="0.3" stroke-width="1"/>
+
+                            <!-- ВЕРТИКАЛЬНАЯ СТОЙКА МИКРОФОНА (плавно растворяется в черном фоне сайта) -->
+                            <rect x="290" y="468" width="20" height="175" fill="url(#standFade)"/>
+                            <!-- Яркий розовый рефлекс по левому краю стойки -->
+                            <line x1="291" y1="468" x2="291" y2="635" stroke="url(#standRimLeft)" stroke-width="2.2"/>
+                            <!-- Тонкий холодный рефлекс по правому краю стойки -->
+                            <line x1="309" y1="468" x2="309" y2="610" stroke="#E11D48" stroke-opacity="0.35" stroke-width="1"/>
+                        </g>
+
+                        <!-- ================= СЛОЙ 3: ПЕРЕДНЯЯ ПОЛУПРОЗРАЧНАЯ ДЫМКА ПОВЕРХ СТОЙКИ ================= -->
+                        <g filter="url(#fine-wisps)" opacity="0.45">
+                            <ellipse cx="320" cy="465" rx="115" ry="45" fill="url(#smokeCoreGlow)"/>
+                        </g>
+                    </svg>
+
                 </div>
 
             </div>
 
             <!-- Строка с разрядкой: ШОУВУМЕН | ИМПРОВИЗАЦИЯ | ВЕДУЩАЯ -->
-            <div class="mt-6 py-3.5 border-t border-white/15 flex items-center justify-between text-[11px] sm:text-sm font-semibold uppercase tracking-[0.25em] sm:tracking-[0.5em] text-white/75 text-center">
+            <div class="mt-2 py-3.5 border-t border-white/15 flex items-center justify-between text-[11px] sm:text-sm font-semibold uppercase tracking-[0.25em] sm:tracking-[0.5em] text-white/75 text-center relative z-20">
                 <span>Ш О У В У М Е Н</span>
                 <span class="text-burgundyAccent">|</span>
                 <span>И М П Р О В И З А Ц И Я</span>
@@ -346,7 +398,7 @@
             </div>
 
             <!-- Широкая прямоугольная бордовая кнопка во всю ширину макета + быстрые кнопки связи -->
-            <div class="mt-2 grid grid-cols-1 lg:grid-cols-12 gap-3">
+            <div class="mt-2 grid grid-cols-1 lg:grid-cols-12 gap-3 relative z-20">
                 <a href="#booking" class="lg:col-span-8 py-4 sm:py-5 bg-burgundyBright hover:bg-burgundyAccent text-white font-sans font-bold text-xs sm:text-sm uppercase tracking-[0.22em] flex items-center justify-center gap-2 transition-all burgundy-btn-glow">
                     <span>ЗАКАЗАТЬ МЕРОПРИЯТИЕ</span>
                     <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
