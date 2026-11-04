@@ -13,16 +13,6 @@
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- Подключаем Three.js (Importmap для 3D Liquid Chrome Microphone) -->
-    <script type="importmap">
-      {
-        "imports": {
-          "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
-          "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
-        }
-      }
-    </script>
-
     <script>
         tailwind.config = {
             theme: {
@@ -46,20 +36,248 @@
     </script>
 
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            background-color: #050505;
+            background-color: #0A0A0A;
             color: #FFFFFF;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             overflow-x: hidden;
         }
-        /* Монументальная журнальная типографика */
-        .hero-giant-text {
+
+        /* Главная секция-шапка (по твоему новому референсу) */
+        .hero-header {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 90px 60px 40px 60px;
+            background: radial-gradient(circle at bottom center, rgba(155, 27, 48, 0.25) 0%, rgba(10, 10, 10, 1) 70%);
+            overflow: hidden;
+        }
+
+        /* Эффект камина и поднимающийся дым снизу */
+        .stage-smoke-bottom {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60vh;
+            background: linear-gradient(to top, rgba(128, 0, 32, 0.35), rgba(155, 27, 48, 0.15) 40%, transparent 100%);
+            pointer-events: none;
+            z-index: 1;
+            filter: blur(40px);
+            animation: smokeRise 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes smokeRise {
+            0% { transform: translateY(20px) scale(1); opacity: 0.7; }
+            100% { transform: translateY(-20px) scale(1.05); opacity: 1; }
+        }
+
+        /* Левая часть: Типографика */
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 600px;
+        }
+
+        .location-tag {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #800020;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .location-tag .dot {
+            width: 8px;
+            height: 8px;
+            background-color: #9B1B30;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #9B1B30;
+        }
+
+        .hero-title {
+            font-size: clamp(50px, 7vw, 110px);
+            line-height: 0.95;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            margin-bottom: 30px;
             font-family: 'Oswald', sans-serif;
+        }
+
+        .hero-title .name-line-1 {
+            color: #E11D48;
+            text-shadow: 0 0 30px rgba(155, 27, 48, 0.4);
+        }
+
+        .hero-title .name-line-2 {
+            color: #FFFFFF;
+        }
+
+        .hero-footer-info {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .age-badge {
+            font-size: 32px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Oswald', sans-serif;
+        }
+
+        .age-badge .live-dot {
+            width: 12px;
+            height: 12px;
+            background-color: #9B1B30;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(155, 27, 48, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(155, 27, 48, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(155, 27, 48, 0); }
+        }
+
+        .features-card {
+            border: 1px solid rgba(155, 27, 48, 0.3);
+            padding: 16px 20px;
+            background: rgba(10, 10, 10, 0.6);
+            backdrop-filter: blur(10px);
+            max-width: 300px;
+        }
+
+        .features-card .f-title {
+            color: #9B1B30;
+            font-size: 13px;
             font-weight: 700;
             text-transform: uppercase;
-            line-height: 0.86;
-            letter-spacing: -0.025em;
+            margin-bottom: 5px;
         }
-        /* Тонкая фирменная бордовая рамка */
+
+        .features-card .f-desc {
+            font-size: 13px;
+            color: #CCCCCC;
+            line-height: 1.4;
+        }
+
+        /* Правая часть: Бесшовная зона с парящим микрофоном и прожекторами */
+        .hero-visual-container {
+            position: relative;
+            width: 450px;
+            height: 550px;
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-top-bar {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            letter-spacing: 1px;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            z-index: 5;
+        }
+
+        .on-air-indicator {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #FFFFFF;
+        }
+
+        .on-air-dot {
+            width: 6px;
+            height: 6px;
+            background-color: #9B1B30;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #9B1B30;
+        }
+
+        .card-bottom-bar {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.3);
+            letter-spacing: 2px;
+            z-index: 5;
+            text-transform: uppercase;
+        }
+
+        .spotlight {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(155, 27, 48, 0.4) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            transition: width 0.3s, height 0.3s;
+            mix-blend-mode: screen;
+        }
+
+        .floating-mic-wrapper {
+            position: relative;
+            width: 220px;
+            height: 380px;
+            z-index: 4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            filter: drop-shadow(0 0 25px rgba(128, 0, 32, 0.5));
+            animation: floatMic 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes floatMic {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-12px); }
+        }
+
+        .glass-microphone {
+            width: 100%;
+            height: 100%;
+            fill: none;
+            stroke: rgba(255, 255, 255, 0.85);
+            stroke-width: 2;
+            filter: drop-shadow(0 0 10px rgba(155, 27, 48, 0.8));
+        }
+
+        .glass-microphone .inner-glow {
+            fill: rgba(155, 27, 48, 0.15);
+            backdrop-filter: blur(5px);
+        }
+
+        /* Тонкие фирменные бордовые рамки */
         .burgundy-outline-box {
             border: 1px solid #BE123C;
             background: rgba(13, 13, 16, 0.7);
@@ -76,26 +294,32 @@
         .burgundy-btn-glow:hover {
             box-shadow: 0 0 28px rgba(225, 29, 72, 0.5);
         }
-        /* Текстура деликатного шума */
         .bg-noise {
             background-image: radial-gradient(rgba(225, 29, 72, 0.05) 1px, transparent 0);
             background-size: 28px 28px;
         }
 
-        /* Контейнер 3D-микрофона — полностью прозрачный и встроенный в фон сайта */
-        #mic-canvas-container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            min-height: 440px;
-            background: transparent;
-            pointer-events: auto;
-        }
-        #mic-canvas-container canvas {
-            display: block;
-            width: 100% !important;
-            height: 100% !important;
-            outline: none;
+        @media (max-width: 968px) {
+            .hero-header {
+                flex-direction: column;
+                padding: 100px 20px 40px 20px;
+                text-align: center;
+            }
+            .hero-content {
+                max-width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .hero-footer-info {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .hero-visual-container {
+                width: 100%;
+                height: 400px;
+                margin-top: 40px;
+            }
         }
     </style>
 </head>
@@ -156,64 +380,90 @@
         </div>
     </header>
 
-    <!-- 2. ГЛАВНЫЙ ЭКРАН (Слева: ЕКАТЕРИНА ВОВК | Справа: Твой 3D Liquid Chrome Microphone на Three.js) -->
-    <section class="pt-20 pb-14 sm:pt-24 sm:pb-20 border-b border-white/10 relative overflow-hidden">
-        
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+    <!-- 2. ГЛАВНЫЙ ЭКРАН (Референс-шапка) -->
+    <header class="hero-header">
+        <!-- Сценический дым и каминное свечение снизу -->
+        <div class="stage-smoke-bottom"></div>
+
+        <!-- Левый блок с текстом -->
+        <div class="hero-content">
+            <div class="location-tag">
+                <span class="dot"></span>
+                Санкт-Петербург • Вся Россия
+            </div>
             
-            <!-- Основная композиция: Слева только Имя и Фамилия, Справа 3D-микрофон в клубах дыма -->
-            <div class="grid grid-cols-1 md:grid-cols-12 items-center min-h-[440px] sm:min-h-[520px]">
+            <h1 class="hero-title">
+                <div class="name-line-1">Екатерина</div>
+                <div class="name-line-2">Вовк</div>
+            </h1>
+
+            <div class="hero-footer-info">
+                <div class="age-badge">
+                    СПБ <span class="live-dot"></span> 34
+                </div>
                 
-                <!-- ЛЕВАЯ ЧАСТЬ (6 колонок): Только ЕКАТЕРИНА ВОВК -->
-                <div class="md:col-span-6 flex flex-col justify-center select-none z-20 pt-6 md:pt-0 pointer-events-none">
-                    <div class="hero-giant-text text-burgundyAccent text-[4.6rem] sm:text-[7.2rem] lg:text-[8.5rem] tracking-tight drop-shadow-[0_0_35px_rgba(225,29,72,0.28)]">
-                        ЕКАТЕРИНА
-                    </div>
-                    <div class="hero-giant-text text-white text-[6rem] sm:text-[9.4rem] lg:text-[11rem] tracking-tight mt-2 sm:mt-3">
-                        ВОВК
-                    </div>
+                <div class="features-card">
+                    <div class="f-title">100% живая импровизация</div>
+                    <div class="f-desc">От камерных ужинов на 15 гостей до масштабных фестивалей на 5000+ зрителей</div>
                 </div>
-
-                <!-- ПРАВАЯ ЧАСТЬ (6 колонок): Контейнер с 3D-микрофоном и парящим дымом -->
-                <div class="md:col-span-6 relative h-[440px] sm:h-[520px] w-full flex items-center justify-center z-10">
-                    <div id="mic-canvas-container"></div>
-                </div>
-
             </div>
-
-            <!-- Строка с разрядкой: ШОУВУМЕН | ИМПРОВИЗАЦИЯ | ВЕДУЩАЯ -->
-            <div class="mt-2 py-3.5 border-t border-white/15 flex items-center justify-between text-[11px] sm:text-sm font-semibold uppercase tracking-[0.25em] sm:tracking-[0.5em] text-white/75 text-center relative z-20">
-                <span>Ш О У В У М Е Н</span>
-                <span class="text-burgundyAccent">|</span>
-                <span>И М П Р О В И З А Ц И Я</span>
-                <span class="text-burgundyAccent">|</span>
-                <span>В Е Д У Щ А Я</span>
-            </div>
-
-            <!-- Широкая прямоугольная бордовая кнопка во всю ширину макета + быстрые кнопки связи -->
-            <div class="mt-2 grid grid-cols-1 lg:grid-cols-12 gap-3 relative z-20">
-                <a href="#booking" class="lg:col-span-8 py-4 sm:py-5 bg-burgundyBright hover:bg-burgundyAccent text-white font-sans font-bold text-xs sm:text-sm uppercase tracking-[0.22em] flex items-center justify-center gap-2 transition-all burgundy-btn-glow">
-                    <span>ЗАКАЗАТЬ МЕРОПРИЯТИЕ</span>
-                    <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
-                </a>
-                <a href="https://t.me/obezskaya" target="_blank" rel="noopener noreferrer" class="lg:col-span-2 py-4 sm:py-5 bg-charcoal hover:bg-burgundyDark/60 border border-burgundyBright/50 text-white font-bold text-xs uppercase tracking-widest flex items-center justify-center gap-2 transition-all">
-                    <i data-lucide="send" class="w-4 h-4 text-burgundyAccent"></i>
-                    <span>Telegram</span>
-                </a>
-                <a href="tel:+79210913336" class="lg:col-span-2 py-4 sm:py-5 bg-charcoal hover:bg-burgundyDark/60 border border-burgundyBright/50 text-white font-bold text-xs uppercase tracking-widest flex items-center justify-center gap-2 transition-all">
-                    <i data-lucide="phone-call" class="w-4 h-4 text-burgundyAccent"></i>
-                    <span>Позвонить</span>
-                </a>
-            </div>
-
         </div>
-    </section>
+
+        <!-- Правый блок: парящий микрофон, прожектор и интерфейс STAGE // LIVE -->
+        <div class="hero-visual-container" id="visualCard">
+            <!-- Интерактивный прожектор за курсором -->
+            <div class="spotlight" id="spotlight"></div>
+
+            <!-- Верхняя панель карточки -->
+            <div class="card-top-bar">
+                <span>STAGE // LIVE</span>
+                <div class="on-air-indicator">
+                    <span class="on-air-dot"></span>
+                    ON AIR
+                </div>
+            </div>
+
+            <!-- Парящий микрофон без стойки (прозрачный хром/стекло) -->
+            <div class="floating-mic-wrapper">
+                <svg class="glass-microphone" viewBox="0 0 200 350" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Внутреннее свечение капсюля -->
+                    <path class="inner-glow" d="M60,80 C60,40 140,40 140,80 L140,150 C140,190 60,190 60,150 Z" />
+                    
+                    <!-- Дуги и решетка микрофона (эффект прозрачного стекла) -->
+                    <path d="M60,80 C60,40 140,40 140,80 L140,150 C140,190 60,190 60,150 Z" stroke-width="3" stroke="rgba(255,255,255,0.9)"/>
+                    <line x1="60" y1="80" x2="140" y2="80" stroke-width="1.5" />
+                    <line x1="58" y1="110" x2="142" y2="110" stroke-width="1.5" />
+                    <line x1="60" y1="140" x2="140" y2="140" stroke-width="1.5" />
+                    <line x1="75" y1="50" x2="75" y2="180" stroke-width="1.5" />
+                    <line x1="100" y1="42" x2="100" y2="188" stroke-width="2" stroke="#9B1B30" />
+                    <line x1="125" y1="50" x2="125" y2="180" stroke-width="1.5" />
+
+                    <!-- Внешний защитный контур (округлые дуги крепления капсюля) -->
+                    <path d="M45,90 C35,130 50,180 80,195" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M155,90 C165,130 150,180 120,195" stroke-width="2" stroke-linecap="round"/>
+                    
+                    <!-- Блестящий центральный узел (без нижней стойки!) -->
+                    <rect x="85" y="195" width="30" height="35" rx="5" fill="rgba(10,10,10,0.8)" stroke="rgba(255,255,255,0.8)" stroke-width="2"/>
+                    <circle cx="100" cy="212" r="4" fill="#9B1B30" />
+
+                    <!-- Декоративные орбитальные линии / звуковые волны -->
+                    <path d="M20,120 Q10,150 30,180" stroke="rgba(155, 27, 48, 0.6)" stroke-width="1.5" stroke-dasharray="4 4" />
+                    <path d="M180,120 Q190,150 170,180" stroke="rgba(155, 27, 48, 0.6)" stroke-width="1.5" stroke-dasharray="4 4" />
+                </svg>
+            </div>
+
+            <!-- Нижняя панель карточки -->
+            <div class="card-bottom-bar">
+                <span>1000 VOLTS</span>
+                <span>SAINT PETERSBURG</span>
+            </div>
+        </div>
+    </header>
 
     <!-- 3. БЛОК МАНИФЕСТА, 9 ФАКТОВ В 3 КОЛОНКИ И КОЛЛАЖ «МОЯ ЭНЕРГИЯ И СТИЛЬ» -->
     <section id="about" class="py-16 sm:py-24 border-b border-white/10">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 space-y-16">
             
-            <!-- 3.1 Крупный двухцветный заголовок (Бордовый + Белый) -->
             <div class="max-w-4xl">
                 <h2 class="font-display font-bold text-3xl sm:text-5xl lg:text-[3.4rem] uppercase leading-[1.08] tracking-wide">
                     <span class="text-burgundyAccent">СТИЛЬНО, ЛЕГКО, <br class="hidden sm:inline">С КОМФОРТОМ</span> 
@@ -221,10 +471,8 @@
                 </h2>
             </div>
 
-            <!-- 3.2 Сетка из 9 коротких фактов -->
+            <!-- Сетка из 9 коротких фактов -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-6 pt-2 border-t border-white/10">
-                
-                <!-- Колонка 1 -->
                 <div class="space-y-5">
                     <div class="flex items-start gap-3">
                         <i data-lucide="sparkles" class="w-5 h-5 text-burgundyAccent shrink-0 mt-0.5"></i>
@@ -246,7 +494,6 @@
                     </div>
                 </div>
 
-                <!-- Колонка 2 -->
                 <div class="space-y-5">
                     <div class="border-l-2 border-burgundyBright pl-3">
                         <p class="text-xs sm:text-sm uppercase leading-snug text-white/90">
@@ -265,7 +512,6 @@
                     </div>
                 </div>
 
-                <!-- Колонка 3 -->
                 <div class="space-y-5">
                     <div class="border-l-2 border-white/20 pl-3">
                         <p class="text-xs sm:text-sm uppercase leading-snug text-white/90">
@@ -283,35 +529,16 @@
                         </p>
                     </div>
                 </div>
-
             </div>
 
-            <!-- 3.3 Коллаж с нахлестом слева + Бордовая рамка «МОЙ СТИЛЬ И СУПЕРСИЛЫ» справа -->
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start pt-6">
-                
-                <!-- Левая часть: Основной портрет + наложенное сверху справа фото -->
                 <div class="lg:col-span-6 relative pt-6 pr-0 sm:pr-16">
-                    <!-- Большое основное фото -->
                     <div class="w-full sm:w-[85%] aspect-[4/5] bg-charcoal overflow-hidden border border-white/15 shadow-2xl">
-                        <img 
-                            src="photo-3.jpg" 
-                            onerror="this.src='https://placehold.co/600x750/0D0D10/E11D48?text=Портрет'"
-                            alt="Екатерина Вовк портрет" 
-                            class="w-full h-full object-cover object-[center_15%]"
-                        >
+                        <img src="photo-3.jpg" onerror="this.src='https://placehold.co/600x750/0D0D10/E11D48?text=Портрет'" alt="Екатерина Вовк портрет" class="w-full h-full object-cover object-[center_15%]">
                     </div>
-
-                    <!-- Наложенное малое фото в правом верхнем углу -->
                     <div class="hidden sm:block absolute top-0 right-2 w-44 h-52 bg-noir p-1.5 border border-burgundyBright shadow-2xl">
-                        <img 
-                            src="photo-2.jpg" 
-                            onerror="this.src='https://placehold.co/300x360/0D0D10/FFFFFF?text=Образ'"
-                            alt="Сценический образ" 
-                            class="w-full h-full object-cover object-[center_15%]"
-                        >
+                        <img src="photo-2.jpg" onerror="this.src='https://placehold.co/300x360/0D0D10/FFFFFF?text=Образ'" alt="Сценический образ" class="w-full h-full object-cover object-[center_15%]">
                     </div>
-
-                    <!-- Цитата-манифест под фото -->
                     <div class="mt-5 p-5 bg-obsidian border-l-4 border-burgundyBright">
                         <p class="text-xs sm:text-sm text-white/85 leading-relaxed">
                             «Привет! Я Катя. Для меня нет шаблонных мероприятий: у каждого события свой характер, и моя задача — раскрыть его так, чтобы комфортно, весело и интересно было каждому гостю. Я не просто веду мероприятия — я делаю так, чтобы их запоминали!»
@@ -319,7 +546,6 @@
                     </div>
                 </div>
 
-                <!-- Правая часть: Тонкая бордовая рамка с заголовком и пунктами с круглыми аватарками -->
                 <div class="lg:col-span-6 burgundy-outline-box p-7 sm:p-10">
                     <h3 class="font-display font-bold text-3xl sm:text-4xl uppercase tracking-wide text-burgundyAccent mb-8 leading-none">
                         МОЙ СТИЛЬ <br>И СУПЕРСИЛЫ
@@ -332,35 +558,30 @@
                                 УДЕРЖИВАЮ ВНИМАНИЕ <br><span class="text-white/70 font-normal">ЗАЛОВ ОТ 15 ДО 5000+ ЧЕЛОВЕК</span>
                             </div>
                         </div>
-
                         <div class="flex items-center gap-4">
                             <img src="photo-4.jpg" alt="Образ" class="w-12 h-12 rounded-full object-cover border border-burgundyBright shrink-0">
                             <div class="text-xs sm:text-sm uppercase font-semibold tracking-wide text-white">
                                 МАСТЕР ПЕРЕВОПЛОЩЕНИЯ <br><span class="text-white/70 font-normal">СОЗДАЮ ЯРКИЕ ОБРАЗЫ ПОД КОНЦЕПТ ВЕЧЕРА</span>
                             </div>
                         </div>
-
                         <div class="flex items-center gap-4">
                             <img src="photo-3.jpg" alt="Гала" class="w-12 h-12 rounded-full object-cover border border-burgundyBright shrink-0">
                             <div class="text-xs sm:text-sm uppercase font-semibold tracking-wide text-white">
                                 БЕЗУПРЕЧНЫЙ СТАТУС И ТАКТ <br><span class="text-white/70 font-normal">ВЕДУ ПРЕМИИ, ФОРУМЫ И ГАЛА-УЖИНЫ</span>
                             </div>
                         </div>
-
                         <div class="flex items-center gap-4">
                             <img src="photo-5.jpg" alt="Open Air" class="w-12 h-12 rounded-full object-cover border border-burgundyBright shrink-0">
                             <div class="text-xs sm:text-sm uppercase font-semibold tracking-wide text-white">
                                 СПАСАЮ ЛЮБУЮ ПАУЗУ <br><span class="text-white/70 font-normal">МГНОВЕННЫЙ ИНТЕРАКТИВ ЕСЛИ ЗАДЕРЖАЛИ ТОРТ</span>
                             </div>
                         </div>
-
                         <div class="flex items-center gap-4">
                             <img src="photo-6.jpg" alt="Драйв" class="w-12 h-12 rounded-full object-cover border border-burgundyBright shrink-0">
                             <div class="text-xs sm:text-sm uppercase font-semibold tracking-wide text-white">
                                 ХАРИЗМА «ЭНЕРДЖАЙЗЕРА» <br><span class="text-white/70 font-normal">ЗАРЯЖАЮ ПУБЛИКУ С ПЕРВОЙ СЕКУНДЫ</span>
                             </div>
                         </div>
-
                         <div class="flex items-center gap-4">
                             <img src="photo-3.jpg" alt="Душевность" class="w-12 h-12 rounded-full object-cover border border-burgundyBright shrink-0">
                             <div class="text-xs sm:text-sm uppercase font-semibold tracking-wide text-white">
@@ -369,9 +590,7 @@
                         </div>
                     </div>
                 </div>
-
             </div>
-
         </div>
     </section>
 
@@ -390,7 +609,6 @@
                 </p>
             </div>
 
-            <!-- Кнопки переключения режимов -->
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
                 <button onclick="switchEnergyMode('drive')" id="tab-drive" class="energy-tab py-4 px-5 bg-burgundyBright text-white font-display font-bold text-sm sm:text-base uppercase tracking-wider text-left flex items-center justify-between transition-all">
                     <span>01. ЧИСТЫЙ ДРАЙВ И ЮМОР</span>
@@ -406,7 +624,6 @@
                 </button>
             </div>
 
-            <!-- Карточка активного режима -->
             <div class="burgundy-outline-box p-6 sm:p-10">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                     <div class="lg:col-span-5">
@@ -435,7 +652,6 @@
                             <span class="px-3 py-1.5 bg-charcoal border border-burgundyBright/40 text-xs uppercase font-semibold text-white">💃 Интерактив без принуждения</span>
                         </div>
 
-                        <!-- Шкалы -->
                         <div class="pt-4 border-t border-white/10 grid grid-cols-1 sm:grid-cols-3 gap-4">
                             <div>
                                 <div class="flex justify-between text-xs uppercase font-bold mb-1">
@@ -487,7 +703,6 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                <!-- Формат 1 -->
                 <div class="editorial-card p-7 flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between mb-5 pb-3 border-b border-white/10">
@@ -507,7 +722,6 @@
                     </button>
                 </div>
 
-                <!-- Формат 2 -->
                 <div class="editorial-card p-7 flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between mb-5 pb-3 border-b border-white/10">
@@ -527,7 +741,6 @@
                     </button>
                 </div>
 
-                <!-- Формат 3 -->
                 <div class="editorial-card p-7 flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between mb-5 pb-3 border-b border-white/10">
@@ -547,7 +760,6 @@
                     </button>
                 </div>
 
-                <!-- Формат 4 -->
                 <div class="editorial-card p-7 flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between mb-5 pb-3 border-b border-white/10">
@@ -567,7 +779,6 @@
                     </button>
                 </div>
 
-                <!-- Формат 5 -->
                 <div class="editorial-card p-7 flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between mb-5 pb-3 border-b border-white/10">
@@ -587,7 +798,6 @@
                     </button>
                 </div>
 
-                <!-- Формат 6 (Эксклюзив) -->
                 <div class="p-7 bg-burgundyDark/40 border border-burgundyBright flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between mb-5 pb-3 border-b border-burgundyBright/40">
@@ -675,7 +885,6 @@
                     </h2>
                 </div>
 
-                <!-- Фильтры галереи -->
                 <div class="flex flex-wrap gap-2">
                     <button onclick="filterGallery('all')" data-filter="all" class="gallery-filter-btn px-4 py-2 bg-burgundyBright text-white text-xs font-bold uppercase tracking-wider transition-all">
                         Все кадры (6)
@@ -692,10 +901,7 @@
                 </div>
             </div>
 
-            <!-- Сетка из 6 реальных фото -->
             <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                
-                <!-- Фото 1 -->
                 <div data-category="stage" onclick="openLightbox('photo-2.jpg', 'Работа на большой сцене • Живое ведение и контакт с залом')" class="gallery-item cursor-pointer group editorial-card p-2.5">
                     <div class="relative aspect-[4/5] bg-charcoal overflow-hidden">
                         <img src="photo-2.jpg" alt="Сцена" class="w-full h-full object-cover object-[center_15%] group-hover:scale-105 transition-transform duration-500">
@@ -710,7 +916,6 @@
                     </div>
                 </div>
 
-                <!-- Фото 2 -->
                 <div data-category="elegant" onclick="openLightbox('photo-3.jpg', 'Корпоративный гала-вечер «Вместе к новым вершинам»')" class="gallery-item cursor-pointer group editorial-card p-2.5">
                     <div class="relative aspect-[4/5] bg-charcoal overflow-hidden">
                         <img src="photo-3.jpg" alt="Гала вечер" class="w-full h-full object-cover object-[center_20%] group-hover:scale-105 transition-transform duration-500">
@@ -725,7 +930,6 @@
                     </div>
                 </div>
 
-                <!-- Фото 3 -->
                 <div data-category="comedy" onclick="openLightbox('photo-4.jpg', 'Яркое перевоплощение для тематических вечеринок и шоу')" class="gallery-item cursor-pointer group editorial-card p-2.5">
                     <div class="relative aspect-[4/5] bg-charcoal overflow-hidden">
                         <img src="photo-4.jpg" alt="Сценический образ" class="w-full h-full object-cover object-[70%_center] group-hover:scale-105 transition-transform duration-500">
@@ -740,7 +944,6 @@
                     </div>
                 </div>
 
-                <!-- Фото 4 -->
                 <div data-category="stage" onclick="openLightbox('photo-5.jpg', 'Open-Air фестиваль «Это сто тысяч героев» на главной сцене')" class="gallery-item cursor-pointer group editorial-card p-2.5">
                     <div class="relative aspect-[4/5] bg-charcoal overflow-hidden">
                         <img src="photo-5.jpg" alt="Open-Air фестиваль" class="w-full h-full object-cover object-center scale-[1.35] group-hover:scale-[1.42] transition-transform duration-500">
@@ -755,7 +958,6 @@
                     </div>
                 </div>
 
-                <!-- Фото 5 -->
                 <div data-category="comedy" onclick="openLightbox('photo-6.jpg', 'Драйв и живые эмоции с командой на главной сцене')" class="gallery-item cursor-pointer group editorial-card p-2.5">
                     <div class="relative aspect-[4/5] bg-charcoal overflow-hidden">
                         <img src="photo-6.jpg" alt="Команда на сцене" class="w-full h-full object-cover object-center scale-[1.85] group-hover:scale-[1.92] transition-transform duration-500">
@@ -770,7 +972,6 @@
                     </div>
                 </div>
 
-                <!-- Фото 6 -->
                 <div data-category="elegant" onclick="openLightbox('photo-3.jpg', 'Екатерина Вовк • Камерные и душевные события')" class="gallery-item cursor-pointer group editorial-card p-2.5">
                     <div class="relative aspect-[4/5] bg-charcoal overflow-hidden">
                         <img src="photo-3.jpg" alt="Портрет" class="w-full h-full object-cover object-[center_15%] group-hover:scale-105 transition-transform duration-500">
@@ -784,7 +985,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
@@ -792,8 +992,6 @@
     <!-- 8. БЛОК «ОТЗЫВЫ И ВПЕЧАТЛЕНИЯ» -->
     <section id="reviews" class="py-16 sm:py-24 border-b border-white/10">
         <div class="max-w-6xl mx-auto px-4 sm:px-6">
-            
-            <!-- Шапка блока отзывов -->
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
                 <div>
                     <span class="text-xs font-bold uppercase tracking-[0.2em] text-burgundyAccent">Честная обратная связь</span>
@@ -807,7 +1005,6 @@
                 </button>
             </div>
 
-            <!-- Выпадающая форма добавления отзыва -->
             <div id="add-review-box" class="hidden mb-12 burgundy-outline-box p-6 sm:p-10 transition-all">
                 <div class="flex items-center justify-between mb-6 pb-4 border-b border-white/10">
                     <div>
@@ -821,13 +1018,11 @@
 
                 <form id="new-review-form" onsubmit="handleReviewSubmit(event)" class="space-y-6">
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                        <!-- Имя и роль -->
                         <div>
                             <label class="block text-xs font-bold uppercase tracking-wider text-burgundyAccent mb-1.5">Ваше имя / Компания *</label>
                             <input type="text" id="rev-name" required placeholder="Например: Денис, IT-корпоратив" class="w-full px-4 py-3 bg-noir border border-white/20 text-white text-sm focus:outline-none focus:border-burgundyAccent">
                         </div>
 
-                        <!-- Формат мероприятия -->
                         <div>
                             <label class="block text-xs font-bold uppercase tracking-wider text-burgundyAccent mb-1.5">Какое было событие?</label>
                             <select id="rev-format" class="w-full px-4 py-3 bg-noir border border-white/20 text-white text-sm focus:outline-none focus:border-burgundyAccent">
@@ -839,7 +1034,6 @@
                             </select>
                         </div>
 
-                        <!-- Оценка в звездах -->
                         <div>
                             <label class="block text-xs font-bold uppercase tracking-wider text-burgundyAccent mb-1.5">Оценка работы:</label>
                             <div class="flex items-center gap-2 h-[46px] px-4 bg-noir border border-white/20" id="star-selector">
@@ -853,7 +1047,6 @@
                         </div>
                     </div>
 
-                    <!-- Текст отзыва -->
                     <div>
                         <label class="block text-xs font-bold uppercase tracking-wider text-burgundyAccent mb-1.5">Ваш отзыв *</label>
                         <textarea id="rev-text" rows="3" required placeholder="Напишите своими словами: как прошла подготовка, как Катя держала зал, что больше всего запомнилось..." class="w-full px-4 py-3 bg-noir border border-white/20 text-white text-sm focus:outline-none focus:border-burgundyAccent"></textarea>
@@ -868,10 +1061,7 @@
                 </form>
             </div>
 
-            <!-- Сетка карточек отзывов -->
             <div id="reviews-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                
-                <!-- Отзыв 1: Корпоратив с IT-отделом и производством -->
                 <div class="editorial-card p-7 flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between mb-4 pb-3 border-b border-white/10">
@@ -891,7 +1081,6 @@
                     </div>
                 </div>
 
-                <!-- Отзыв 2: Open-Air / Большая сцена -->
                 <div class="editorial-card p-7 flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between mb-4 pb-3 border-b border-white/10">
@@ -911,7 +1100,6 @@
                     </div>
                 </div>
 
-                <!-- Отзыв 3: Камерный вечер / День рождения -->
                 <div class="editorial-card p-7 flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between mb-4 pb-3 border-b border-white/10">
@@ -930,17 +1118,13 @@
                         <span class="text-[11px] uppercase text-white/40 font-semibold">Октябрь</span>
                     </div>
                 </div>
-
             </div>
-
         </div>
     </section>
 
     <!-- 9. БЛОК «FAQ — ЧАСТЫЕ ВОПРОСЫ ЗАКАЗЧИКОВ» -->
     <section id="faq" class="py-16 sm:py-24 border-b border-white/10">
         <div class="max-w-6xl mx-auto px-4 sm:px-6">
-            
-            <!-- Шапка блока FAQ -->
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
                 <div>
                     <span class="text-xs font-bold uppercase tracking-[0.2em] text-burgundyAccent">Все прозрачно и по делу</span>
@@ -953,13 +1137,8 @@
                 </p>
             </div>
 
-            <!-- Сетка аккордеона FAQ -->
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                
-                <!-- Левая колонка: Список вопросов (8 колонок) -->
                 <div class="lg:col-span-8 space-y-3.5">
-                    
-                    <!-- Вопрос 1 -->
                     <div class="faq-item editorial-card border-burgundyAccent">
                         <button type="button" onclick="toggleFaq(0)" class="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4">
                             <div class="flex items-center gap-4">
@@ -977,7 +1156,6 @@
                         </div>
                     </div>
 
-                    <!-- Вопрос 2 -->
                     <div class="faq-item editorial-card">
                         <button type="button" onclick="toggleFaq(1)" class="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4">
                             <div class="flex items-center gap-4">
@@ -995,7 +1173,6 @@
                         </div>
                     </div>
 
-                    <!-- Вопрос 3 -->
                     <div class="faq-item editorial-card">
                         <button type="button" onclick="toggleFaq(2)" class="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4">
                             <div class="flex items-center gap-4">
@@ -1013,7 +1190,6 @@
                         </div>
                     </div>
 
-                    <!-- Вопрос 4 -->
                     <div class="faq-item editorial-card">
                         <button type="button" onclick="toggleFaq(3)" class="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4">
                             <div class="flex items-center gap-4">
@@ -1031,7 +1207,6 @@
                         </div>
                     </div>
 
-                    <!-- Вопрос 5 -->
                     <div class="faq-item editorial-card">
                         <button type="button" onclick="toggleFaq(4)" class="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4">
                             <div class="flex items-center gap-4">
@@ -1049,7 +1224,6 @@
                         </div>
                     </div>
 
-                    <!-- Вопрос 6 -->
                     <div class="faq-item editorial-card">
                         <button type="button" onclick="toggleFaq(5)" class="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4">
                             <div class="flex items-center gap-4">
@@ -1066,10 +1240,8 @@
                             Живой ивент — это всегда динамика, и именно здесь работает моя суперсила живой импровизации. Я постоянно держу связь с банкетным менеджером и организаторами: если горячее задерживается на 20 минут или спикер опаздывает, я мягко перестрою блоки программы и заполню паузу остроумным общением с залом так, что гости будут уверены — все идет строго по плану.
                         </div>
                     </div>
-
                 </div>
 
-                <!-- Правая колонка: Плашка быстрой консультации (4 колонки) -->
                 <div class="lg:col-span-4 burgundy-outline-box p-7 sm:p-8 space-y-6">
                     <div class="inline-block px-3 py-1 bg-burgundyBright text-white text-[10px] font-bold uppercase tracking-widest">
                         Прямая связь с ведущей
@@ -1097,9 +1269,7 @@
                         <span>Среднее время ответа в мессенджерах: 15 минут</span>
                     </div>
                 </div>
-
             </div>
-
         </div>
     </section>
 
@@ -1107,7 +1277,6 @@
     <section id="booking" class="py-16 sm:py-24">
         <div class="max-w-5xl mx-auto px-4 sm:px-6">
             <div class="burgundy-outline-box p-6 sm:p-12">
-                
                 <div class="mb-10">
                     <span class="text-xs font-bold uppercase tracking-[0.2em] text-burgundyAccent">Связь со мной и параметры события</span>
                     <h2 class="font-display font-bold text-3xl sm:text-5xl uppercase text-white mt-1">
@@ -1119,8 +1288,6 @@
                 </div>
 
                 <form id="event-calculator-form" onsubmit="handleBookingSubmit(event)" class="space-y-8">
-                    
-                    <!-- Шаг 1: Формат -->
                     <div class="space-y-3">
                         <label class="block font-display font-bold text-lg uppercase tracking-wide text-white">
                             1. Какой формат события планируется?
@@ -1144,7 +1311,6 @@
                         </div>
                     </div>
 
-                    <!-- Шаг 2 и 3 -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="space-y-3">
                             <label class="block font-display font-bold text-lg uppercase tracking-wide text-white">
@@ -1181,7 +1347,6 @@
                         </div>
                     </div>
 
-                    <!-- Шаг 4: Поля ввода -->
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
                         <div>
                             <label class="block text-xs font-bold uppercase tracking-wider text-burgundyAccent mb-1.5">Ваше имя *</label>
@@ -1197,7 +1362,6 @@
                         </div>
                     </div>
 
-                    <!-- Широкая кнопка отправки -->
                     <div class="pt-2">
                         <button type="submit" class="w-full py-5 bg-burgundyBright hover:bg-burgundyAccent text-white font-sans font-bold text-xs sm:text-sm uppercase tracking-[0.22em] flex items-center justify-center gap-2 transition-all burgundy-btn-glow">
                             <span>ОТПРАВИТЬ ЗАЯВКУ И ОБСУДИТЬ ДЕТАЛИ</span>
@@ -1207,10 +1371,8 @@
                             Отвечаю лично в течение 15–30 минут в Telegram, WhatsApp или по телефону
                         </p>
                     </div>
-
                 </form>
 
-                <!-- Блок успешной отправки с прямыми ссылками -->
                 <div id="booking-success" class="hidden mt-8 p-6 bg-noir border border-burgundyBright space-y-4">
                     <div class="flex items-center gap-3">
                         <div class="w-9 h-9 bg-burgundyBright text-white flex items-center justify-center shrink-0">
@@ -1239,7 +1401,6 @@
                         </button>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
@@ -1624,295 +1785,24 @@
         }
     </script>
 
-    <!-- 3D LIQUID CHROME MICROPHONE & SMOKE (Three.js Модуль) -->
-    <script type="module">
-        import * as THREE from 'three';
-        import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+    <!-- Скрипт интерактивного прожектора в правом блоке -->
+    <script>
+        const visualCard = document.getElementById('visualCard');
+        const spotlight = document.getElementById('spotlight');
 
-        const container = document.getElementById('mic-canvas-container');
+        visualCard.addEventListener('mousemove', (e) => {
+            const rect = visualCard.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
 
-        // 1. СЦЕНА И КАМЕРА
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(42, container.clientWidth / container.clientHeight, 0.1, 100);
-        camera.position.set(0, 0.1, 6.6);
-
-        // 2. РЕНДЕРЕР С ПОЛНОЙ ПРОЗРАЧНОСТЬЮ (alpha: true)
-        const renderer = new THREE.WebGLRenderer({ 
-            antialias: true, 
-            alpha: true, 
-            powerPreference: "high-performance" 
-        });
-        renderer.setSize(container.clientWidth, container.clientHeight);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-        renderer.setClearColor(0x000000, 0); // 0 = абсолютно прозрачный фон
-        renderer.toneMapping = THREE.ACESFilmicToneMapping;
-        renderer.toneMappingExposure = 0.85; // Приглушенная экспозиция (без пересветов)
-        container.appendChild(renderer.domElement);
-
-        // Карта отражений для эффекта жидкого зеркала/металла
-        const pmremGenerator = new THREE.PMREMGenerator(renderer);
-        scene.environment = pmremGenerator.fromScene(new RoomEnvironment(), 0.04).texture;
-        scene.environmentIntensity = 0.45; // Умеренные блики окружения
-
-        // 3. ПРИГЛУШЕННЫЕ ПРОЖЕКТОРЫ (Темно-бордовый / винный и глубокий теневой)
-        const ambientLight = new THREE.AmbientLight(0x1a050d, 0.6);
-        scene.add(ambientLight);
-
-        // Левый прожектор (приглушенный малиново-бордовый)
-        const spotLightLeft = new THREE.SpotLight(0xb81d48, 8);
-        spotLightLeft.position.set(-4.5, 2.5, 2);
-        spotLightLeft.angle = Math.PI / 3;
-        spotLightLeft.penumbra = 1;
-        spotLightLeft.decay = 1.8;
-        scene.add(spotLightLeft);
-
-        // Правый контровой прожектор (глубокий винный для объема)
-        const spotLightRight = new THREE.SpotLight(0x800f2f, 6);
-        spotLightRight.position.set(4.5, -1.5, -2);
-        spotLightRight.angle = Math.PI / 2.5;
-        spotLightRight.penumbra = 1;
-        spotLightRight.decay = 1.8;
-        scene.add(spotLightRight);
-
-        // Верхний холодный блик для подчеркивания хрома и граней стекла
-        const topRimLight = new THREE.DirectionalLight(0xffccd5, 0.8);
-        topRimLight.position.set(0, 5, -3);
-        scene.add(topRimLight);
-
-        // 4. ГУСТОЙ ВОЗДУШНЫЙ ДЫМ НА ВЕТРУ
-        function createSmokeTexture() {
-            const canvas = document.createElement('canvas');
-            canvas.width = 256;
-            canvas.height = 256;
-            const ctx = canvas.getContext('2d');
-
-            // Создаем многослойное мягкое облако без жестких краев
-            const gradient = ctx.createRadialGradient(128, 128, 10, 128, 128, 128);
-            gradient.addColorStop(0, 'rgba(255, 255, 255, 0.55)');
-            gradient.addColorStop(0.35, 'rgba(220, 180, 195, 0.3)');
-            gradient.addColorStop(0.7, 'rgba(140, 50, 80, 0.08)');
-            gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
-
-            ctx.fillStyle = gradient;
-            ctx.fillRect(0, 0, 256, 256);
-            return new THREE.CanvasTexture(canvas);
-        }
-
-        const smokeTexture = createSmokeTexture();
-        const smokeGroup = new THREE.Group();
-        scene.add(smokeGroup);
-
-        const smokeParticles = [];
-        const particleCount = 65; // Густота дыма
-
-        for (let i = 0; i < particleCount; i++) {
-            const smokeMat = new THREE.MeshLambertMaterial({
-                map: smokeTexture,
-                color: new THREE.Color().setHSL(0.95 + Math.random() * 0.04, 0.75, 0.22 + Math.random() * 0.12),
-                transparent: true,
-                opacity: 0,
-                depthWrite: false,
-                blending: THREE.AdditiveBlending
-            });
-
-            const size = 2.8 + Math.random() * 3.2;
-            const geo = new THREE.PlaneGeometry(size, size);
-            const mesh = new THREE.Mesh(geo, smokeMat);
-
-            // Начальное распределение клубов дыма вокруг центра
-            resetSmokeParticle(mesh, true);
-            smokeGroup.add(mesh);
-            smokeParticles.push(mesh);
-        }
-
-        function resetSmokeParticle(mesh, initial = false) {
-            mesh.position.x = initial ? (Math.random() - 0.5) * 7 : -4.5 - Math.random() * 2;
-            mesh.position.y = (Math.random() - 0.5) * 3.2;
-            mesh.position.z = (Math.random() - 0.5) * 2.5 - 0.8;
-            mesh.rotation.z = Math.random() * Math.PI * 2;
-
-            mesh.userData = {
-                vx: 0.008 + Math.random() * 0.014, // Скорость ветра вправо
-                vy: (Math.random() - 0.42) * 0.006, // Легкий подъем вверх
-                vr: (Math.random() - 0.5) * 0.008,  // Завихрение
-                maxOpacity: 0.14 + Math.random() * 0.18,
-                life: initial ? Math.random() * 100 : 0,
-                maxLife: 180 + Math.random() * 140,
-                turbulenceOffset: Math.random() * 100
-            };
-        }
-
-        // 5. МАТЕРИАЛЫ МИКРОФОНА (Прозрачное зеркало / Жидкий металл)
-        const liquidMirrorMaterial = new THREE.MeshPhysicalMaterial({
-            color: 0xffffff,
-            metalness: 0.35,          // Баланс между металлом и прозрачным стеклом
-            roughness: 0.04,          // Идеальный глянец
-            transmission: 0.82,       // Прозрачность (видно сквозь него)
-            ior: 2.1,                 // Высокое преломление (как у хрусталя/жидкой ртути)
-            thickness: 1.5,           // Объемное преломление внутри граней
-            envMapIntensity: 1.8,     // Зеркальные блики
-            clearcoat: 1.0,           // Дополнительный лаковый слой
-            clearcoatRoughness: 0.02,
-            transparent: true,
-            opacity: 0.95
+            spotlight.style.left = `${x}px`;
+            spotlight.style.top = `${y}px`;
         });
 
-        // Внутреннее ядро (полупрозрачная темная сетка внутри, чтобы читался рельеф)
-        const innerCoreMaterial = new THREE.MeshPhysicalMaterial({
-            color: 0x2b0916,
-            metalness: 0.8,
-            roughness: 0.2,
-            transmission: 0.5,
-            transparent: true,
-            opacity: 0.45
+        visualCard.addEventListener('mouseleave', () => {
+            spotlight.style.left = '50%';
+            spotlight.style.top = '50%';
         });
-
-        // 6. СБОРКА 3D-МОДЕЛИ РЕТРО-МИКРОФОНА (БЕЗ СТОЙКИ)
-        const micGroup = new THREE.Group();
-        scene.add(micGroup);
-
-        // Внутренняя капсула
-        const coreGeo = new THREE.CylinderGeometry(0.52, 0.46, 1.35, 32);
-        const coreMesh = new THREE.Mesh(coreGeo, innerCoreMaterial);
-        coreMesh.position.y = 0.35;
-        micGroup.add(coreMesh);
-
-        // Верхний и нижний куполы внутренней капсулы
-        const topCapGeo = new THREE.SphereGeometry(0.52, 32, 16, 0, Math.PI * 2, 0, Math.PI / 2);
-        const topCap = new THREE.Mesh(topCapGeo, innerCoreMaterial);
-        topCap.position.y = 1.02;
-        micGroup.add(topCap);
-
-        // Горизонтальные глянцевые ребра (фирменный стиль Shure 55)
-        const ribCount = 9;
-        for (let i = 0; i < ribCount; i++) {
-            const t = i / (ribCount - 1); // от 0 до 1
-            const yPos = -0.3 + t * 1.45;
-            
-            // Плавное сужение к верху и низу
-            const profileRadius = 0.62 * Math.sin(t * Math.PI * 0.78 + 0.35);
-            const radius = Math.max(0.38, profileRadius);
-
-            const ribGeo = new THREE.TorusGeometry(radius, 0.048, 20, 48);
-            const ribMesh = new THREE.Mesh(ribGeo, liquidMirrorMaterial);
-            ribMesh.rotation.x = Math.PI / 2;
-            ribMesh.position.y = yPos;
-            micGroup.add(ribMesh);
-        }
-
-        // Центральные вертикальные дуги каркаса (передняя/задняя и боковые)
-        const frontBackArchGeo = new THREE.TorusGeometry(0.64, 0.065, 24, 64, Math.PI * 1.15);
-        const frontBackArch = new THREE.Mesh(frontBackArchGeo, liquidMirrorMaterial);
-        frontBackArch.rotation.z = -Math.PI * 0.075;
-        frontBackArch.position.y = 0.35;
-        frontBackArch.scale.set(0.95, 1.35, 1);
-        micGroup.add(frontBackArch);
-
-        const sideArch = frontBackArch.clone();
-        sideArch.rotation.y = Math.PI / 2;
-        micGroup.add(sideArch);
-
-        // Нижнее основание самого микрофона (шарнир и блок переключателя, БЕЗ ТРУБЫ-СТОЙКИ)
-        const baseCollarGeo = new THREE.CylinderGeometry(0.38, 0.26, 0.28, 32);
-        const baseCollar = new THREE.Mesh(baseCollarGeo, liquidMirrorMaterial);
-        baseCollar.position.y = -0.52;
-        micGroup.add(baseCollar);
-
-        // Шарнирный узел
-        const hingeGeo = new THREE.CylinderGeometry(0.18, 0.18, 0.46, 24);
-        const hinge = new THREE.Mesh(hingeGeo, liquidMirrorMaterial);
-        hinge.rotation.z = Math.PI / 2;
-        hinge.position.y = -0.74;
-        micGroup.add(hinge);
-
-        // Компактный нижний хвостовик (заканчивается в воздухе, без стойки)
-        const tailBodyGeo = new THREE.CylinderGeometry(0.22, 0.14, 0.55, 24);
-        const tailBody = new THREE.Mesh(tailBodyGeo, liquidMirrorMaterial);
-        tailBody.position.y = -1.08;
-        micGroup.add(tailBody);
-
-        // Декоративный тумблер ВКЛ/ВЫКЛ на корпусе
-        const switchPlateGeo = new THREE.BoxGeometry(0.16, 0.32, 0.06);
-        const switchPlate = new THREE.Mesh(switchPlateGeo, liquidMirrorMaterial);
-        switchPlate.position.set(0, -1.05, 0.21);
-        micGroup.add(switchPlate);
-
-        // 7. ИНТЕРАКТИВНОСТЬ (Плавное слежение за курсором/тачем)
-        let mouseX = 0;
-        let mouseY = 0;
-        let targetRotationY = -0.3;
-        let targetRotationX = 0.08;
-
-        window.addEventListener('pointermove', (e) => {
-            mouseX = (e.clientX / window.innerWidth) * 2 - 1;
-            mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
-            targetRotationY = -0.3 + mouseX * 0.55;
-            targetRotationX = 0.08 - mouseY * 0.3;
-        });
-
-        // 8. АНИМАЦИЯ (Левитация микрофона + Разлетающийся на ветру дым)
-        const clock = new THREE.Clock();
-
-        function animate() {
-            requestAnimationFrame(animate);
-            const elapsedTime = clock.getElapsedTime();
-
-            // Плавное парение 3D-микрофона
-            micGroup.position.y = Math.sin(elapsedTime * 1.4) * 0.12 + 0.15;
-            
-            // Плавный поворот за мышкой + легкое живое покачивание
-            micGroup.rotation.y += (targetRotationY + Math.sin(elapsedTime * 0.6) * 0.12 - micGroup.rotation.y) * 0.05;
-            micGroup.rotation.x += (targetRotationX + Math.cos(elapsedTime * 0.8) * 0.05 - micGroup.rotation.x) * 0.05;
-
-            // Физика ветра и клубов дыма
-            for (let i = 0; i < smokeParticles.length; i++) {
-                const p = smokeParticles[i];
-                const data = p.userData;
-
-                data.life++;
-
-                // Движение по ветру с волнообразной турбулентностью
-                p.position.x += data.vx + Math.sin(elapsedTime * 1.2 + data.turbulenceOffset) * 0.004;
-                p.position.y += data.vy + Math.cos(elapsedTime * 0.9 + data.turbulenceOffset) * 0.003;
-                p.rotation.z += data.vr;
-
-                // Воздушное расширение клуба дыма по мере полета
-                const scale = 1 + (data.life / data.maxLife) * 0.65;
-                p.scale.set(scale, scale, 1);
-
-                // Плавное появление и растворение без резких границ
-                const progress = data.life / data.maxLife;
-                if (progress < 0.25) {
-                    p.material.opacity = (progress / 0.25) * data.maxOpacity;
-                } else {
-                    p.material.opacity = ((1 - progress) / 0.75) * data.maxOpacity;
-                }
-
-                // Перезапуск частицы, когда она улетела
-                if (data.life >= data.maxLife || p.position.x > 5.5) {
-                    resetSmokeParticle(p, false);
-                }
-            }
-
-            renderer.render(scene, camera);
-        }
-
-        animate();
-
-        // Адаптивность под любой экран и контейнер
-        function updateCanvasSize() {
-            if (!container) return;
-            const width = container.clientWidth || 400;
-            const height = container.clientHeight || 480;
-            camera.aspect = width / height;
-            camera.updateProjectionMatrix();
-            renderer.setSize(width, height);
-        }
-
-        window.addEventListener('resize', updateCanvasSize);
-        if (window.ResizeObserver) {
-            new ResizeObserver(updateCanvasSize).observe(container);
-        }
     </script>
 </body>
 </html>
