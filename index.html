@@ -81,102 +81,29 @@
             100% { transform: translateY(-20px) scale(1.05); opacity: 1; }
         }
 
-        /* Левая часть: Типографика */
+        /* Левая часть: Типографика (только имя и фамилия) */
         .hero-content {
             position: relative;
             z-index: 3;
-            max-width: 600px;
-        }
-
-        .location-tag {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 14px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: #800020;
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-
-        .location-tag .dot {
-            width: 8px;
-            height: 8px;
-            background-color: #9B1B30;
-            border-radius: 50%;
-            box-shadow: 0 0 10px #9B1B30;
+            max-width: 650px;
         }
 
         .hero-title {
-            font-size: clamp(50px, 7vw, 110px);
-            line-height: 0.95;
+            font-size: clamp(60px, 8.5vw, 130px);
+            line-height: 0.92;
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: -2px;
-            margin-bottom: 30px;
             font-family: 'Oswald', sans-serif;
         }
 
         .hero-title .name-line-1 {
             color: #E11D48;
-            text-shadow: 0 0 30px rgba(155, 27, 48, 0.4);
+            text-shadow: 0 0 35px rgba(155, 27, 48, 0.45);
         }
 
         .hero-title .name-line-2 {
             color: #FFFFFF;
-        }
-
-        .hero-footer-info {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .age-badge {
-            font-size: 32px;
-            font-weight: 800;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-family: 'Oswald', sans-serif;
-        }
-
-        .age-badge .live-dot {
-            width: 12px;
-            height: 12px;
-            background-color: #9B1B30;
-            border-radius: 50%;
-            animation: pulse 1.5s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(155, 27, 48, 0.7); }
-            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(155, 27, 48, 0); }
-            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(155, 27, 48, 0); }
-        }
-
-        .features-card {
-            border: 1px solid rgba(155, 27, 48, 0.3);
-            padding: 16px 20px;
-            background: rgba(10, 10, 10, 0.6);
-            backdrop-filter: blur(10px);
-            max-width: 300px;
-        }
-
-        .features-card .f-title {
-            color: #9B1B30;
-            font-size: 13px;
-            font-weight: 700;
-            text-transform: uppercase;
-            margin-bottom: 5px;
-        }
-
-        .features-card .f-desc {
-            font-size: 13px;
-            color: #CCCCCC;
-            line-height: 1.4;
         }
 
         /* Правая часть: Бесшовная зона с 3D-микрофоном */
@@ -223,10 +150,6 @@
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-            }
-            .hero-footer-info {
-                flex-direction: column;
-                gap: 20px;
             }
             .hero-visual-container {
                 width: 100%;
@@ -293,38 +216,21 @@
         </div>
     </header>
 
-    <!-- 2. ГЛАВНЫЙ ЭКРАН -->
+    <!-- 2. ГЛАВНЫЙ ЭКРАН (Чистое имя и фамилия + 3D микрофон с монолитным проводом) -->
     <header class="hero-header">
         <!-- Сценический дым и каминное свечение снизу -->
         <div class="stage-smoke-bottom"></div>
 
-        <!-- Левый блок с текстом -->
+        <!-- Левый блок: только имя и фамилия -->
         <div class="hero-content">
-            <div class="location-tag">
-                <span class="dot"></span>
-                Санкт-Петербург • Вся Россия
-            </div>
-            
             <h1 class="hero-title">
                 <div class="name-line-1">Екатерина</div>
                 <div class="name-line-2">Вовк</div>
             </h1>
-
-            <div class="hero-footer-info">
-                <div class="age-badge">
-                    СПБ <span class="live-dot"></span> 34
-                </div>
-                
-                <div class="features-card">
-                    <div class="f-title">100% живая импровизация</div>
-                    <div class="f-desc">От камерных ужинов на 15 гостей до масштабных фестивалей на 5000+ зрителей</div>
-                </div>
-            </div>
         </div>
 
-        <!-- Правый блок: 3D-микрофон Shure SM58 -->
+        <!-- Правый блок: 3D-микрофон Shure SM58 с привязанным проводом -->
         <div class="hero-visual-container">
-            <!-- Контейнер для 3D-микрофона (растягивается под размер твоего родительского блока или секции) -->
             <div id="mic-3d-widget" style="position: relative; width: 100%; height: 100%; min-height: 460px; overflow: hidden; background: transparent;"></div>
         </div>
     </header>
@@ -1654,7 +1560,7 @@
         }
     </script>
 
-    <!-- 3D-МИКРОФОН SHURE SM58 (Three.js r128) -->
+    <!-- 3D-МИКРОФОН SHURE SM58 С МОНОЛИТНЫМ ПРОВОДОМ (Three.js r128) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
     (function() {
@@ -1770,7 +1676,7 @@
         return new THREE.CanvasTexture(c);
       }
 
-      // 3. СБОРКА МИКРОФОНА SHURE SM58 (БЕЗ СТОЙКИ + С КАБЕЛЕМ)
+      // 3. СБОРКА МИКРОФОНА SHURE SM58
       const rootGroup = new THREE.Group();
       scene.add(rootGroup);
 
@@ -1876,7 +1782,7 @@
       brandBand.position.y = 0.95;
       micTiltGroup.add(brandBand);
 
-      // Конусная графитовая рукоятка (точеный профиль без держателя и стойки)
+      // Конусная графитовая рукоятка
       const handlePoints = [
         new THREE.Vector2(0.41, -2.55),
         new THREE.Vector2(0.42, -2.10),
@@ -1890,7 +1796,7 @@
       );
       micTiltGroup.add(handleMesh);
 
-      // Два фирменных крепежных углубления на рукоятке (как на фото)
+      // Два фирменных крепежных углубления на рукоятке
       for (let i = 0; i < 2; i++) {
         const hole = new THREE.Mesh(
           new THREE.CylinderGeometry(0.055, 0.055, 0.06, 20),
@@ -1926,7 +1832,7 @@
       bootCone.position.y = -3.38;
       micTiltGroup.add(bootCone);
 
-      // 4. ГИБКИЙ МИКРОФОННЫЙ ПРОВОД, УХОДЯЩИЙ ВНИЗ ЗА ГРАНИЦУ БЛОКА
+      // 4. ЖИВОЙ ПРОВОД, ЖЕСТКО ПРИВЯЗАННЫЙ К НИЖНЕЙ ЧАСТИ МИКРОФОНА
       const cableMat = new THREE.MeshPhysicalMaterial({
         color: 0x111217,
         metalness: 0.45,
@@ -1936,45 +1842,34 @@
       });
 
       let cableMesh = null;
-      function updateCableGeometry(swayX, swayY) {
-        // Точка выхода провода из хвостовика с учетом наклона микрофона
-        const localExit = new THREE.Vector3(0, -3.65, 0);
-        localExit.applyAxisAngle(new THREE.Vector3(0, 0, 1), TILT_ANGLE);
+      function updateCableGeometry() {
+        // Базовые локальные координаты выхода шнура из хвостовика микрофона
+        const basePoint = new THREE.Vector3(0, -3.75, 0);
+        
+        // Превращаем локальные координаты в мировые с учетом поворота И парения микрофона (micTiltGroup + rootGroup)
+        const p0 = basePoint.clone().applyMatrix4(micTiltGroup.matrixWorld);
 
-        // Вектор направления продолжения рукоятки
-        const dir = new THREE.Vector3(0, -1, 0).applyAxisAngle(new THREE.Vector3(0, 0, 1), TILT_ANGLE);
-
-        const p0 = localExit.clone();
-        const p1 = localExit.clone().add(dir.clone().multiplyScalar(1.35));
-        const p2 = new THREE.Vector3(
-          localExit.x - 0.85 + swayX * 0.35,
-          localExit.y - 2.9 + swayY * 0.2,
-          0.25
-        );
-        const p3 = new THREE.Vector3(
-          localExit.x - 0.35 + swayX * 0.5,
-          localExit.y - 6.8, // Уходит далеко вниз за срез шапки
-          -0.2
-        );
+        // Контрольные точки шнура, которые повторяют все наклоны и колебания микрофона как единый механизм
+        const p1 = p0.clone().add(new THREE.Vector3(0.1, -1.4, 0.1));
+        const p2 = new THREE.Vector3(p0.x - 0.7, p0.y - 3.2, 0.3);
+        const p3 = new THREE.Vector3(p0.x - 0.2, p0.y - 6.2, -0.1);
 
         const curve = new THREE.CatmullRomCurve3([p0, p1, p2, p3]);
         const newGeo = new THREE.TubeGeometry(curve, 48, 0.135, 16, false);
 
         if (!cableMesh) {
           cableMesh = new THREE.Mesh(newGeo, cableMat);
-          rootGroup.add(cableMesh);
+          scene.add(cableMesh); // Добавляем на сцену, чтобы провод двигался синхронно с микрофоном
         } else {
           cableMesh.geometry.dispose();
           cableMesh.geometry = newGeo;
         }
       }
-      updateCableGeometry(0, 0);
 
       // 5. АТМОСФЕРА: РОЗОВЫЙ ДЫМ, ОРБИТЫ, ЗВУКОВАЯ ВОЛНА И ИСКРЫ
       const fxGroup = new THREE.Group();
       rootGroup.add(fxGroup);
 
-      // Текстура мягкого облака дыма
       function createSmokeTexture() {
         const c = document.createElement('canvas');
         c.width = 256; c.height = 256;
@@ -2004,10 +1899,9 @@
         const s = 4.2 + (i % 3) * 1.1;
         sp.scale.set(s, s, 1);
         fxGroup.add(sp);
-        smokeClouds.push({ sprite: sp, baseAngle: angle, speed: 0.25 + i * 0.04 });
+        smokeClouds.push({ sprite: sp, baseAngle: angle });
       }
 
-      // Светящиеся орбиты вокруг капсюля
       const orbitsGroup = new THREE.Group();
       orbitsGroup.position.set(-0.6, 0.9, 0);
       fxGroup.add(orbitsGroup);
@@ -2030,7 +1924,6 @@
       const orbit2 = createOrbitRing(2.68, 0.009, 0xff85b3, 1.35, -0.38);
       orbitsGroup.add(orbit1, orbit2);
 
-      // Эквалайзер / звуковая волна позади микрофона
       const waveCount = 120;
       const wavePositions = new Float32Array(waveCount * 3);
       for (let i = 0; i < waveCount; i++) {
@@ -2051,7 +1944,6 @@
       );
       fxGroup.add(waveLine);
 
-      // Летающие искры
       const sparkCount = 42;
       const sparkPos = new Float32Array(sparkCount * 3);
       for (let i = 0; i < sparkCount; i++) {
@@ -2076,7 +1968,7 @@
       );
       fxGroup.add(sparks);
 
-      // 6. АДАПТИВНОЕ МАСШТАБИРОВАНИЕ (НЕ ВЫХОДИТ ЗА ГРАНИЦЫ БЛОКА НА IOS / ANDROID / ПК)
+      // 6. АДАПТИВНОЕ МАСШТАБИРОВАНИЕ
       function updateLayout() {
         const w = container.clientWidth || 360;
         const h = container.clientHeight || 460;
@@ -2084,12 +1976,10 @@
         camera.aspect = w / h;
         camera.updateProjectionMatrix();
 
-        // Вычисляем видимую ширину и высоту 3D-сцены
         const fovRad = (camera.fov * Math.PI) / 180;
         const visibleHeight = 2 * Math.tan(fovRad / 2) * camera.position.z;
         const visibleWidth = visibleHeight * camera.aspect;
 
-        // Подбираем масштаб так, чтобы и орбиты по бокам, и макушка не резались краями
         const fitScale = Math.min(visibleWidth / 7.2, visibleHeight / 7.6);
         rootGroup.scale.setScalar(Math.max(0.55, Math.min(1.15, fitScale)));
         rootGroup.position.set(0.25 * rootGroup.scale.x, 0.25 * rootGroup.scale.y, 0);
@@ -2130,8 +2020,12 @@
         micTiltGroup.rotation.x = curY * 0.22 + Math.cos(t * 0.6) * 0.05;
         micTiltGroup.position.y = Math.sin(t * 1.4) * 0.12;
 
-        // Живое покачивание провода, уходящего вниз за шапку
-        updateCableGeometry(curX * 0.4 + Math.sin(t * 1.2) * 0.15, micTiltGroup.position.y);
+        // Обновляем матрицу мира перед построением шнура, чтобы он двигался синхронно с микрофоном
+        rootGroup.updateMatrixWorld(true);
+        micTiltGroup.updateMatrixWorld(true);
+
+        // Пересчитываем геометрию провода так, чтобы он был монолитно скреплен с хвостовиком микрофона
+        updateCableGeometry();
 
         // Вращение орбит
         orbit1.rotation.z = t * 0.45;
