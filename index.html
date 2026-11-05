@@ -166,6 +166,7 @@
         <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
             <nav class="hidden md:flex items-center gap-6 text-[11px] uppercase tracking-[0.18em] font-semibold text-white/75">
                 <a href="#about" class="hover:text-burgundyAccent transition-colors">Обо мне</a>
+                <a href="#energy-modes" class="hover:text-burgundyAccent transition-colors">Промо & Режимы</a>
                 <a href="#formats" class="hover:text-burgundyAccent transition-colors">Форматы</a>
                 <a href="#gallery" class="hover:text-burgundyAccent transition-colors">Галерея</a>
                 <a href="#reviews" class="hover:text-burgundyAccent transition-colors">Отзывы</a>
@@ -196,6 +197,7 @@
         <div id="mobile-menu" class="hidden md:hidden bg-noir border-b border-burgundyBright/40 px-4 pt-3 pb-5 space-y-3">
             <div class="grid grid-cols-2 gap-2 text-xs uppercase tracking-wider font-semibold text-white">
                 <a href="#about" class="mobile-link p-2 rounded hover:bg-burgundy/20">Обо мне и факты</a>
+                <a href="#energy-modes" class="mobile-link p-2 rounded hover:bg-burgundy/20">Режимы энергии</a>
                 <a href="#formats" class="mobile-link p-2 rounded hover:bg-burgundy/20">Форматы событий</a>
                 <a href="#gallery" class="mobile-link p-2 rounded hover:bg-burgundy/20">Галерея образов</a>
                 <a href="#reviews" class="mobile-link p-2 rounded hover:bg-burgundy/20">Отзывы клиентов</a>
@@ -225,7 +227,7 @@
         </div>
     </header>
 
-    <!-- 3. БЛОК МАНИФЕСТА И ФАКТОВ (Без левого блока с фото, компактный стиль справа) -->
+    <!-- 3. БЛОК МАНИФЕСТА И ФАКТОВ -->
     <section id="about" class="py-16 sm:py-24 border-b border-white/10">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 space-y-16">
             
@@ -236,6 +238,7 @@
                 </h2>
             </div>
 
+            <!-- Сетка из 9 коротких фактов -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-6 pt-2 border-t border-white/10">
                 <div class="space-y-5">
                     <div class="flex items-start gap-3">
@@ -329,6 +332,99 @@
                 </div>
             </div>
 
+        </div>
+    </section>
+
+    <!-- 4. ИНТЕРАКТИВНЫЙ БЛОК «ПЕРЕКЛЮЧАТЕЛЬ РЕЖИМОВ ЭНЕРГИИ» (Возвращен на место) -->
+    <section id="energy-modes" class="py-16 sm:py-24 border-b border-white/10">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-[0.2em] text-burgundyAccent">Интерактивное промо</span>
+                    <h2 class="font-display font-bold text-3xl sm:text-5xl uppercase text-white mt-1">
+                        ОДИН ЧЕЛОВЕК — <span class="text-burgundyAccent">ТРИ НАСТРОЕНИЯ</span>
+                    </h2>
+                </div>
+                <p class="text-xs sm:text-sm text-white/70 max-w-md">
+                    Нажмите на кнопку режима, чтобы посмотреть, как меняется подача в зависимости от формата вашего мероприятия:
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
+                <button onclick="switchEnergyMode('drive')" id="tab-drive" class="energy-tab py-4 px-5 bg-burgundyBright text-white font-display font-bold text-sm sm:text-base uppercase tracking-wider text-left flex items-center justify-between transition-all">
+                    <span>01. ЧИСТЫЙ ДРАЙВ И ЮМОР</span>
+                    <i data-lucide="zap" class="w-4 h-4"></i>
+                </button>
+                <button onclick="switchEnergyMode('elegance')" id="tab-elegance" class="energy-tab py-4 px-5 bg-obsidian border border-white/15 hover:border-burgundyAccent text-white/80 font-display font-bold text-sm sm:text-base uppercase tracking-wider text-left flex items-center justify-between transition-all">
+                    <span>02. ЭЛЕГАНТНОСТЬ И СТАТУС</span>
+                    <i data-lucide="award" class="w-4 h-4 text-burgundyAccent"></i>
+                </button>
+                <button onclick="switchEnergyMode('soul')" id="tab-soul" class="energy-tab py-4 px-5 bg-obsidian border border-white/15 hover:border-burgundyAccent text-white/80 font-display font-bold text-sm sm:text-base uppercase tracking-wider text-left flex items-center justify-between transition-all">
+                    <span>03. ДУШЕВНОСТЬ И ТЕПЛО</span>
+                    <i data-lucide="heart" class="w-4 h-4 text-burgundyAccent"></i>
+                </button>
+            </div>
+
+            <div class="burgundy-outline-box p-6 sm:p-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-5">
+                        <div class="relative aspect-[4/3] bg-charcoal overflow-hidden border border-white/15">
+                            <img id="mode-image" src="photo-4.jpg" alt="Режим энергии" class="w-full h-full object-cover object-[center_20%] transition-all duration-500">
+                            <div class="absolute bottom-3 left-3 px-3 py-1 bg-burgundyBright text-white font-bold text-xs uppercase tracking-wider" id="mode-badge">
+                                Уровень энергии: 1000 Вольт
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-7 space-y-5">
+                        <div id="mode-subtitle" class="text-xs font-bold uppercase tracking-widest text-burgundyAccent">
+                            Идеально для фестивалей, тематических вечеринок и ярких корпоративов
+                        </div>
+                        <h3 id="mode-title" class="font-display font-bold text-2xl sm:text-4xl text-white uppercase">
+                            «ЧИСТЫЙ ДРАЙВ, ЯРКИЕ ОБРАЗЫ И ВЗРЫВНАЯ ЭНЕРГИЯ»
+                        </h3>
+                        <p id="mode-desc" class="text-white/85 text-sm sm:text-base leading-relaxed">
+                            Когда нужно раскачать площадь на фестивале, объединить 200 сотрудников компании за 15 минут или провести концептуальную вечеринку в необычном стиле. Живой юмор, мгновенная реакция на реплики из зала и полное отсутствие скучных заготовок.
+                        </p>
+
+                        <div id="mode-tags" class="flex flex-wrap gap-2 pt-1">
+                            <span class="px-3 py-1.5 bg-charcoal text-xs uppercase font-semibold text-white">Работа с огромной толпой</span>
+                            <span class="px-3 py-1.5 bg-charcoal text-xs uppercase font-semibold text-white">Сценические образы</span>
+                            <span class="px-3 py-1.5 bg-charcoal text-xs uppercase font-semibold text-white">Интерактив без принуждения</span>
+                        </div>
+
+                        <div class="pt-4 border-t border-white/10 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            <div>
+                                <div class="flex justify-between text-xs uppercase font-bold mb-1">
+                                    <span class="text-white/70">Динамика и драйв</span>
+                                    <span id="bar-1-val" class="text-burgundyAccent">100%</span>
+                                </div>
+                                <div class="w-full h-1.5 bg-charcoal">
+                                    <div id="bar-1" class="h-full bg-burgundyBright transition-all duration-500" style="width: 100%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-xs uppercase font-bold mb-1">
+                                    <span class="text-white/70">Юмор и интерактив</span>
+                                    <span id="bar-2-val" class="text-burgundyAccent">95%</span>
+                                </div>
+                                <div class="w-full h-1.5 bg-charcoal">
+                                    <div id="bar-2" class="h-full bg-burgundyAccent transition-all duration-500" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-xs uppercase font-bold mb-1">
+                                    <span class="text-white/70">Строгий протокол</span>
+                                    <span id="bar-3-val" class="text-burgundyAccent">20%</span>
+                                </div>
+                                <div class="w-full h-1.5 bg-charcoal">
+                                    <div id="bar-3" class="h-full bg-white transition-all duration-500" style="width: 20%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1116,7 +1212,7 @@
                 subtitle: 'Идеально для фестивалей, тематических вечеринок и ярких корпоративов',
                 title: '«ЧИСТЫЙ ДРАЙВ, ЯРКИЕ ОБРАЗЫ И ВЗРЫВНАЯ ЭНЕРГИЯ»',
                 desc: 'Когда нужно раскачать площадь на фестивале, объединить 200 сотрудников компании за 15 минут или провести концептуальную вечеринку в необычном стиле. Живой юмор, мгновенная реакция на реплики из зала и полное отсутствие скучных заготовок.',
-                badge: 'Уровень энергии: 1000 Вольт ⚡',
+                badge: 'Уровень энергии: 1000 Вольт',
                 image: 'photo-4.jpg',
                 imgPos: 'object-[center_20%]',
                 tags: ['Работа с огромной толпой', 'Сценические образы', 'Интерактив без принуждения'],
@@ -1126,7 +1222,7 @@
                 subtitle: 'Идеально для деловых форумов, премиальных церемоний и гала-ужинов',
                 title: '«ЭЛЕГАНТНОСТЬ, ВЫСОКИЙ СТАТУС И БЕЗУПРЕЧНОЕ ЧУВСТВО ТАКТА»',
                 desc: 'Когда мероприятие требует выдержки, презентабельности и уважения к протоколу. Поставленный сценический голос, интеллигентный шарм, точное соблюдение тайминга по секундам и умение достойно представить первых лиц компании.',
-                badge: 'Режим: Black Tie & Премиум ✨',
+                badge: 'Режим: Black Tie & Премиум',
                 image: 'photo-3.jpg',
                 imgPos: 'object-[center_22%]',
                 tags: ['Безупречная сценическая речь', 'Тайминг по секундам', 'Интеллигентная модерация'],
@@ -1136,7 +1232,7 @@
                 subtitle: 'Идеально для свадеб, дней рождения и камерных вечеринок близких людей',
                 title: '«ДУШЕВНОСТЬ, ИСКРЕННЕЕ ТЕПЛО И ЭМОЦИИ ДО МУРАШЕК»',
                 desc: 'Когда собираются самые близкие люди и важна атмосфера уюта. Я запоминаю имена и истории ваших гостей, создаю трогательные моменты, которые вызывают искренние слезы радости и теплый смех — как будто мы знакомы уже много лет.',
-                badge: 'Режим: Искренность и Уют 💛',
+                badge: 'Режим: Искренность и Уют',
                 image: 'photo-3.jpg',
                 imgPos: 'object-[center_18%]',
                 tags: ['Внимание к каждому гостю', 'Трогательные моменты до мурашек', 'Уют без шаблонных конкурсов'],
@@ -1166,7 +1262,7 @@
             document.getElementById('mode-badge').textContent = data.badge;
 
             const tagsContainer = document.getElementById('mode-tags');
-            tagsContainer.innerHTML = data.tags.map(t => `<span class="px-3 py-1.5 bg-charcoal border border-burgundyBright/40 text-xs uppercase font-semibold text-white">${t}</span>`).join('');
+            tagsContainer.innerHTML = data.tags.map(t => `<span class="px-3 py-1.5 bg-charcoal text-xs uppercase font-semibold text-white">${t}</span>`).join('');
 
             document.getElementById('bar-1').style.width = data.bars[0] + '%';
             document.getElementById('bar-1-val').textContent = data.bars[0] + '%';
@@ -1923,4 +2019,4 @@
     })();
     </script>
 </body>
-</html>
+    </html>
