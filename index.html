@@ -49,7 +49,7 @@
             overflow-x: hidden;
         }
 
-        /* Главная секция-шапка (по твоему новому референсу) */
+        /* Главная секция-шапка */
         .hero-header {
             position: relative;
             width: 100%;
@@ -179,102 +179,15 @@
             line-height: 1.4;
         }
 
-        /* Правая часть: Бесшовная зона с парящим микрофоном и прожекторами */
+        /* Правая часть: Бесшовная зона с 3D-микрофоном */
         .hero-visual-container {
             position: relative;
-            width: 450px;
+            width: 480px;
             height: 550px;
             z-index: 3;
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-
-        .card-top-bar {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            right: 20px;
-            display: flex;
-            justify-content: space-between;
-            font-size: 12px;
-            letter-spacing: 1px;
-            color: rgba(255, 255, 255, 0.5);
-            text-transform: uppercase;
-            z-index: 5;
-        }
-
-        .on-air-indicator {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            color: #FFFFFF;
-        }
-
-        .on-air-dot {
-            width: 6px;
-            height: 6px;
-            background-color: #9B1B30;
-            border-radius: 50%;
-            box-shadow: 0 0 8px #9B1B30;
-        }
-
-        .card-bottom-bar {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            right: 20px;
-            display: flex;
-            justify-content: space-between;
-            font-size: 11px;
-            color: rgba(255, 255, 255, 0.3);
-            letter-spacing: 2px;
-            z-index: 5;
-            text-transform: uppercase;
-        }
-
-        .spotlight {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(155, 27, 48, 0.4) 0%, transparent 70%);
-            border-radius: 50%;
-            pointer-events: none;
-            transform: translate(-50%, -50%);
-            z-index: 2;
-            transition: width 0.3s, height 0.3s;
-            mix-blend-mode: screen;
-        }
-
-        .floating-mic-wrapper {
-            position: relative;
-            width: 220px;
-            height: 380px;
-            z-index: 4;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            filter: drop-shadow(0 0 25px rgba(128, 0, 32, 0.5));
-            animation: floatMic 4s ease-in-out infinite alternate;
-        }
-
-        @keyframes floatMic {
-            0% { transform: translateY(0px); }
-            100% { transform: translateY(-12px); }
-        }
-
-        .glass-microphone {
-            width: 100%;
-            height: 100%;
-            fill: none;
-            stroke: rgba(255, 255, 255, 0.85);
-            stroke-width: 2;
-            filter: drop-shadow(0 0 10px rgba(155, 27, 48, 0.8));
-        }
-
-        .glass-microphone .inner-glow {
-            fill: rgba(155, 27, 48, 0.15);
-            backdrop-filter: blur(5px);
         }
 
         /* Тонкие фирменные бордовые рамки */
@@ -317,8 +230,8 @@
             }
             .hero-visual-container {
                 width: 100%;
-                height: 400px;
-                margin-top: 40px;
+                height: 460px;
+                margin-top: 30px;
             }
         }
     </style>
@@ -380,7 +293,7 @@
         </div>
     </header>
 
-    <!-- 2. ГЛАВНЫЙ ЭКРАН (Референс-шапка) -->
+    <!-- 2. ГЛАВНЫЙ ЭКРАН -->
     <header class="hero-header">
         <!-- Сценический дым и каминное свечение снизу -->
         <div class="stage-smoke-bottom"></div>
@@ -409,54 +322,10 @@
             </div>
         </div>
 
-        <!-- Правый блок: парящий микрофон, прожектор и интерфейс STAGE // LIVE -->
-        <div class="hero-visual-container" id="visualCard">
-            <!-- Интерактивный прожектор за курсором -->
-            <div class="spotlight" id="spotlight"></div>
-
-            <!-- Верхняя панель карточки -->
-            <div class="card-top-bar">
-                <span>STAGE // LIVE</span>
-                <div class="on-air-indicator">
-                    <span class="on-air-dot"></span>
-                    ON AIR
-                </div>
-            </div>
-
-            <!-- Парящий микрофон без стойки (прозрачный хром/стекло) -->
-            <div class="floating-mic-wrapper">
-                <svg class="glass-microphone" viewBox="0 0 200 350" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Внутреннее свечение капсюля -->
-                    <path class="inner-glow" d="M60,80 C60,40 140,40 140,80 L140,150 C140,190 60,190 60,150 Z" />
-                    
-                    <!-- Дуги и решетка микрофона (эффект прозрачного стекла) -->
-                    <path d="M60,80 C60,40 140,40 140,80 L140,150 C140,190 60,190 60,150 Z" stroke-width="3" stroke="rgba(255,255,255,0.9)"/>
-                    <line x1="60" y1="80" x2="140" y2="80" stroke-width="1.5" />
-                    <line x1="58" y1="110" x2="142" y2="110" stroke-width="1.5" />
-                    <line x1="60" y1="140" x2="140" y2="140" stroke-width="1.5" />
-                    <line x1="75" y1="50" x2="75" y2="180" stroke-width="1.5" />
-                    <line x1="100" y1="42" x2="100" y2="188" stroke-width="2" stroke="#9B1B30" />
-                    <line x1="125" y1="50" x2="125" y2="180" stroke-width="1.5" />
-
-                    <!-- Внешний защитный контур (округлые дуги крепления капсюля) -->
-                    <path d="M45,90 C35,130 50,180 80,195" stroke-width="2" stroke-linecap="round"/>
-                    <path d="M155,90 C165,130 150,180 120,195" stroke-width="2" stroke-linecap="round"/>
-                    
-                    <!-- Блестящий центральный узел (без нижней стойки!) -->
-                    <rect x="85" y="195" width="30" height="35" rx="5" fill="rgba(10,10,10,0.8)" stroke="rgba(255,255,255,0.8)" stroke-width="2"/>
-                    <circle cx="100" cy="212" r="4" fill="#9B1B30" />
-
-                    <!-- Декоративные орбитальные линии / звуковые волны -->
-                    <path d="M20,120 Q10,150 30,180" stroke="rgba(155, 27, 48, 0.6)" stroke-width="1.5" stroke-dasharray="4 4" />
-                    <path d="M180,120 Q190,150 170,180" stroke="rgba(155, 27, 48, 0.6)" stroke-width="1.5" stroke-dasharray="4 4" />
-                </svg>
-            </div>
-
-            <!-- Нижняя панель карточки -->
-            <div class="card-bottom-bar">
-                <span>1000 VOLTS</span>
-                <span>SAINT PETERSBURG</span>
-            </div>
+        <!-- Правый блок: 3D-микрофон Shure SM58 -->
+        <div class="hero-visual-container">
+            <!-- Контейнер для 3D-микрофона (растягивается под размер твоего родительского блока или секции) -->
+            <div id="mic-3d-widget" style="position: relative; width: 100%; height: 100%; min-height: 460px; overflow: hidden; background: transparent;"></div>
         </div>
     </header>
 
@@ -1785,24 +1654,509 @@
         }
     </script>
 
-    <!-- Скрипт интерактивного прожектора в правом блоке -->
+    <!-- 3D-МИКРОФОН SHURE SM58 (Three.js r128) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
-        const visualCard = document.getElementById('visualCard');
-        const spotlight = document.getElementById('spotlight');
+    (function() {
+      const container = document.getElementById('mic-3d-widget');
+      if (!container) return;
 
-        visualCard.addEventListener('mousemove', (e) => {
-            const rect = visualCard.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(35, 1, 0.1, 100);
+      camera.position.set(0, 0, 14.5);
 
-            spotlight.style.left = `${x}px`;
-            spotlight.style.top = `${y}px`;
+      const renderer = new THREE.WebGLRenderer({
+        antialias: true,
+        alpha: true, // Прозрачный фон — никаких рамок и прямоугольников
+        powerPreference: 'high-performance'
+      });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.25;
+      renderer.domElement.style.width = '100%';
+      renderer.domElement.style.height = '100%';
+      renderer.domElement.style.display = 'block';
+      container.appendChild(renderer.domElement);
+
+      // 1. СТУДИЙНАЯ HDRI-КАРТА ОТРАЖЕНИЙ (ДЛЯ РЕАЛИСТИЧНОГО МЕТАЛЛА SHURE SM58)
+      function createStudioEnvMap() {
+        const c = document.createElement('canvas');
+        c.width = 1024; c.height = 512;
+        const ctx = c.getContext('2d');
+        ctx.fillStyle = '#030305';
+        ctx.fillRect(0, 0, 1024, 512);
+
+        // Холодный серебристый стрипбокс справа-сверху
+        const strip1 = ctx.createLinearGradient(620, 30, 800, 380);
+        strip1.addColorStop(0, 'rgba(255,255,255,0)');
+        strip1.addColorStop(0.45, 'rgba(255,255,255,0.98)');
+        strip1.addColorStop(0.55, 'rgba(235,245,255,0.98)');
+        strip1.addColorStop(1, 'rgba(255,255,255,0)');
+        ctx.fillStyle = strip1;
+        ctx.fillRect(580, 20, 260, 400);
+
+        // Розово-малиновый контровой софтбокс
+        const pinkGlow = ctx.createRadialGradient(260, 250, 10, 260, 250, 230);
+        pinkGlow.addColorStop(0, 'rgba(255, 30, 105, 0.95)');
+        pinkGlow.addColorStop(0.5, 'rgba(185, 10, 65, 0.45)');
+        pinkGlow.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.fillStyle = pinkGlow;
+        ctx.fillRect(20, 20, 480, 460);
+
+        const tex = new THREE.CanvasTexture(c);
+        tex.mapping = THREE.EquirectangularReflectionMapping;
+        const pmrem = new THREE.PMREMGenerator(renderer);
+        const envTex = pmrem.fromEquirectangular(tex).texture;
+        pmrem.dispose();
+        tex.dispose();
+        return envTex;
+      }
+      scene.environment = createStudioEnvMap();
+
+      // Освещение
+      scene.add(new THREE.AmbientLight(0xffffff, 0.35));
+
+      const keyLight = new THREE.DirectionalLight(0xf5f8ff, 3.2);
+      keyLight.position.set(6, 8, 6);
+      scene.add(keyLight);
+
+      const pinkRim = new THREE.SpotLight(0xff1760, 7.5, 30, Math.PI / 3, 0.6, 1.2);
+      pinkRim.position.set(-6, 3.5, 4.5);
+      scene.add(pinkRim);
+
+      const rightCrimson = new THREE.PointLight(0xff1055, 4.8, 22);
+      rightCrimson.position.set(4.5, -1.5, 3.5);
+      scene.add(rightCrimson);
+
+      // 2. ТЕКСТУРА СТАЛЬНОЙ СЕТКИ И КОЛЬЦА SHURE
+      function createGrilleTextures() {
+        const size = 512;
+        const c = document.createElement('canvas');
+        c.width = size; c.height = size;
+        const ctx = c.getContext('2d');
+
+        ctx.fillStyle = '#09090c';
+        ctx.fillRect(0, 0, size, size);
+
+        const step = 16;
+        ctx.lineWidth = 5.5;
+        for (let i = -size; i < size * 2; i += step) {
+          ctx.strokeStyle = '#d8e0ea';
+          ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i + size, size); ctx.stroke();
+          ctx.strokeStyle = '#9aa4b2';
+          ctx.beginPath(); ctx.moveTo(i, size); ctx.lineTo(i + size, 0); ctx.stroke();
+        }
+
+        const tex = new THREE.CanvasTexture(c);
+        tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
+        tex.repeat.set(6, 5);
+        return tex;
+      }
+
+      function createShureBandTexture() {
+        const c = document.createElement('canvas');
+        c.width = 1024; c.height = 128;
+        const ctx = c.getContext('2d');
+        ctx.fillStyle = '#08080a';
+        ctx.fillRect(0, 0, 1024, 128);
+        ctx.strokeStyle = 'rgba(255,255,255,0.22)';
+        ctx.lineWidth = 3;
+        ctx.strokeRect(0, 8, 1024, 112);
+        ctx.fillStyle = '#b8c0cc';
+        ctx.font = '700 44px sans-serif';
+        ctx.letterSpacing = '8px';
+        ctx.fillText('SHURE   SM58', 180, 80);
+        ctx.fillText('SHURE   SM58', 680, 80);
+        return new THREE.CanvasTexture(c);
+      }
+
+      // 3. СБОРКА МИКРОФОНА SHURE SM58 (БЕЗ СТОЙКИ + С КАБЕЛЕМ)
+      const rootGroup = new THREE.Group();
+      scene.add(rootGroup);
+
+      const micTiltGroup = new THREE.Group();
+      const TILT_ANGLE = -0.64; // Наклон ~37 градусов как на референсе
+      micTiltGroup.rotation.z = TILT_ANGLE;
+      rootGroup.add(micTiltGroup);
+
+      const grilleTex = createGrilleTextures();
+
+      const chromeMat = new THREE.MeshPhysicalMaterial({
+        color: 0xe6edf5,
+        metalness: 1.0,
+        roughness: 0.14,
+        clearcoat: 1.0,
+        clearcoatRoughness: 0.08
+      });
+
+      const wireMeshMat = new THREE.MeshPhysicalMaterial({
+        color: 0xdce4ee,
+        metalness: 0.96,
+        roughness: 0.24,
+        map: grilleTex,
+        bumpMap: grilleTex,
+        bumpScale: 0.055,
+        clearcoat: 0.6
+      });
+
+      const darkBodyMat = new THREE.MeshPhysicalMaterial({
+        color: 0x17181d,
+        metalness: 0.82,
+        roughness: 0.36,
+        clearcoat: 0.25,
+        clearcoatRoughness: 0.4
+      });
+
+      // Внутренний черный акустический поролон
+      const innerFoam = new THREE.Mesh(
+        new THREE.SphereGeometry(0.99, 32, 32),
+        new THREE.MeshStandardMaterial({ color: 0x050507, roughness: 0.95 })
+      );
+      innerFoam.position.y = 1.95;
+      micTiltGroup.add(innerFoam);
+
+      // Сферическая стальная сетка капсюля
+      const topDome = new THREE.Mesh(
+        new THREE.SphereGeometry(1.06, 48, 36, 0, Math.PI * 2, 0, Math.PI * 0.52),
+        wireMeshMat
+      );
+      topDome.position.y = 1.95;
+      micTiltGroup.add(topDome);
+
+      const lowerBasket = new THREE.Mesh(
+        new THREE.CylinderGeometry(1.06, 0.78, 0.72, 48, 1, false),
+        wireMeshMat
+      );
+      lowerBasket.position.y = 1.59;
+      micTiltGroup.add(lowerBasket);
+
+      // Объемные стальные витки поверх сетки для живого блеска
+      const wireRingMat = new THREE.MeshPhysicalMaterial({ color: 0xe3ebf6, metalness: 1, roughness: 0.16 });
+      for (let i = 0; i < 12; i++) {
+        const t = i / 11;
+        const y = 1.28 + t * 1.65;
+        let r = 0;
+        if (y >= 1.95) {
+          const dy = (y - 1.95) / 1.06;
+          r = Math.sqrt(Math.max(0, 1 - dy * dy)) * 1.064;
+        } else {
+          const k = (y - 1.23) / 0.72;
+          r = 0.78 + k * (1.06 - 0.78);
+        }
+        if (r > 0.2) {
+          const ring = new THREE.Mesh(new THREE.TorusGeometry(r, 0.013, 8, 48), wireRingMat);
+          ring.rotation.x = Math.PI / 2;
+          ring.position.y = y;
+          micTiltGroup.add(ring);
+        }
+      }
+
+      // Фирменное центральное хромированное кольцо жесткости Shure SM58
+      const centerBelt = new THREE.Mesh(
+        new THREE.TorusGeometry(1.075, 0.055, 20, 64),
+        chromeMat
+      );
+      centerBelt.rotation.x = Math.PI / 2;
+      centerBelt.position.y = 1.93;
+      micTiltGroup.add(centerBelt);
+
+      // Хромированный воротник под сеткой
+      const silverCollar = new THREE.Mesh(
+        new THREE.CylinderGeometry(0.79, 0.73, 0.16, 48),
+        chromeMat
+      );
+      silverCollar.position.y = 1.16;
+      micTiltGroup.add(silverCollar);
+
+      // Черное кольцо с маркировкой SHURE SM58
+      const brandBand = new THREE.Mesh(
+        new THREE.CylinderGeometry(0.735, 0.69, 0.26, 48),
+        new THREE.MeshStandardMaterial({ map: createShureBandTexture(), roughness: 0.35, metalness: 0.5 })
+      );
+      brandBand.position.y = 0.95;
+      micTiltGroup.add(brandBand);
+
+      // Конусная графитовая рукоятка (точеный профиль без держателя и стойки)
+      const handlePoints = [
+        new THREE.Vector2(0.41, -2.55),
+        new THREE.Vector2(0.42, -2.10),
+        new THREE.Vector2(0.47, -1.10),
+        new THREE.Vector2(0.55, -0.10),
+        new THREE.Vector2(0.69,  0.82)
+      ];
+      const handleMesh = new THREE.Mesh(
+        new THREE.LatheGeometry(handlePoints, 56),
+        darkBodyMat
+      );
+      micTiltGroup.add(handleMesh);
+
+      // Два фирменных крепежных углубления на рукоятке (как на фото)
+      for (let i = 0; i < 2; i++) {
+        const hole = new THREE.Mesh(
+          new THREE.CylinderGeometry(0.055, 0.055, 0.06, 20),
+          new THREE.MeshStandardMaterial({ color: 0x050507, metalness: 0.9, roughness: 0.2 })
+        );
+        hole.rotation.z = Math.PI / 2;
+        hole.position.set(0.41, -1.85 - i * 0.34, 0.12);
+        micTiltGroup.add(hole);
+      }
+
+      // XLR-штекер и ребристый хвостовик внизу рукоятки
+      const xlrShell = new THREE.Mesh(
+        new THREE.CylinderGeometry(0.39, 0.36, 0.55, 36),
+        new THREE.MeshPhysicalMaterial({ color: 0x22252c, metalness: 0.9, roughness: 0.25 })
+      );
+      xlrShell.position.y = -2.82;
+      micTiltGroup.add(xlrShell);
+
+      // Хромированная защелка XLR
+      const xlrLatch = new THREE.Mesh(
+        new THREE.BoxGeometry(0.09, 0.32, 0.12),
+        chromeMat
+      );
+      xlrLatch.position.set(0.38, -2.78, 0);
+      micTiltGroup.add(xlrLatch);
+
+      // Резиновый ребристый хвостовик (boot)
+      const bootMat = new THREE.MeshStandardMaterial({ color: 0x0d0e12, roughness: 0.65, metalness: 0.2 });
+      const bootCone = new THREE.Mesh(
+        new THREE.CylinderGeometry(0.32, 0.19, 0.62, 32),
+        bootMat
+      );
+      bootCone.position.y = -3.38;
+      micTiltGroup.add(bootCone);
+
+      // 4. ГИБКИЙ МИКРОФОННЫЙ ПРОВОД, УХОДЯЩИЙ ВНИЗ ЗА ГРАНИЦУ БЛОКА
+      const cableMat = new THREE.MeshPhysicalMaterial({
+        color: 0x111217,
+        metalness: 0.45,
+        roughness: 0.42,
+        clearcoat: 0.65,
+        clearcoatRoughness: 0.25
+      });
+
+      let cableMesh = null;
+      function updateCableGeometry(swayX, swayY) {
+        // Точка выхода провода из хвостовика с учетом наклона микрофона
+        const localExit = new THREE.Vector3(0, -3.65, 0);
+        localExit.applyAxisAngle(new THREE.Vector3(0, 0, 1), TILT_ANGLE);
+
+        // Вектор направления продолжения рукоятки
+        const dir = new THREE.Vector3(0, -1, 0).applyAxisAngle(new THREE.Vector3(0, 0, 1), TILT_ANGLE);
+
+        const p0 = localExit.clone();
+        const p1 = localExit.clone().add(dir.clone().multiplyScalar(1.35));
+        const p2 = new THREE.Vector3(
+          localExit.x - 0.85 + swayX * 0.35,
+          localExit.y - 2.9 + swayY * 0.2,
+          0.25
+        );
+        const p3 = new THREE.Vector3(
+          localExit.x - 0.35 + swayX * 0.5,
+          localExit.y - 6.8, // Уходит далеко вниз за срез шапки
+          -0.2
+        );
+
+        const curve = new THREE.CatmullRomCurve3([p0, p1, p2, p3]);
+        const newGeo = new THREE.TubeGeometry(curve, 48, 0.135, 16, false);
+
+        if (!cableMesh) {
+          cableMesh = new THREE.Mesh(newGeo, cableMat);
+          rootGroup.add(cableMesh);
+        } else {
+          cableMesh.geometry.dispose();
+          cableMesh.geometry = newGeo;
+        }
+      }
+      updateCableGeometry(0, 0);
+
+      // 5. АТМОСФЕРА: РОЗОВЫЙ ДЫМ, ОРБИТЫ, ЗВУКОВАЯ ВОЛНА И ИСКРЫ
+      const fxGroup = new THREE.Group();
+      rootGroup.add(fxGroup);
+
+      // Текстура мягкого облака дыма
+      function createSmokeTexture() {
+        const c = document.createElement('canvas');
+        c.width = 256; c.height = 256;
+        const ctx = c.getContext('2d');
+        const g = ctx.createRadialGradient(128, 128, 8, 128, 128, 124);
+        g.addColorStop(0, 'rgba(255, 25, 95, 0.55)');
+        g.addColorStop(0.45, 'rgba(190, 12, 70, 0.25)');
+        g.addColorStop(1, 'rgba(0, 0, 0, 0)');
+        ctx.fillStyle = g;
+        ctx.fillRect(0, 0, 256, 256);
+        return new THREE.CanvasTexture(c);
+      }
+
+      const smokeTex = createSmokeTexture();
+      const smokeClouds = [];
+      for (let i = 0; i < 8; i++) {
+        const mat = new THREE.SpriteMaterial({
+          map: smokeTex,
+          transparent: true,
+          opacity: 0.42,
+          blending: THREE.AdditiveBlending,
+          depthWrite: false
         });
+        const sp = new THREE.Sprite(mat);
+        const angle = (i / 8) * Math.PI * 2;
+        sp.position.set(Math.cos(angle) * 1.35, 0.4 + Math.sin(angle) * 1.1, -1.2 - (i % 3) * 0.4);
+        const s = 4.2 + (i % 3) * 1.1;
+        sp.scale.set(s, s, 1);
+        fxGroup.add(sp);
+        smokeClouds.push({ sprite: sp, baseAngle: angle, speed: 0.25 + i * 0.04 });
+      }
 
-        visualCard.addEventListener('mouseleave', () => {
-            spotlight.style.left = '50%';
-            spotlight.style.top = '50%';
-        });
+      // Светящиеся орбиты вокруг капсюля
+      const orbitsGroup = new THREE.Group();
+      orbitsGroup.position.set(-0.6, 0.9, 0);
+      fxGroup.add(orbitsGroup);
+
+      function createOrbitRing(radius, tube, color, rotX, rotY) {
+        const m = new THREE.Mesh(
+          new THREE.TorusGeometry(radius, tube, 16, 100),
+          new THREE.MeshBasicMaterial({
+            color: color,
+            transparent: true,
+            opacity: 0.65,
+            blending: THREE.AdditiveBlending
+          })
+        );
+        m.rotation.set(rotX, rotY, 0);
+        return m;
+      }
+
+      const orbit1 = createOrbitRing(2.35, 0.014, 0xff2a75, 1.18, 0.32);
+      const orbit2 = createOrbitRing(2.68, 0.009, 0xff85b3, 1.35, -0.38);
+      orbitsGroup.add(orbit1, orbit2);
+
+      // Эквалайзер / звуковая волна позади микрофона
+      const waveCount = 120;
+      const wavePositions = new Float32Array(waveCount * 3);
+      for (let i = 0; i < waveCount; i++) {
+        wavePositions[i * 3] = (i / (waveCount - 1) - 0.5) * 6.2 - 0.4;
+        wavePositions[i * 3 + 1] = 0.85;
+        wavePositions[i * 3 + 2] = -0.6;
+      }
+      const waveGeo = new THREE.BufferGeometry();
+      waveGeo.setAttribute('position', new THREE.BufferAttribute(wavePositions, 3));
+      const waveLine = new THREE.Line(
+        waveGeo,
+        new THREE.LineBasicMaterial({
+          color: 0xff3b82,
+          transparent: true,
+          opacity: 0.75,
+          blending: THREE.AdditiveBlending
+        })
+      );
+      fxGroup.add(waveLine);
+
+      // Летающие искры
+      const sparkCount = 42;
+      const sparkPos = new Float32Array(sparkCount * 3);
+      for (let i = 0; i < sparkCount; i++) {
+        const r = 1.4 + Math.random() * 2.2;
+        const a = Math.random() * Math.PI * 2;
+        sparkPos[i * 3] = Math.cos(a) * r - 0.4;
+        sparkPos[i * 3 + 1] = (Math.random() - 0.35) * 4.2;
+        sparkPos[i * 3 + 2] = (Math.random() - 0.5) * 2.0;
+      }
+      const sparkGeo = new THREE.BufferGeometry();
+      sparkGeo.setAttribute('position', new THREE.BufferAttribute(sparkPos, 3));
+      const sparks = new THREE.Points(
+        sparkGeo,
+        new THREE.PointsMaterial({
+          color: 0xff6da2,
+          size: 0.09,
+          transparent: true,
+          opacity: 0.85,
+          blending: THREE.AdditiveBlending,
+          depthWrite: false
+        })
+      );
+      fxGroup.add(sparks);
+
+      // 6. АДАПТИВНОЕ МАСШТАБИРОВАНИЕ (НЕ ВЫХОДИТ ЗА ГРАНИЦЫ БЛОКА НА IOS / ANDROID / ПК)
+      function updateLayout() {
+        const w = container.clientWidth || 360;
+        const h = container.clientHeight || 460;
+        renderer.setSize(w, h, false);
+        camera.aspect = w / h;
+        camera.updateProjectionMatrix();
+
+        // Вычисляем видимую ширину и высоту 3D-сцены
+        const fovRad = (camera.fov * Math.PI) / 180;
+        const visibleHeight = 2 * Math.tan(fovRad / 2) * camera.position.z;
+        const visibleWidth = visibleHeight * camera.aspect;
+
+        // Подбираем масштаб так, чтобы и орбиты по бокам, и макушка не резались краями
+        const fitScale = Math.min(visibleWidth / 7.2, visibleHeight / 7.6);
+        rootGroup.scale.setScalar(Math.max(0.55, Math.min(1.15, fitScale)));
+        rootGroup.position.set(0.25 * rootGroup.scale.x, 0.25 * rootGroup.scale.y, 0);
+      }
+
+      window.addEventListener('resize', updateLayout);
+      if (window.ResizeObserver) {
+        new ResizeObserver(updateLayout).observe(container);
+      }
+      updateLayout();
+
+      // 7. ИНТЕРАКТИВ ОТ МЫШИ И ТАЧА + АНИМАЦИЯ
+      let targetX = 0, targetY = 0;
+      let curX = 0, curY = 0;
+
+      function onPointerMove(clientX, clientY) {
+        const rect = container.getBoundingClientRect();
+        if (!rect.width || !rect.height) return;
+        targetX = ((clientX - rect.left) / rect.width - 0.5) * 2;
+        targetY = -((clientY - rect.top) / rect.height - 0.5) * 2;
+      }
+
+      window.addEventListener('mousemove', (e) => onPointerMove(e.clientX, e.clientY), { passive: true });
+      window.addEventListener('touchmove', (e) => {
+        if (e.touches && e.touches[0]) onPointerMove(e.touches[0].clientX, e.touches[0].clientY);
+      }, { passive: true });
+
+      const clock = new THREE.Clock();
+      function animate() {
+        requestAnimationFrame(animate);
+        const t = clock.getElapsedTime();
+
+        curX += (targetX - curX) * 0.06;
+        curY += (targetY - curY) * 0.06;
+
+        // Плавное дыхание и поворот микрофона
+        micTiltGroup.rotation.y = curX * 0.42 + Math.sin(t * 0.8) * 0.12;
+        micTiltGroup.rotation.x = curY * 0.22 + Math.cos(t * 0.6) * 0.05;
+        micTiltGroup.position.y = Math.sin(t * 1.4) * 0.12;
+
+        // Живое покачивание провода, уходящего вниз за шапку
+        updateCableGeometry(curX * 0.4 + Math.sin(t * 1.2) * 0.15, micTiltGroup.position.y);
+
+        // Вращение орбит
+        orbit1.rotation.z = t * 0.45;
+        orbit2.rotation.z = -t * 0.32;
+
+        // Пульсация звуковой волны
+        const pos = waveGeo.attributes.position.array;
+        for (let i = 0; i < waveCount; i++) {
+          const x = pos[i * 3];
+          const env = Math.exp(-Math.pow((x + 0.4) * 0.55, 2));
+          pos[i * 3 + 1] = 0.85 + Math.sin(t * 6.0 + i * 0.38) * Math.cos(t * 2.5 - i * 0.15) * 0.55 * env;
+        }
+        waveGeo.attributes.position.needsUpdate = true;
+
+        // Движение дыма
+        for (let i = 0; i < smokeClouds.length; i++) {
+          const sc = smokeClouds[i];
+          sc.sprite.material.rotation = t * 0.08 * (i % 2 === 0 ? 1 : -1);
+          sc.sprite.position.x = Math.cos(sc.baseAngle + t * 0.15) * 1.35;
+        }
+
+        renderer.render(scene, camera);
+      }
+      animate();
+    })();
     </script>
 </body>
 </html>
